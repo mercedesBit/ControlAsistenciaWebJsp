@@ -22,6 +22,7 @@
 					<input type="hidden" name="accion" value="actualizar"> <input
 						type="hidden" name="cursoID" value="${curso.cursoID}">
 
+
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="codigoCurso" class="form-label">Código del
@@ -35,6 +36,7 @@
 								name="nombreCurso" value="${curso.nombreCurso}" required>
 						</div>
 					</div>
+
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
@@ -52,9 +54,9 @@
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="grado" class="form-label">Grado</label> <input
-								type="text" class="form-control" id="grado" name="grado"
-								value="${curso.grado}" required>
+							<label for="grado" class="form-label">Ciclo</label> <input
+								type="text" class="form-control" id="ciclo" name="ciclo"
+								value="${curso.ciclo}" required>
 						</div>
 
 						<div class="col-md-6 mb-3">
@@ -64,13 +66,12 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="modalidad" class="form-label">Modalidad</label> <input
-								type="text" class="form-control" id="modalidad" name="modalidad"
-								value="${curso.modalidad}" required>
-						</div>
+				
 
+						
+					</div>
+
+					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="estado" class="form-label">Estado</label> <select
 								class="form-select" id="estado" name="estado" required>
@@ -80,44 +81,23 @@
 									${curso.estado == 'Inactivo' ? 'selected' : ''}>Inactivo</option>
 							</select>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="requisitosPrevios" class="form-label">Requisitos
-								Previos</label>
-							<textarea class="form-control" id="requisitosPrevios"
-								name="requisitosPrevios" required>${curso.requisitosPrevios}</textarea>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="cantidadMaximaEstudiantes" class="form-label">Máxima
-								Cantidad de Estudiantes</label> <input type="number"
-								class="form-control" id="cantidadMaximaEstudiantes"
-								name="cantidadMaximaEstudiantes"
-								value="${curso.cantidadMaximaEstudiantes}" required>
-						</div>
-					</div>
-
-					
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
+							<div class="col-md-6 mb-3">
 							<label for="notas" class="form-label">Notas</label>
 							<textarea class="form-control" id="notas" name="notas">${curso.notas}</textarea>
 						</div>
+						
+					</div>
 
 					
-					</div>
+
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="fechaRegistro" class="form-label">Fecha de
-								Registro</label> <input type="date" class="form-control"
-								id="fechaRegistro" name="fechaRegistro"
-								value="${curso.fechaRegistro}"
-								>
-						</div>
+    <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+    <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro"
+           value="${curso.fechaRegistro}" readonly>
+</div>
+
 
 						<div class="col-md-6 mb-3">
 							<label for="usuarioRegistro" class="form-label">Usuario

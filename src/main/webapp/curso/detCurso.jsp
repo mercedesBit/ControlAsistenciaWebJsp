@@ -53,7 +53,7 @@
 				<div class="form-group">
 					<label class="text-secondary">Grado</label> <input
 						class="form-control" type="text" name="txtGrado"
-						value="<%=(curso != null)? curso.getGrado():""%>" readonly>
+						value="<%=(curso != null)? curso.getCiclo():""%>" readonly>
 				</div>
 
 				<div class="form-group">
@@ -102,6 +102,26 @@
         value="<%-- (curso != null)? curso.getProfesorID():"" --%>" readonly>
 </div>
 
+			
+<div class="form-group">
+    <label class="text-secondary">Requisitos Previos</label> 
+    <input class="form-control" type="text" name="txtRequisitosPrevios"
+        value="<%--(curso != null)? curso.getRequisitosPrevios():""--%>"
+        readonly>
+<%--
+<div class="form-group">
+    <label class="text-secondary">Cantidad Máxima de Estudiantes</label> 
+    <input class="form-control" type="text" name="txtCantidadMaximaEstudiantes"
+        value="<%=(curso != null)? curso.getCantidadMaximaEstudiantes():""%>" readonly>
+</div>
+
+<div class="form-group">
+    <label class="text-secondary">Modalidad</label> 
+    <input class="form-control" type="text" name="txtModalidad"
+        value="<%=(curso != null)? curso.getModalidad():""%>" readonly>
+</div>
+--%>
+
 				-->
 				
 
@@ -111,32 +131,11 @@
 						value="<%=(curso != null)? curso.getEstado():""%>" readonly>
 				</div>
 
-				<div class="form-group">
-					<label class="text-secondary">Requisitos Previos</label> <input
-						class="form-control" type="text" name="txtRequisitosPrevios"
-						value="<%=(curso != null)? curso.getRequisitosPrevios():""%>"
-						readonly>
-				</div>
 
-				<div class="form-group">
-					<label class="text-secondary">Cantidad Máxima de
-						Estudiantes</label> <input class="form-control" type="text"
-						name="txtCantidadMaximaEstudiantes"
-						value="<%=(curso != null)? curso.getCantidadMaximaEstudiantes():""%>"
-						readonly>
-				</div>
 
-				<div class="form-group">
-					<label class="text-secondary">Modalidad</label> <input
-						class="form-control" type="text" name="txtModalidad"
-						value="<%=(curso != null)? curso.getModalidad():""%>" readonly>
-				</div>
+
 
 				
-
-			
-
-			
 				<div class="form-group">
 					<label class="text-secondary">Notas</label> <input
 						class="form-control" type="text" name="txtNotas"

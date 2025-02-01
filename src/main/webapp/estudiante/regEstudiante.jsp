@@ -1,4 +1,4 @@
-<%@page import="Entidades.PadresTutoresModel"%>
+<%@page import="modelo.PadresTutoresModel"%>
 <%@page import="entidades.PadresTutores"%>
 <%@page import="java.util.List"%>
 

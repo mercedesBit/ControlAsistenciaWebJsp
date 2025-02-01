@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@page import="entidades.PersonalAdministrativo"%>
-<%@page import="Entidades.PersonalAdministrativoModel"%>
+<%@page import="modelo.PersonalAdministrativoModel"%>
 <%@page import="entidades.Curso"%>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.css">

@@ -28,19 +28,25 @@ public class CursoDAO implements Curso_DAO_interface {
                 c.setNombreCurso(rs.getString("nombreCurso"));
                 c.setDescripcion(rs.getString("descripcion"));
                 c.setDuracion(rs.getInt("duracion"));
-                c.setGrado(rs.getString("grado"));
+                c.setCiclo(rs.getString("ciclo"));
                 c.setNivel(rs.getString("nivel"));
-            //    c.setFechaInicio(rs.getDate("fechaInicio"));
-             //   c.setFechaFin(rs.getDate("fechaFin"));
+         
                 c.setEstado(rs.getString("estado"));
+                
+                /*
+                 *    //    c.setFechaInicio(rs.getDate("fechaInicio"));
+             //   c.setFechaFin(rs.getDate("fechaFin"));
                 c.setRequisitosPrevios(rs.getString("requisitosPrevios"));
                 c.setCantidadMaximaEstudiantes(rs.getInt("cantidadMaximaEstudiantes"));
                 c.setModalidad(rs.getString("modalidad"));
            //     c.setSeccionID(rs.getInt("seccionID"));
             //    c.setTemario(rs.getString("temario"));
             //    c.setHorario(rs.getString("horario"));
+             * //    c.setProfesorID(rs.getInt("profesorID"));
+             * */
+             
                 c.setNotas(rs.getString("notas"));
-            //    c.setProfesorID(rs.getInt("profesorID"));
+            
                 c.setFechaRegistro(rs.getDate("fechaRegistro"));
                 c.setUsuarioRegistro(rs.getString("usuarioRegistro"));
                 c.setFechaActualizacion(rs.getDate("fechaActualizacion"));

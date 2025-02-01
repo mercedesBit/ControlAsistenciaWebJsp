@@ -47,7 +47,7 @@
                     <td><%=c.getNombreCurso()%></td>
                     <td><%=c.getDescripcion()%></td>
                     <td><%=c.getDuracion()%></td>
-                    <td><%=c.getGrado()%></td>
+                    <td><%=c.getCiclo()%></td>
                     <td><%=c.getNivel()%></td>
                     <td><%=c.getModalidad()%></td>
                     <td><%=c.getFechaInicio()%></td>

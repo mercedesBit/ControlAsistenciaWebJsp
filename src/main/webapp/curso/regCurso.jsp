@@ -39,13 +39,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="duracion">Duración (horas)</label> <input type="number"
+					<label for="duracion">Duración (créditos)</label> <input type="number"
 						class="form-control" id="duracion" name="duracion" required>
 				</div>
 
 				<div class="form-group">
-					<label for="grado">Grado</label> <input type="text"
-						class="form-control" id="grado" name="grado" required>
+					<label for="grado">Ciclo</label> <input type="text"
+						class="form-control" id="ciclo" name="ciclo" required>
 				</div>
 
 				<div class="form-group">
@@ -53,12 +53,23 @@
 						class="form-control" id="nivel" name="nivel" required>
 				</div>
 
+				
+		
+
+			
+
 				<div class="form-group">
+					<label for="notas">Notas</label>
+					<textarea class="form-control" id="notas" name="notas"></textarea>
+				</div>
+			
+		<%--ELIMINAR ESTO.
+
+<div class="form-group">
 					<label for="modalidad">Modalidad</label> <input type="text"
 						class="form-control" id="modalidad" name="modalidad" required>
 				</div>
 				
-				<%--ELIMINAR ESTO.
 
 				<div class="form-group">
 					<label for="fechaInicio">Fecha de Inicio</label> <input type="date"
@@ -88,31 +99,22 @@
 					<label for="seccionID">Profesor ID</label> <input type="number"
 						class="form-control" id="seccionID" name="seccionID" required>
 				</div>
-    
-    --%>
-				<div class="form-group">
-					<label for="requisitosPrevios">Requisitos Previos</label>
-					<textarea class="form-control" id="requisitosPrevios"
-						name="requisitosPrevios" required></textarea>
-				</div>
-
-				<div class="form-group">
+				
+					<div class="form-group">
 					<label for="cantidadMaximaEstudiantes">Máxima Cantidad de
 						Estudiantes</label> <input type="number" class="form-control"
 						id="cantidadMaximaEstudiantes" name="cantidadMaximaEstudiantes"
 						required>
 				</div>
-
-			
-
 				
-
 				<div class="form-group">
-					<label for="notas">Notas</label>
-					<textarea class="form-control" id="notas" name="notas"></textarea>
+					<label for="requisitosPrevios">Requisitos Previos</label>
+					<textarea class="form-control" id="requisitosPrevios"
+						name="requisitosPrevios" required></textarea>
 				</div>
-			
-
+    
+    --%>
+				
 
 				<br />
 				<div class="form-actions">
