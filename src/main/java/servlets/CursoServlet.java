@@ -15,7 +15,13 @@ import java.time.LocalDate;
 
 @WebServlet("/CursoServlet")
 public class CursoServlet extends HttpServlet {
-    private CursoModel cursoModel = new CursoModel();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	private CursoModel cursoModel = new CursoModel();
 
 
     LocalDate fechaActual = LocalDate.now();

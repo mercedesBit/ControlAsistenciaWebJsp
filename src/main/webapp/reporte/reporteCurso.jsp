@@ -37,6 +37,7 @@
             </thead>
             <tbody>
                 <%
+                	@SuppressWarnings("unchecked")
                     List<Curso> cursos = (List<Curso>) request.getAttribute("cursos");
                     if (cursos != null) {
                         for (Curso c : cursos) {
@@ -50,8 +51,8 @@
                     <td><%=c.getGrado()%></td>
                     <td><%=c.getNivel()%></td>
                     <td><%=c.getModalidad()%></td>
-                    <td><%=c.getFechaInicio()%></td>
-                    <td><%=c.getFechaFin()%></td>
+                    <td><%=c.getFechaRegistro()%></td>
+                    <td><%=c.getFechaActualizacion()%></td>
                 </tr>
                 <%
                         }

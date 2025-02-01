@@ -1,4 +1,4 @@
-<%@ page import="Entidades.PersonalAdministrativoModel"%>
+<%@ page import="modelo.PersonalAdministrativoModel"%>
 <%@ page import="entidades.PersonalAdministrativo"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 

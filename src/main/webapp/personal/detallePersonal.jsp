@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="entidades.PersonalAdministrativo"%>
-<%@ page import="Entidades.PersonalAdministrativoModel"%>
+<%@ page import="modelo.PersonalAdministrativoModel"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
 

@@ -1,6 +1,6 @@
 <%@page import="entidades.Estudiante"%>
 <%@page import="java.util.Date"%>
-<%@page import="Entidades.PadresTutoresModel"%>
+<%@page import="modelo.PadresTutoresModel"%>
 <%@page import="entidades.PadresTutores"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

@@ -28,8 +28,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import entidades.Asistencia;
 import entidades.Curso;
 import entidades.Estudiante;
-import entidades.PersonalAdministrativo;
-import entidades.Profesor;
 import modelo.AsistenciaModel;
 import modelo.CursoModel;
 import modelo.EstudianteModel;
@@ -171,7 +169,7 @@ public class AsistenciaServlet extends HttpServlet {
 
 
 		AsistenciaModel model = new AsistenciaModel();
-		int result = model.registrarAsistencia(listaAsistencias);
+		model.registrarAsistencia(listaAsistencias);
 		CursoModel cursoModel = new CursoModel();
 		List<Curso> cursos = cursoModel.listarTodos();
 
@@ -185,7 +183,7 @@ public class AsistenciaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		AsistenciaModel model = new AsistenciaModel();
-		int value = model.eliminarAsistencia(id);
+		model.eliminarAsistencia(id);
 
 		CursoModel cursoModel = new CursoModel();
 		List<Curso> cursos = cursoModel.listarTodos();
@@ -265,7 +263,7 @@ public class AsistenciaServlet extends HttpServlet {
 
 	private void addRows(PdfPTable table, List<Asistencia> listaAsistencia) {
 		for (Asistencia asistencia : listaAsistencia) {
-			ProfesorModel profModel = new ProfesorModel();
+			new ProfesorModel();
 	//		Profesor prof = profModel.obtenerProfesor(asistencia.getCurso().getProfesorID());
 			table.addCell(String.valueOf(asistencia.getAsistenciaID()));
 			table.addCell(asistencia.getEstudiante().getNombres());

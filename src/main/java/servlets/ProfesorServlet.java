@@ -73,8 +73,6 @@ public class ProfesorServlet extends HttpServlet {
         String direccion = request.getParameter("txtDireccion");
         String modalidadTrabajo = request.getParameter("txtModalidadTrabajo");
         String redesSociales = request.getParameter("txtRedesSociales");
-        String fechaRegistro = request.getParameter("txtFechaRegistro");
-        String usuarioRegistro = request.getParameter("txtUsuarioRegistro");
         
         Profesor profesor = new Profesor();
         profesor.setTipoDocumento(tipoDocumento);

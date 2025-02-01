@@ -12,7 +12,11 @@ import java.util.List;
 @WebServlet("/PersonalAdministrativoServlet")
 public class PersonalAdministrativoServlet extends HttpServlet {
 
-    private PersonalAdministrativoModel personalModel;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PersonalAdministrativoModel personalModel;
 
     @Override
     public void init() throws ServletException {
@@ -167,6 +171,4 @@ public class PersonalAdministrativoServlet extends HttpServlet {
         request.setAttribute("personales", resultados);
         request.getRequestDispatcher("personal/listarPersonal.jsp").forward(request, response);
     }
-
-
 }
