@@ -81,8 +81,8 @@ public class CursoServletDAO extends HttpServlet {
             g2d.drawString(c.getGrado(), 510, y);
             g2d.drawString(c.getNivel(), 610, y);
             g2d.drawString(c.getModalidad(), 710, y);
-            g2d.drawString(c.getFechaInicio().toString(), 810, y);
-            g2d.drawString(c.getFechaFin().toString(), 910, y);
+       //     g2d.drawString(c.getFechaInicio().toString(), 810, y);
+         //   g2d.drawString(c.getFechaFin().toString(), 910, y);
             y += 30;
         }
 

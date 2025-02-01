@@ -10,17 +10,17 @@ public class Curso {
     private int duracion;
     private String grado;
     private String nivel;
-    private Date fechaInicio;
-    private Date fechaFin;
+    //private Date fechaInicio;
+    //private Date fechaFin;
     private String estado;
     private String requisitosPrevios;
     private int cantidadMaximaEstudiantes;
     private String modalidad;
-    private int seccionID;
-    private String temario;
-    private String horario;
+    //private int seccionID;
+    //private String temario;
+    //private String horario;
     private String notas;
-    private int profesorID;
+   // private int profesorID;
     private Date fechaRegistro;
     private String usuarioRegistro;
     private Date fechaActualizacion;
@@ -30,32 +30,33 @@ public class Curso {
 
     // Constructor completo
     public Curso(int cursoID, String codigoCurso, String nombreCurso, String descripcion, int duracion, 
-                 String grado, String nivel, Date fechaInicio, Date fechaFin, String estado, 
-                 String requisitosPrevios, int cantidadMaximaEstudiantes, String modalidad, 
-                 int seccionID, String temario, String horario, String notas, int profesorID, 
-                 Date fechaRegistro, String usuarioRegistro, Date fechaActualizacion) {
-        this.cursoID = cursoID;
-        this.codigoCurso = codigoCurso;
-        this.nombreCurso = nombreCurso;
-        this.descripcion = descripcion;
-        this.duracion = duracion;
-        this.grado = grado;
-        this.nivel = nivel;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.estado = estado;
-        this.requisitosPrevios = requisitosPrevios;
-        this.cantidadMaximaEstudiantes = cantidadMaximaEstudiantes;
-        this.modalidad = modalidad;
-        this.seccionID = seccionID;
-        this.temario = temario;
-        this.horario = horario;
-        this.notas = notas;
-        this.profesorID = profesorID;
-        this.fechaRegistro = fechaRegistro;
-        this.usuarioRegistro = usuarioRegistro;
-        this.fechaActualizacion = fechaActualizacion;
-    }
+            String grado, String nivel, /* Date fechaInicio, Date fechaFin, */ String estado, 
+            String requisitosPrevios, int cantidadMaximaEstudiantes, String modalidad, 
+            /* int seccionID, String temario, String horario, */ String notas, 
+            /* int profesorID, */ Date fechaRegistro, String usuarioRegistro, Date fechaActualizacion) {
+   this.cursoID = cursoID;
+   this.codigoCurso = codigoCurso;
+   this.nombreCurso = nombreCurso;
+   this.descripcion = descripcion;
+   this.duracion = duracion;
+   this.grado = grado;
+   this.nivel = nivel;
+   // this.fechaInicio = fechaInicio; // Comentado porque no se usa en la lógica actual
+   // this.fechaFin = fechaFin;       // Comentado porque no se usa en la lógica actual
+   this.estado = estado;
+   this.requisitosPrevios = requisitosPrevios;
+   this.cantidadMaximaEstudiantes = cantidadMaximaEstudiantes;
+   this.modalidad = modalidad;
+   // this.seccionID = seccionID;     // Comentado porque no se usa en la lógica actual
+   // this.temario = temario;         // Comentado porque no se usa en la lógica actual
+   // this.horario = horario;         // Comentado porque no se usa en la lógica actual
+   this.notas = notas;
+   // this.profesorID = profesorID;   // Comentado porque no se usa en la lógica actual
+   this.fechaRegistro = fechaRegistro;
+   this.usuarioRegistro = usuarioRegistro;
+   this.fechaActualizacion = fechaActualizacion;
+}
+
 
     // Getters y Setters
     public int getCursoID() {
@@ -114,10 +115,10 @@ public class Curso {
         this.nivel = nivel;
     }
 
-    public Date getFechaInicio() {
+  /*  public Date getFechaInicio() {
         return fechaInicio;
     }
-
+  
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
@@ -129,7 +130,7 @@ public class Curso {
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
-
+*/ 
     public String getEstado() {
         return estado;
     }
@@ -162,6 +163,7 @@ public class Curso {
         this.modalidad = modalidad;
     }
 
+    /*
     public int getSeccionID() {
         return seccionID;
     }
@@ -185,7 +187,17 @@ public class Curso {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+    
+    
+    
+        public int getProfesorID() {
+        return profesorID;
+    }
 
+    public void setProfesorID(int profesorID) {
+        this.profesorID = profesorID;
+    }
+    */
     public String getNotas() {
         return notas;
     }
@@ -194,13 +206,7 @@ public class Curso {
         this.notas = notas;
     }
 
-    public int getProfesorID() {
-        return profesorID;
-    }
 
-    public void setProfesorID(int profesorID) {
-        this.profesorID = profesorID;
-    }
 
     public Date getFechaRegistro() {
         return fechaRegistro;

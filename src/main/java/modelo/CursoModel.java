@@ -16,8 +16,8 @@ public class CursoModel implements CursoInterface {
         int resultado = 0;
         try {
             conn = MySqlConexion.getConexion();
-            String sql = "INSERT INTO Curso (CursoID,CodigoCurso, NombreCurso, Descripcion, Duracion, Grado, Nivel, FechaInicio, FechaFin, Estado, RequisitosPrevios, CantidadMaximaEstudiantes, Modalidad, SeccionID, Temario, Horario, Notas, ProfesorID, FechaRegistro, UsuarioRegistro) " +
-                         "VALUES (null,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            String sql = "INSERT INTO Curso (CursoID, CodigoCurso, NombreCurso, Descripcion, Duracion, Grado, Nivel, Estado, RequisitosPrevios, CantidadMaximaEstudiantes, Modalidad, Notas, FechaRegistro, UsuarioRegistro) " +
+                    "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
             PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, curso.getCodigoCurso());
             pst.setString(2, curso.getNombreCurso());
@@ -25,19 +25,19 @@ public class CursoModel implements CursoInterface {
             pst.setInt(4, curso.getDuracion());
             pst.setString(5, curso.getGrado());
             pst.setString(6, curso.getNivel());
-            pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
-            pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
-            pst.setString(9, curso.getEstado());
-            pst.setString(10, curso.getRequisitosPrevios());
-            pst.setInt(11, curso.getCantidadMaximaEstudiantes());
-            pst.setString(12, curso.getModalidad());
-            pst.setInt(13, curso.getSeccionID());
-            pst.setString(14, curso.getTemario());
-            pst.setString(15, curso.getHorario());
-            pst.setString(16, curso.getNotas());
-            pst.setInt(17, curso.getProfesorID());
-            pst.setDate(18, new java.sql.Date(curso.getFechaRegistro().getTime()));
-            pst.setString(19, curso.getUsuarioRegistro());
+       //    pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
+         //   pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
+            pst.setString(7, curso.getEstado());
+            pst.setString(8, curso.getRequisitosPrevios());
+            pst.setInt(9, curso.getCantidadMaximaEstudiantes());
+            pst.setString(10, curso.getModalidad());
+          //  pst.setInt(13, curso.getSeccionID());
+          //  pst.setString(14, curso.getTemario());
+          //  pst.setString(15, curso.getHorario());
+           pst.setString(11, curso.getNotas());
+         //   pst.setInt(17, curso.getProfesorID());
+            pst.setDate(12, new java.sql.Date(curso.getFechaRegistro().getTime()));
+            pst.setString(13, curso.getUsuarioRegistro());
 
             resultado = pst.executeUpdate();
             pst.close();
@@ -58,7 +58,7 @@ public class CursoModel implements CursoInterface {
         int resultado = 0;
         try {
             conn = MySqlConexion.getConexion();
-            String sql = "UPDATE Curso SET CodigoCurso=?, NombreCurso=?, Descripcion=?, Duracion=?, Grado=?, Nivel=?, FechaInicio=?, FechaFin=?, Estado=?, RequisitosPrevios=?, CantidadMaximaEstudiantes=?, Modalidad=?, SeccionID=?, Temario=?, Horario=?, Notas=?, ProfesorID=?, FechaActualizacion=? WHERE CursoID=?";
+            String sql = "UPDATE Curso SET CodigoCurso=?, NombreCurso=?, Descripcion=?,  Grado=?, Nivel=?, Estado=?, RequisitosPrevios=?, CantidadMaximaEstudiantes=?, Modalidad=?,  Temario=?, Horario=?, Notas=?, FechaActualizacion=? WHERE CursoID=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, curso.getCodigoCurso());
             pst.setString(2, curso.getNombreCurso());
@@ -66,19 +66,21 @@ public class CursoModel implements CursoInterface {
             pst.setInt(4, curso.getDuracion());
             pst.setString(5, curso.getGrado());
             pst.setString(6, curso.getNivel());
-            pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
-            pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
-            pst.setString(9, curso.getEstado());
-            pst.setString(10, curso.getRequisitosPrevios());
-            pst.setInt(11, curso.getCantidadMaximaEstudiantes());
-            pst.setString(12, curso.getModalidad());
-            pst.setInt(13, curso.getSeccionID());
-            pst.setString(14, curso.getTemario());
-            pst.setString(15, curso.getHorario());
-            pst.setString(16, curso.getNotas());
-            pst.setInt(17, curso.getProfesorID());
-            pst.setDate(18, new java.sql.Date(curso.getFechaActualizacion().getTime()));
-            pst.setInt(19, curso.getCursoID());
+       //     pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
+     //       pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
+            pst.setString(7, curso.getEstado());
+            pst.setString(8, curso.getRequisitosPrevios());
+            pst.setInt(9, curso.getCantidadMaximaEstudiantes());
+            pst.setString(10, curso.getModalidad());
+        //    pst.setInt(13, curso.getSeccionID());
+        //    pst.setString(14, curso.getTemario());
+         //   pst.setString(15, curso.getHorario());
+            pst.setString(11, curso.getNotas());
+         //   pst.setInt(17, curso.getProfesorID());
+              pst.setDate(12, new java.sql.Date(curso.getFechaActualizacion().getTime()));
+          //  pst.setDate(12, new java.sql.Date(System.currentTimeMillis()));
+
+            pst.setInt(13, curso.getCursoID());
 
             resultado = pst.executeUpdate();
             pst.close();
@@ -136,17 +138,17 @@ public class CursoModel implements CursoInterface {
                 curso.setDuracion(rs.getInt("Duracion"));
                 curso.setGrado(rs.getString("Grado"));
                 curso.setNivel(rs.getString("Nivel"));
-                curso.setFechaInicio(rs.getDate("FechaInicio"));
-                curso.setFechaFin(rs.getDate("FechaFin"));
+             //   curso.setFechaInicio(rs.getDate("FechaInicio"));
+             //  curso.setFechaFin(rs.getDate("FechaFin"));
                 curso.setEstado(rs.getString("Estado"));
                 curso.setRequisitosPrevios(rs.getString("RequisitosPrevios"));
                 curso.setCantidadMaximaEstudiantes(rs.getInt("CantidadMaximaEstudiantes"));
                 curso.setModalidad(rs.getString("Modalidad"));
-                curso.setSeccionID(rs.getInt("SeccionID"));
-                curso.setTemario(rs.getString("Temario"));
-                curso.setHorario(rs.getString("Horario"));
+               // curso.setSeccionID(rs.getInt("SeccionID"));
+              //  curso.setTemario(rs.getString("Temario"));
+              //  curso.setHorario(rs.getString("Horario"));
                 curso.setNotas(rs.getString("Notas"));
-                curso.setProfesorID(rs.getInt("ProfesorID"));
+             //   curso.setProfesorID(rs.getInt("ProfesorID"));
                 curso.setFechaRegistro(rs.getDate("FechaRegistro"));
                 curso.setUsuarioRegistro(rs.getString("UsuarioRegistro"));
                 curso.setFechaActualizacion(rs.getDate("FechaActualizacion"));
@@ -183,17 +185,17 @@ public class CursoModel implements CursoInterface {
                 curso.setDuracion(rs.getInt("Duracion"));
                 curso.setGrado(rs.getString("Grado"));
                 curso.setNivel(rs.getString("Nivel"));
-                curso.setFechaInicio(rs.getDate("FechaInicio"));
-                curso.setFechaFin(rs.getDate("FechaFin"));
+            //    curso.setFechaInicio(rs.getDate("FechaInicio"));
+            //    curso.setFechaFin(rs.getDate("FechaFin"));
                 curso.setEstado(rs.getString("Estado"));
                 curso.setRequisitosPrevios(rs.getString("RequisitosPrevios"));
                 curso.setCantidadMaximaEstudiantes(rs.getInt("CantidadMaximaEstudiantes"));
                 curso.setModalidad(rs.getString("Modalidad"));
-                curso.setSeccionID(rs.getInt("SeccionID"));
-                curso.setTemario(rs.getString("Temario"));
-                curso.setHorario(rs.getString("Horario"));
+            //    curso.setSeccionID(rs.getInt("SeccionID"));
+            //    curso.setTemario(rs.getString("Temario"));
+           //     curso.setHorario(rs.getString("Horario"));
                 curso.setNotas(rs.getString("Notas"));
-                curso.setProfesorID(rs.getInt("ProfesorID"));
+            //    curso.setProfesorID(rs.getInt("ProfesorID"));
                 curso.setFechaRegistro(rs.getDate("FechaRegistro"));
                 curso.setUsuarioRegistro(rs.getString("UsuarioRegistro"));
                 curso.setFechaActualizacion(rs.getDate("FechaActualizacion"));
