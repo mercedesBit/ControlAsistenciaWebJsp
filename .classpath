@@ -17,13 +17,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Maricielo/Documents/ECLIPSE/Lenguaje de Programacion II/ProyectoEFSRT/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Maricielo/Downloads/apache-tomcat-9.0.98/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="https://javaee.github.io/javaee-spec/javadocs/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Maricielo/Desktop/jakarta.servlet-api-5.0.0.jar">
+	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/META-INF/jakarta.servlet-api-5.0.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
