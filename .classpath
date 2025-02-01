@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/apache-tomcat-9.0.98-windows-x64 (3).zip">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javaee.github.io/javaee-spec/javadocs/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/META-INF/jakarta.servlet-api-5.0.0.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -2,7 +2,7 @@
 <%@ page import="entidades.PersonalAdministrativo"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
-<%@ page import="modelo.PersonalAdministrativoModel"%>
+<%@ page import="Entidades.PersonalAdministrativoModel"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
 

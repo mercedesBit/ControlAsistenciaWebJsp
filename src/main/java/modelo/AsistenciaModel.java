@@ -12,6 +12,7 @@ import com.mysql.cj.jdbc.CallableStatement;
 import entidades.Asistencia;
 import entidades.Curso;
 import entidades.Estudiante;
+import entidades.PadresTutores;
 import entidades.PersonalAdministrativo;
 import interfaces.AsistenciaInterface;
 import util.MySqlConexion;

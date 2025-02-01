@@ -1,0 +1,143 @@
+Comandos de Git y su Descripción
+
+Configuración Inicial
+
+git config --global user.name "Tu Nombre"Establece el nombre de usuario para Git.
+
+git config --global user.email "tuemail@example.com"Establece el correo electrónico para Git.
+
+git config --global core.editor "nombre_editor"Define el editor de texto predeterminado para Git.
+
+git config --listMuestra la configuración actual de Git.
+
+Iniciar y Clonar Repositorios
+
+git initInicializa un nuevo repositorio Git en el directorio actual.
+
+git clone URLClona un repositorio remoto en tu computadora.
+
+Estados y Seguimiento de Archivos
+
+git statusMuestra el estado actual del repositorio (archivos modificados, sin seguimiento, etc.).
+
+git add archivoAñade un archivo al área de preparación.
+
+git add .Añade todos los archivos al área de preparación.
+
+git reset archivoElimina un archivo del área de preparación.
+
+Confirmar Cambios (Commits)
+
+git commit -m "Mensaje del commit"Guarda los cambios en el repositorio con un mensaje descriptivo.
+
+git commit -am "Mensaje"Añade y confirma cambios en un solo paso (solo para archivos ya seguidos).
+
+Historial y Revisiones
+
+git logMuestra el historial de commits.
+
+git log --oneline --graphMuestra un historial compacto en una sola línea con una representación gráfica.
+
+git diffMuestra las diferencias entre el estado actual y la última confirmación.
+
+git diff --stagedMuestra las diferencias entre los archivos en el área de preparación y la última confirmación.
+
+Ramas (Branches)
+
+git branchLista todas las ramas en el repositorio.
+
+git branch nombre_ramaCrea una nueva rama.
+
+git checkout nombre_rama Cambia a una rama específica.
+
+git checkout -b nombre_ramaCrea y cambia a una nueva rama en un solo paso.
+
+git merge nombre_ramaFusiona la rama especificada con la rama actual.
+
+git branch -d nombre_ramaElimina una rama (solo si ha sido fusionada previamente).
+
+git branch -D nombre_ramaElimina una rama sin importar si ha sido fusionada o no.
+
+Sincronización con Repositorios Remotos
+
+git remote -vLista los repositorios remotos configurados.
+
+git remote add origin URLAñade un repositorio remoto y lo nombra "origin".
+
+git pull origin mainDescarga y fusiona cambios del repositorio remoto en la rama principal.
+
+git push origin mainEnvía los commits de la rama local "main" al repositorio remoto.
+
+Deshacer Cambios
+
+git checkout -- archivoRestaura un archivo a su última versión confirmada.
+
+git reset --hard HEADElimina todos los cambios no confirmados y restablece el estado del repositorio.
+
+git reset --soft HEAD~1Deshace el último commit pero mantiene los cambios en el área de preparación.
+
+git revert ID_commitCrea un nuevo commit que revierte los cambios de un commit anterior.
+
+Etiquetas (Tags)
+
+git tag nombre_etiquetaCrea una etiqueta en el último commit.
+
+git tag -a nombre_etiqueta -m "Mensaje"Crea una etiqueta anotada con un mensaje.
+
+git push origin nombre_etiquetaEnvía la etiqueta al repositorio remoto.
+
+git tag -d nombre_etiquetaElimina una etiqueta local.
+
+git push origin --delete nombre_etiquetaElimina una etiqueta en el repositorio remoto.
+
+Stash (Guardar y Restaurar Cambios Temporales)
+
+git stashGuarda temporalmente los cambios sin confirmarlos.
+
+git stash listMuestra la lista de cambios almacenados.
+
+git stash applyRestaura el último stash sin eliminarlo.
+
+git stash popRestaura y elimina el último stash.
+
+git stash dropElimina el último stash sin aplicarlo.
+
+Otros Comandos Útiles
+
+git show ID_commitMuestra información detallada de un commit específico.
+
+git blame archivoMuestra qué commit y usuario realizaron cambios en cada línea de un archivo.
+
+git shortlog -snMuestra un resumen de commits por autor.
+
+git gcOptimiza y limpia el repositorio.
+
+
+
+
+
+git config --global user.name "Tu Nombre" → Configura tu nombre de usuario globalmente.
+
+git config --global user.email "tuemail@example.com" → Configura tu correo electrónico globalmente.
+
+git config --list → Muestra todas las configuraciones actuales de Git.
+
+git config --global core.editor "vim" → Configura el editor predeterminado para Git.
+
+git config --global -e → Abre el archivo de configuración global de Git en un editor.
+
+git config --global alias.st status → Crea un alias para el comando git status.
+
+Subir una rama al repositorio remoto
+
+git branch → Muestra la lista de ramas locales.
+
+git checkout -b nombre-rama → Crea una nueva rama y cambia a ella.
+
+git push -u origin nombre-rama → Sube la nueva rama al repositorio remoto y la establece como upstream.
+
+git push origin nombre-rama → Sube la rama actual al repositorio remoto.
+
+git branch -d nombre-rama → Elimina una rama localmente.
+
+git push origin --delete nombre-rama → Elimina una rama en el repositorio remoto.

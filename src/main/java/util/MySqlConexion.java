@@ -11,9 +11,9 @@ public class MySqlConexion {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-			String url = "jdbc:mysql://localhost:3306/bd_control_asistencia_alumnadoprueba?useSSL=false&useTimezone=true&serverTimezone=UTC";
+			String url = "jdbc:mysql://localhost:3306/bd_control_asistencia_alumnado?useSSL=false&useTimezone=true&serverTimezone=UTC";
 			String user = "root";
-			String pass = "bdpereyrapachecot1";
+			String pass = "123456789";
 			con = DriverManager.getConnection(url, user, pass);
 			
 		} catch(ClassNotFoundException e) {
