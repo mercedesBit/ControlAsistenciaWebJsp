@@ -63,6 +63,8 @@ public class CursoServlet extends HttpServlet {
         request.setAttribute("cursos", cursos);
         request.getRequestDispatcher("curso/listCurso.jsp").forward(request, response);
     }
+    
+    
 
     private void mostrarFormularioNuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("curso/regCurso.jsp").forward(request, response);
@@ -89,16 +91,16 @@ public class CursoServlet extends HttpServlet {
         int duracion = Integer.parseInt(request.getParameter("duracion"));
         String grado = request.getParameter("grado");
         String nivel = request.getParameter("nivel");
-        Date fechaInicio = Date.valueOf(request.getParameter("fechaInicio"));
-        Date fechaFin = Date.valueOf(request.getParameter("fechaFin"));
+       //   Date fechaInicio = Date.valueOf(request.getParameter("fechaInicio"));
+       // Date fechaFin = Date.valueOf(request.getParameter("fechaFin"));
         String requisitosPrevios = request.getParameter("requisitosPrevios");
         int cantidadMaximaEstudiantes = Integer.parseInt(request.getParameter("cantidadMaximaEstudiantes"));
         String modalidad = request.getParameter("modalidad");
-        int seccionID = Integer.parseInt(request.getParameter("seccionID"));
+       //   int seccionID = Integer.parseInt(request.getParameter("seccionID"));
         String temario = request.getParameter("temario");
-        String horario = request.getParameter("horario");
+       //   String horario = request.getParameter("horario");
         String notas = request.getParameter("notas");
-        int profesorID = Integer.parseInt(request.getParameter("profesorID"));
+       //     int profesorID = Integer.parseInt(request.getParameter("profesorID"));
 
         Curso curso = new Curso();
         curso.setCodigoCurso(codigoCurso);
@@ -107,17 +109,17 @@ public class CursoServlet extends HttpServlet {
         curso.setDuracion(duracion);
         curso.setGrado(grado);
         curso.setNivel(nivel);
-        curso.setFechaInicio(fechaInicio);
-        curso.setFechaFin(fechaFin);
+        //curso.setFechaInicio(fechaInicio);
+       // curso.setFechaFin(fechaFin);
         curso.setEstado("Activo");
         curso.setRequisitosPrevios(requisitosPrevios);
         curso.setCantidadMaximaEstudiantes(cantidadMaximaEstudiantes);
         curso.setModalidad(modalidad);
-        curso.setSeccionID(seccionID);
-        curso.setTemario(temario);
-        curso.setHorario(horario);
+       // curso.setSeccionID(seccionID);
+       // curso.setTemario(temario);
+       //curso.setHorario(horario);
         curso.setNotas(notas);
-        curso.setProfesorID(profesorID);
+       //curso.setProfesorID(profesorID);
         curso.setFechaRegistro(new java.sql.Date(System.currentTimeMillis()));
         curso.setUsuarioRegistro((String)request.getSession().getAttribute("nombreUsuario"));
 
@@ -139,17 +141,17 @@ public class CursoServlet extends HttpServlet {
         int duracion = Integer.parseInt(request.getParameter("duracion"));
         String grado = request.getParameter("grado");
         String nivel = request.getParameter("nivel");
-        Date fechaInicio = Date.valueOf(request.getParameter("fechaInicio"));
-        Date fechaFin = Date.valueOf(request.getParameter("fechaFin"));
+     //   Date fechaInicio = Date.valueOf(request.getParameter("fechaInicio"));
+      //  Date fechaFin = Date.valueOf(request.getParameter("fechaFin"));
         String estado = request.getParameter("estado");
         String requisitosPrevios = request.getParameter("requisitosPrevios");
         int cantidadMaximaEstudiantes = Integer.parseInt(request.getParameter("cantidadMaximaEstudiantes"));
         String modalidad = request.getParameter("modalidad");
-        int seccionID = Integer.parseInt(request.getParameter("seccionID"));
-        String temario = request.getParameter("temario");
-        String horario = request.getParameter("horario");
+     //   int seccionID = Integer.parseInt(request.getParameter("seccionID"));
+     //   String temario = request.getParameter("temario");
+     //   String horario = request.getParameter("horario");
         String notas = request.getParameter("notas");
-        int profesorID = Integer.parseInt(request.getParameter("profesorID"));
+     //   int profesorID = Integer.parseInt(request.getParameter("profesorID"));
 
         Curso curso = cursoModel.obtenerPorID(cursoID);
         curso.setCodigoCurso(codigoCurso);
@@ -158,17 +160,17 @@ public class CursoServlet extends HttpServlet {
         curso.setDuracion(duracion);
         curso.setGrado(grado);
         curso.setNivel(nivel);
-        curso.setFechaInicio(fechaInicio);
-        curso.setFechaFin(fechaFin);
+      //  curso.setFechaInicio(fechaInicio);
+      //  curso.setFechaFin(fechaFin);
         curso.setEstado(estado);
         curso.setRequisitosPrevios(requisitosPrevios);
         curso.setCantidadMaximaEstudiantes(cantidadMaximaEstudiantes);
         curso.setModalidad(modalidad);
-        curso.setSeccionID(seccionID);
-        curso.setTemario(temario);
-        curso.setHorario(horario);
+      //  curso.setSeccionID(seccionID);
+      //  curso.setTemario(temario);
+       // curso.setHorario(horario);
         curso.setNotas(notas);
-        curso.setProfesorID(profesorID);
+     //   curso.setProfesorID(profesorID);
         curso.setFechaActualizacion(Date.valueOf(fechaActual));
 
         int resultado = cursoModel.actualizar(curso);

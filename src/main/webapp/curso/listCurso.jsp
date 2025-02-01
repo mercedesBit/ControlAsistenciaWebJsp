@@ -18,10 +18,12 @@
 	</div>
 
 	<section class="section dashboard">
+	
 		<div class="actions">
 			<a href="CursoServlet?accion=nuevo" class="btn btn-primary">Crear
 				Nuevo</a>
 		</div>
+		
 		<div class="row">
 			<table class="table datatable">
 				<thead>

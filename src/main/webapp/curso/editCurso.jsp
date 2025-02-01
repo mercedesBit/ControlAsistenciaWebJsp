@@ -84,23 +84,6 @@
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="fechaInicio" class="form-label">Fecha de
-								Inicio</label> <input type="date" class="form-control" id="fechaInicio"
-								name="fechaInicio"
-								value="${curso.fechaInicio}"
-								required>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="fechaFin" class="form-label">Fecha de Fin</label> <input
-								type="date" class="form-control" id="fechaFin" name="fechaFin"
-								value="${curso.fechaFin}"
-								required>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
 							<label for="requisitosPrevios" class="form-label">Requisitos
 								Previos</label>
 							<textarea class="form-control" id="requisitosPrevios"
@@ -116,19 +99,7 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="temario" class="form-label">Temario</label>
-							<textarea class="form-control" id="temario" name="temario"
-								required>${curso.temario}</textarea>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="horario" class="form-label">Horario</label>
-							<textarea class="form-control" id="horario" name="horario"
-								required>${curso.horario}</textarea>
-						</div>
-					</div>
+					
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
@@ -136,11 +107,7 @@
 							<textarea class="form-control" id="notas" name="notas">${curso.notas}</textarea>
 						</div>
 
-						<div class="col-md-6 mb-3">
-							<label for="profesorID" class="form-label">Profesor ID</label> <input
-								type="number" class="form-control" id="profesorID"
-								name="profesorID" value="${curso.profesorID}" required>
-						</div>
+					
 					</div>
 
 					<div class="row">
@@ -160,20 +127,9 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="fechaActualizacion" class="form-label">Fecha
-								de Actualización</label> <input type="text" class="form-control"
-								id="fechaActualizacion" name="fechaActualizacion"
-								value="${curso.fechaActualizacion}"	>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="seccionID" class="form-label">Seccion ID</label> <input
-								type="number" class="form-control" id="seccionID"
-								name="seccionID" value="${curso.seccionID}" required>
-						</div>
+				
 						
-					</div>
+				
 				</div>
 
 				<div class="card-footer">
