@@ -266,12 +266,12 @@ public class AsistenciaServlet extends HttpServlet {
 	private void addRows(PdfPTable table, List<Asistencia> listaAsistencia) {
 		for (Asistencia asistencia : listaAsistencia) {
 			ProfesorModel profModel = new ProfesorModel();
-			Profesor prof = profModel.obtenerProfesor(asistencia.getCurso().getProfesorID());
+	//		Profesor prof = profModel.obtenerProfesor(asistencia.getCurso().getProfesorID());
 			table.addCell(String.valueOf(asistencia.getAsistenciaID()));
 			table.addCell(asistencia.getEstudiante().getNombres());
 			table.addCell(asistencia.getEstudiante().getApellidos());
 			table.addCell(asistencia.getCurso().getNombreCurso());
-			table.addCell(prof.getNombres() + " " + prof.getApellidos());
+	//		table.addCell(prof.getNombres() + " " + prof.getApellidos());
 			table.addCell(asistencia.getTipoAsistencia());
 			table.addCell(asistencia.getFechaRegistro().toString());
 		}
