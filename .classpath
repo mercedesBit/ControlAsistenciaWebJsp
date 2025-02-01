@@ -18,7 +18,7 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Maricielo/Downloads/apache-tomcat-9.0.98/lib/servlet-api.jar">
+	<classpathentry kind="lib" path="C:/COMPUTACION E INFORMATICA/CICLO 4/EFSRT/Proyecto_git_repositorio/ControlAsistenciaWebJsp/src/main/webapp/WEB-INF/lib/apache-tomcat-9.0.98-windows-x64 (3).zip">
 		<attributes>
 			<attribute name="javadoc_location" value="https://javaee.github.io/javaee-spec/javadocs/"/>
 		</attributes>
