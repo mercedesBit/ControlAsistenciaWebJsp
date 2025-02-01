@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -28,6 +28,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import entidades.Asistencia;
 import entidades.Curso;
 import entidades.Estudiante;
+import entidades.PersonalAdministrativo;
+import entidades.Profesor;
 import modelo.AsistenciaModel;
 import modelo.CursoModel;
 import modelo.EstudianteModel;
@@ -169,7 +171,7 @@ public class AsistenciaServlet extends HttpServlet {
 
 
 		AsistenciaModel model = new AsistenciaModel();
-		model.registrarAsistencia(listaAsistencias);
+		int result = model.registrarAsistencia(listaAsistencias);
 		CursoModel cursoModel = new CursoModel();
 		List<Curso> cursos = cursoModel.listarTodos();
 
@@ -183,7 +185,7 @@ public class AsistenciaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		AsistenciaModel model = new AsistenciaModel();
-		model.eliminarAsistencia(id);
+		int value = model.eliminarAsistencia(id);
 
 		CursoModel cursoModel = new CursoModel();
 		List<Curso> cursos = cursoModel.listarTodos();
@@ -263,13 +265,13 @@ public class AsistenciaServlet extends HttpServlet {
 
 	private void addRows(PdfPTable table, List<Asistencia> listaAsistencia) {
 		for (Asistencia asistencia : listaAsistencia) {
-			new ProfesorModel();
-	//		Profesor prof = profModel.obtenerProfesor(asistencia.getCurso().getProfesorID());
+			ProfesorModel profModel = new ProfesorModel();
+			Profesor prof = profModel.obtenerProfesor(asistencia.getCurso().getProfesorID());
 			table.addCell(String.valueOf(asistencia.getAsistenciaID()));
 			table.addCell(asistencia.getEstudiante().getNombres());
 			table.addCell(asistencia.getEstudiante().getApellidos());
 			table.addCell(asistencia.getCurso().getNombreCurso());
-	//		table.addCell(prof.getNombres() + " " + prof.getApellidos());
+			table.addCell(prof.getNombres() + " " + prof.getApellidos());
 			table.addCell(asistencia.getTipoAsistencia());
 			table.addCell(asistencia.getFechaRegistro().toString());
 		}

@@ -3,22 +3,18 @@ package servlets;
 import entidades.Seccion;
 import modelo.SeccionModel;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 @WebServlet("/SeccionServlet")
 public class SeccionServlet extends HttpServlet {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private SeccionModel seccionModel = new SeccionModel();
+    private SeccionModel seccionModel = new SeccionModel();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("accion");
@@ -86,6 +82,7 @@ public class SeccionServlet extends HttpServlet {
         String nombreSeccion = request.getParameter("nombreSeccion");
         String numeroAula = request.getParameter("numeroAula");
         String estado = request.getParameter("estado");
+        String usuarioRegistro = request.getParameter("usuarioRegistro");
 
         Seccion seccion = new Seccion();
         seccion.setNombreSeccion(nombreSeccion);

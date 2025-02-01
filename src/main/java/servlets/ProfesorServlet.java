@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import entidades.Profesor;
 import modelo.ProfesorModel;
@@ -73,6 +73,8 @@ public class ProfesorServlet extends HttpServlet {
         String direccion = request.getParameter("txtDireccion");
         String modalidadTrabajo = request.getParameter("txtModalidadTrabajo");
         String redesSociales = request.getParameter("txtRedesSociales");
+        String fechaRegistro = request.getParameter("txtFechaRegistro");
+        String usuarioRegistro = request.getParameter("txtUsuarioRegistro");
         
         Profesor profesor = new Profesor();
         profesor.setTipoDocumento(tipoDocumento);
