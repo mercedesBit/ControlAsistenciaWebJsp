@@ -140,23 +140,22 @@ public class CursoModel implements CursoInterface {
 				curso.setNombreCurso(rs.getString("NombreCurso"));
 				curso.setDescripcion(rs.getString("Descripcion"));
 				curso.setDuracion(rs.getInt("Duracion"));
-				curso.setCiclo(rs.getString("Ciclo"));
+				
+				
+				//Metodo que obtiene el string dependiendo el Id que se obtiene 
+				curso.setCiclo(obtenerNombreCicloPorID(rs.getInt("Ciclo")));
+				
+				
 				curso.setNivel(rs.getString("Nivel"));
 				curso.setEstado(rs.getString("Estado"));
 				curso.setNotas(rs.getString("Notas"));
 				curso.setFechaRegistro(rs.getDate("FechaRegistro"));
 				curso.setUsuarioRegistro(rs.getString("UsuarioRegistro"));
 				curso.setFechaActualizacion(rs.getDate("FechaActualizacion"));
-				/*
-				// curso.setFechaInicio(rs.getDate("FechaInicio"));
-				// curso.setFechaFin(rs.getDate("FechaFin"));
-				curso.setRequisitosPrevios(rs.getString("RequisitosPrevios"));
-				curso.setCantidadMaximaEstudiantes(rs.getInt("CantidadMaximaEstudiantes"));
-				curso.setModalidad(rs.getString("Modalidad"));
-				// curso.setSeccionID(rs.getInt("SeccionID"));
-				// curso.setTemario(rs.getString("Temario"));
-				// curso.setHorario(rs.getString("Horario"));
-				// curso.setProfesorID(rs.getInt("ProfesorID"));*/
+			
+	
+				
+				
 		
 			}
 			rs.close();
@@ -189,24 +188,18 @@ public class CursoModel implements CursoInterface {
 				curso.setNombreCurso(rs.getString("NombreCurso"));
 				curso.setDescripcion(rs.getString("Descripcion"));
 				curso.setDuracion(rs.getInt("Duracion"));
+				
+				
 				curso.setCiclo(rs.getString("Ciclo"));
+				
+				
 				curso.setNivel(rs.getString("Nivel"));
 				curso.setEstado(rs.getString("Estado"));
 				curso.setNotas(rs.getString("Notas"));
 				curso.setFechaRegistro(rs.getDate("FechaRegistro"));
 				curso.setUsuarioRegistro(rs.getString("UsuarioRegistro"));
 				curso.setFechaActualizacion(rs.getDate("FechaActualizacion"));
-				/*
-				 * curso.setFechaInicio(rs.getDate("FechaInicio"));
-				 * curso.setFechaFin(rs.getDate("FechaFin"));
-				 * curso.setRequisitosPrevios(rs.getString("RequisitosPrevios"));
-				 * curso.setCantidadMaximaEstudiantes(rs.getInt("CantidadMaximaEstudiantes"));
-				 * curso.setModalidad(rs.getString("Modalidad"));
-				 * curso.setSeccionID(rs.getInt("SeccionID"));
-				 * curso.setTemario(rs.getString("Temario"));
-				 * curso.setHorario(rs.getString("Horario"));
-				 * curso.setProfesorID(rs.getInt("ProfesorID"));
-				 */
+		
 				lista.add(curso);
 			}
 			rs.close();
@@ -222,4 +215,67 @@ public class CursoModel implements CursoInterface {
 		}
 		return lista;
 	}
+	
+	
+	public List<Curso> obtenerTodosLosCiclos() {
+	    List<Curso> ciclos = new ArrayList<>();
+	    try {
+	        conn = MySqlConexion.getConexion();
+	        // Consulta SQL para obtener todos los ciclos
+	        String sql = "SELECT * FROM Ciclo"; // Ajusta la consulta según la estructura de tu tabla
+	        PreparedStatement pst = conn.prepareStatement(sql);
+	        ResultSet rs = pst.executeQuery();
+
+	        // Procesamos los resultados
+	        while (rs.next()) {
+	        	Curso ciclo = new Curso();
+	            ciclo.setId_ciclo(rs.getInt("id_ciclo"));  
+	            ciclo.setCiclo(rs.getString("nombre_ciclo")); 
+	            ciclos.add(ciclo);
+	        }
+	        rs.close();
+	        pst.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return ciclos;
+	}
+	
+	
+	
+	public String obtenerNombreCicloPorID(int idCiclo) {
+	    String cicloNombre = null;
+	    try {
+	        conn = MySqlConexion.getConexion();
+	        String sql = "SELECT * FROM Ciclo WHERE id_ciclo = ?";
+	        PreparedStatement pst = conn.prepareStatement(sql);
+	        pst.setInt(1, idCiclo);  // Asumimos que el ID del ciclo es un entero
+
+	        ResultSet rs = pst.executeQuery();
+	        if (rs.next()) {
+	            cicloNombre = rs.getString("nombre_ciclo"); // Aquí obtenemos el nombre del ciclo del atributo de BD
+	        }
+	        rs.close();
+	        pst.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return cicloNombre;
+	}
+
+
 }

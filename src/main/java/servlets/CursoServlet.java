@@ -66,15 +66,36 @@ public class CursoServlet extends HttpServlet {
 		request.getRequestDispatcher("curso/listCurso.jsp").forward(request, response);
 	}
 
+	
+	//REGISTRAR CURSO
 	private void mostrarFormularioNuevo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// Llamamos al método que obtiene todos los ciclos
+	    List<Curso> ciclos = cursoModel.obtenerTodosLosCiclos();
+	    
+	    // Agregamos la lista de ciclos al request para que esté disponible en el JSP
+	    request.setAttribute("ciclos", ciclos);
+		
+		
 		request.getRequestDispatcher("curso/regCurso.jsp").forward(request, response);
 	}
 
+	
 	private void mostrarFormularioEdicion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int cursoID = Integer.parseInt(request.getParameter("id"));
 		Curso curso = cursoModel.obtenerPorID(cursoID);
+		
+		
+		
+		// Llamamos al método que obtiene todos los ciclos
+	    List<Curso> ciclos = cursoModel.obtenerTodosLosCiclos();
+	    
+	    // Agregamos la lista de ciclos al request para que esté disponible en el JSP
+	    request.setAttribute("ciclos", ciclos);
+		
+		
 		request.setAttribute("curso", curso);
 		request.getRequestDispatcher("curso/editCurso.jsp").forward(request, response);
 	}
@@ -82,7 +103,9 @@ public class CursoServlet extends HttpServlet {
 	private void mostrarDetalle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int cursoID = Integer.parseInt(request.getParameter("id"));
+		
 		Curso curso = cursoModel.obtenerPorID(cursoID);
+	
 		request.setAttribute("curso", curso);
 		request.getRequestDispatcher("curso/detCurso.jsp").forward(request, response);
 	}

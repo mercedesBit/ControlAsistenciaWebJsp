@@ -9,7 +9,9 @@ public class Curso {
     private String descripcion;
     private int duracion;
     private String ciclo;
-    private String nivel;
+    private int id_ciclo;
+  
+	private String nivel;
     private String estado;
 
     private Date fechaRegistro;
@@ -33,7 +35,7 @@ public class Curso {
 
     // Constructor completo
     public Curso(int cursoID, String codigoCurso, String nombreCurso, String descripcion, int duracion, 
-            String ciclo, String nivel, /* Date fechaInicio, Date fechaFin, */ String estado, 
+            String ciclo, int id_ciclo, String nivel, /* Date fechaInicio, Date fechaFin, */ String estado, 
             /* String requisitosPrevios, int cantidadMaximaEstudiantes, String modalidad, */ 
             /* int seccionID, String temario, String horario, */ String notas, 
             /* int profesorID, */ Date fechaRegistro, String usuarioRegistro, Date fechaActualizacion) {
@@ -43,6 +45,9 @@ public class Curso {
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.ciclo = ciclo;
+        
+        this.id_ciclo = id_ciclo;
+
         this.nivel = nivel;
         // this.fechaInicio = fechaInicio; // Comentado porque no se usa en la lógica actual
         // this.fechaFin = fechaFin;       // Comentado porque no se usa en la lógica actual
@@ -61,6 +66,18 @@ public class Curso {
     }
 
     // Getters y Setters
+    
+    
+    public int getId_ciclo() {
+		return id_ciclo;
+	}
+
+	public void setId_ciclo(int id_ciclo) {
+		this.id_ciclo = id_ciclo;
+	}
+
+    
+    
     public int getCursoID() {
         return cursoID;
     }
