@@ -41,7 +41,7 @@
 				<tbody>
 					<%
                         List<Curso> listCurso = (List<Curso>)request.getAttribute("cursos");
-                    
+                         
                         if(listCurso != null){
                             for(Curso curso : listCurso){
                     %>

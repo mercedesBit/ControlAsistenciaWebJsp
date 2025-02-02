@@ -1,7 +1,9 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
+<%@page import="entidades.Curso"%>
 
 <main id="main" class="main">
 	<div class="pagetitle">
@@ -43,10 +45,37 @@
 						class="form-control" id="duracion" name="duracion" required>
 				</div>
 
-				<div class="form-group">
+
+				
+<!-- <div class="form-group">
 					<label for="grado">Ciclo</label> <input type="text"
 						class="form-control" id="ciclo" name="ciclo" required>
 				</div>
+				 -->
+
+
+  <div class="mb-3">
+        <label for="grado" class="form-label">Ciclo:</label>
+        <select name="ciclo" id="ciclo" class="form-select " >
+            <% 
+                // Recuperamos la lista de ciclos del request
+                List<Curso> ciclos = (List<Curso>) request.getAttribute("ciclos");
+                
+                // Verificamos si la lista no es null y contiene elementos
+                if (ciclos != null) {
+                    for (Curso ciclo : ciclos) {
+            %>
+                <!-- Creamos las opciones del ComboBox -->
+                <option value="<%= ciclo.getId_ciclo() %>">
+                    <%= ciclo.getCiclo() %>
+                </option>
+            <% 
+                    }
+                }
+            %>
+        </select>
+    </div>
+    
 
 				<div class="form-group">
 					<label for="nivel">Nivel</label> <input type="text"
