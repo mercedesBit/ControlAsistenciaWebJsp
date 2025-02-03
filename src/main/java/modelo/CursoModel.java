@@ -144,7 +144,7 @@ public class CursoModel implements CursoInterface {
 				
 				//Metodo que obtiene el string dependiendo el Id que se obtiene 
 				curso.setCiclo(obtenerNombreCicloPorID(rs.getInt("Ciclo")));
-				
+				//hOLA
 				
 				curso.setNivel(rs.getString("Nivel"));
 				curso.setEstado(rs.getString("Estado"));
