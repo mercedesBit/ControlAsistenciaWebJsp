@@ -80,6 +80,7 @@ CREATE TABLE Ciclo (
     id_ciclo INT PRIMARY KEY,  -- ID del ciclo (Clave primaria)
     nombre_ciclo VARCHAR(50)not null  
 );
+
 CREATE TABLE Curso (
     CursoID INT AUTO_INCREMENT PRIMARY KEY,
     CodigoCurso VARCHAR(20),
@@ -318,6 +319,8 @@ INSERT INTO Usuarios (NombreUsuario, Contrasena, RoleID, FechaRegistro, Estado)
 VALUES ('admin', 'password123', 1, CURDATE(), 'Activo');
 
 
+
+
 -- AGRREGADO POR TONY-- Insertar datos en la tabla Asistencia
 
 INSERT INTO Asistencia (EstudianteID, CursoID, PersonalID, HoraAsistencia, Estado, Comentario, TipoAsistencia, FechaRegistro, UsuarioRegistro, FechaActualizacion)
@@ -327,14 +330,14 @@ VALUES (1, 1, 1, CURTIME(), 'Presente', 'Sin observaciones', 'Presencial', CURDA
 
 
 
-
+-- COLOCAFR TIPO DE HORARIO PRESENCIAL O VIRTUAL 
 CREATE TABLE Horario (
     HorarioID INT AUTO_INCREMENT PRIMARY KEY,        -- Identificador del horario
     CursoID INT,                                     -- Referencia al Curso
     ProfesorID INT,                                  -- Referencia al Profesor
     SeccionID INT,                                   -- Referencia a la Sección
     DiaSemana VARCHAR(100),                          -- Días de la semana (Ej. Lunes, Martes, etc.)
-    HoraInicioFin VARCHAR(200),
+    HoraInicioFin VARCHAR(200),      
     FechaInicio DATE,                                -- Fecha de inicio del horario
     FechaFin DATE,                                   -- Fecha de fin del horario
     MaxEstudiantes INT,                              -- Número máximo de estudiantes permitidos
