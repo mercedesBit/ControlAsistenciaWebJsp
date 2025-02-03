@@ -5,6 +5,7 @@ public class Usuario {
     private String nombreUsuario;
     private String contrasena;
     private int roleID;
+    private String estado;
 
     // Getters
     public int getUsuarioID() {
