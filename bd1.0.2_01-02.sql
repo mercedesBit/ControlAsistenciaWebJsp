@@ -125,6 +125,7 @@ CREATE TABLE PersonalAdministrativo (
 );
 
 
+-- Modificar, colocar id de horario, 
 CREATE TABLE Asistencia (
     AsistenciaID INT AUTO_INCREMENT PRIMARY KEY,
     EstudianteID INT,
@@ -142,6 +143,7 @@ CREATE TABLE Asistencia (
     FOREIGN KEY (PersonalID) REFERENCES PersonalAdministrativo(PersonalID)
 );
 
+-- crear tabla asistencia-horario
 
 DELIMITER $$
 
@@ -261,7 +263,6 @@ INSERT INTO PadresTutores (
 
 
 
-select * from  PadresTutores ;
 INSERT INTO Estudiante (
     TipoDocumento, NumeroDocumento, Nombres, Apellidos, FechaNacimiento, 
     Genero, Email, Telefono, Direccion, EstadoCivil, FechaIngreso, 
@@ -330,7 +331,7 @@ VALUES (1, 1, 1, CURTIME(), 'Presente', 'Sin observaciones', 'Presencial', CURDA
 
 
 
--- COLOCAFR TIPO DE HORARIO PRESENCIAL O VIRTUAL 
+-- ELIMINAR , 
 CREATE TABLE Horario (
     HorarioID INT AUTO_INCREMENT PRIMARY KEY,        -- Identificador del horario
     CursoID INT,                                     -- Referencia al Curso
@@ -341,6 +342,7 @@ CREATE TABLE Horario (
     FechaInicio DATE,                                -- Fecha de inicio del horario
     FechaFin DATE,                                   -- Fecha de fin del horario
     MaxEstudiantes INT,                              -- Número máximo de estudiantes permitidos
+    Modalidad VARCHAR(20),                              -- Estado del horario (Virtual, Presemcial, Semipresencial.)
     Estado VARCHAR(20),                              -- Estado del horario (Activo, Inactivo, etc.)
     FechaRegistro DATE,                              -- Fecha de registro
     UsuarioRegistro VARCHAR(20),                     -- Usuario que registra el horario
@@ -355,8 +357,8 @@ CREATE TABLE Horario_Estudiante (
     EstudianteID INT,                               -- Referencia al Estudiante
     HorarioID INT,                                  -- Referencia al Horario
     PRIMARY KEY (EstudianteID, HorarioID),          -- Clave primaria compuesta por EstudianteID y HorarioID
-    FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID), -- Relaciona con la tabla Estudiante
-    FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)           -- Relaciona con la tabla Horario
+    FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID) ON DELETE CASCADE ON UPDATE CASCADE, -- Relaciona con la tabla Estudiante
+    FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)ON DELETE CASCADE ON UPDATE CASCADE           -- Relaciona con la tabla Horario
 );
 
 DELIMITER $$
@@ -382,7 +384,6 @@ END $$
 DELIMITER ;
 
 
-
 -- Primero, verificamos si el número de estudiantes actuales en el horario es menor que la capacidad máxima:
 SELECT COUNT(*) AS CantidadEstudiantes
 FROM Horario_Estudiante
@@ -390,26 +391,129 @@ WHERE HorarioID = 1;  -- Reemplaza 1 con el HorarioID específico
 
 
 
-INSERT INTO Horario (CursoID, ProfesorID, SeccionID, DiaSemana, HoraInicioFin, FechaInicio, FechaFin, MaxEstudiantes, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+
+
+
+
+
+
+-- TABLA HORARIO ACTUALIZADA CON CREACION DE TABLA ASISTENCIA 
+
+
+CREATE TABLE Horario (
+    HorarioID INT AUTO_INCREMENT PRIMARY KEY,
+    CursoID INT,
+    ProfesorID INT,
+    SeccionID INT,
+    DiaSemana VARCHAR(100),
+    HoraInicioFin VARCHAR(200),
+    FechaInicio DATE NOT NULL,  -- Define la fecha de inicio del horario
+    FechaFin DATE NOT NULL,     -- Define la fecha de fin del horario
+    MaxEstudiantes INT,
+    Modalidad ENUM('Presencial', 'Virtual', 'Semipresencial') NOT NULL, -- Modalidad del horario
+    Estado ENUM('Activo', 'Inactivo') NOT NULL, -- Estado del horario
+    FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de registro
+    UsuarioRegistro VARCHAR(20),
+    FechaActualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Última actualización
+    FOREIGN KEY (CursoID) REFERENCES Curso(CursoID),
+    FOREIGN KEY (ProfesorID) REFERENCES Profesor(ProfesorID),
+    FOREIGN KEY (SeccionID) REFERENCES Seccion(SeccionID)
+);
+
+
+-- Insertar registros en la tabla Horario
+INSERT INTO Horario (CursoID, ProfesorID, SeccionID, DiaSemana, HoraInicioFin, FechaInicio, FechaFin, MaxEstudiantes, Modalidad, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
 VALUES 
-(1, 1, 1, 'Lunes - Martes - Miercoles', 'L-M-V 08:00-10:00', '2025-03-01', '2025-06-30', 5, 'Activo', CURDATE(), 'admin', '2025-05-05');
+(1, 1, 1, 'Lunes, Miércoles y Viernes', '08:00 - 10:00', '2025-03-01', '2025-06-30', 30, 'Presencial', 'Activo', CURDATE(), 'admin', CURDATE()),
+(1, 1, 1, 'Martes y Jueves', '10:00 - 12:00', '2025-03-01', '2025-06-30', 30, 'Semipresencial', 'Activo', CURDATE(), 'admin', CURDATE());
 
 
 
 
+CREATE TABLE Horario_Estudiante (
+    EstudianteID INT,                               -- Referencia al Estudiante
+    HorarioID INT,                                  -- Referencia al Horario
+    PRIMARY KEY (EstudianteID, HorarioID),          -- Clave primaria compuesta por EstudianteID y HorarioID
+    FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID) ON DELETE CASCADE ON UPDATE CASCADE, -- Relaciona con la tabla Estudiante
+    FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)ON DELETE CASCADE ON UPDATE CASCADE           -- Relaciona con la tabla Horario
+);
+
+
+-- Insertar registros en la tabla Horario_Estudiante
 INSERT INTO Horario_Estudiante (EstudianteID, HorarioID)
 VALUES 
-(21, 2),
-(22, 2),
-(23, 2),
-(24, 2);
+(21, 1),  -- Juan Pérez, Horario 1
+(22, 1),  -- María Gómez, Horario 1
+(23, 1),  -- Carlos Martínez, Horario 1
+(24, 2),  -- Ana Ramírez, Horario 2
+(25, 2),  -- Luis Sánchez, Horario 2
+(26, 2),  -- Patricia Fernández, Horario 2
+(27, 1),  -- Miguel Díaz, Horario 1
+(28, 2),  -- Lucía Torres, Horario 2
+(29, 1);  -- Andrés Vega, Horario 1
 
--- PRUEBA
-INSERT INTO Horario_Estudiante (EstudianteID, HorarioID)
+
+
+SET lc_time_names = 'es_ES';
+
+CREATE TABLE ASISTENCIA_ESTUDIANTE (
+    AsistenciaID INT PRIMARY KEY AUTO_INCREMENT,
+    EstudianteID INT,                                 -- Referencia al Estudiante
+    HorarioID INT,                                   -- Referencia al Horario
+    EstadoAsistencia ENUM('Asistió', 'Inasistencia', 'Inasistencia Justificada') NOT NULL, 
+    Comentario TEXT NULL,
+    FECHADECLASE DATE NOT NULL,
+    DIAASISTENCIA VARCHAR(15) GENERATED ALWAYS AS (DAYNAME(FECHADECLASE)) STORED,
+    UsuarioRegistro VARCHAR(20),
+    FECHAACTUALIZACION DATE,
+    FOREIGN KEY (EstudianteID, HorarioID) REFERENCES Horario_Estudiante(EstudianteID, HorarioID) 
+    ON DELETE CASCADE 
+    ON UPDATE CASCADE
+);
+
+
+
+DELIMITER //
+
+CREATE TRIGGER ValidarFechaClase
+BEFORE INSERT ON ASISTENCIA_ESTUDIANTE
+FOR EACH ROW
+BEGIN
+    DECLARE fecha_inicio DATE;
+    DECLARE fecha_fin DATE;
+
+    -- Obtiene las fechas de inicio y fin del horario
+    SELECT FechaInicio, FechaFin INTO fecha_inicio, fecha_fin
+    FROM Horario
+    WHERE HorarioID = NEW.HorarioID;
+
+    -- Verifica que la fecha de clase esté dentro del rango
+    IF NEW.FECHADECLASE < fecha_inicio OR NEW.FECHADECLASE > fecha_fin THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La fecha de la clase está fuera del rango permitido.';
+    END IF;
+END //
+
+DELIMITER ;
+
+
+-- Insertar registros en la tabla ASISTENCIA_ESTUDIANTE para un solo estudiante (EstudianteID = 1)
+INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
 VALUES 
-(25, 2),
-(26, 2),
-(27, 2),
-(28, 2),
-(29, 2);
+(21, 1, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin'),
+(21, 1, 'Inasistencia Justificada', 'Problemas de salud', '2025-03-02', 'admin'),
+(21, 1, 'Asistió', 'Clase introductoria - sesión 2', '2025-03-03', 'admin'),
+(21, 1, 'Asistió', 'Clase de nivelación', '2025-03-04', 'admin'),
+(21, 1, 'Asistió', 'Clase de nivelación - sesión 1', '2025-03-05', 'admin'),
+(21, 1, 'Inasistencia', 'No pudo asistir por motivos personales', '2025-03-06', 'admin'),
+(21, 1, 'Asistió', 'Clase introductoria - sesión 3', '2025-03-07', 'admin'),
+(21, 1, 'Asistió', 'Clase introductoria - sesión 4', '2025-03-08', 'admin'),
+(21, 1, 'Inasistencia Justificada', 'Problemas familiares', '2025-03-09', 'admin'),
+(21, 1, 'Asistió', 'Clase de nivelación - sesión 2', '2025-03-10', 'admin');
+
+-- Insertar registros en la tabla ASISTENCIA_ESTUDIANTE para un solo estudiante (EstudianteID = 1)
+INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
+VALUES 
+(21, 1, 'Asistió', 'Clase introductoria - sesión 1', '2027-03-01', 'admin')
+
+
 
