@@ -16,6 +16,8 @@ public class Asistencia {
 	    private Date fechaRegistro;
 	    private String usuarioRegistro;
 	    private Date fechaActualizacion;
+	    
+	    private int profesorID;
 
 	    public int getAsistenciaID() {
 	        return asistenciaID;
@@ -106,4 +108,11 @@ public class Asistencia {
 			this.horaAsistencia = horaAsistencia;
 		}
 
+		public int getProfesorID() {
+			return profesorID;
+		}
+
+		public void setProfesorID(int profesorID) {
+			this.profesorID = profesorID;
+		}
 }
