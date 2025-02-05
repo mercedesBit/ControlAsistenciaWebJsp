@@ -1,4 +1,5 @@
 <%@page import="modelo.EstudianteModel"%>
+<%@page import="modelo.HorarioModel"%>
 <%@page import="entidades.Estudiante"%>
 <%@page import="entidades.Horario"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,7 @@
 		<h1>Registrar Matrícula</h1>
 		<nav>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+				<li class="breadcrumb-item"><a href="../index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">Registrar Matrícula</li>
 			</ol>
 		</nav>
@@ -51,25 +52,22 @@
 
 				<div class="form-group">
 					<label>Horario</label> 
-					
-					  
-
-					<!--PENDIENTE -->
-					
+					<!-- SELECT DINÁMICO DE HORARIOS -->
 					<select id="txtIdHorario" name="txtIdHorario" class="form-control">
-				    <option value="">Selecciona un Horario</option>
-				    <option value="1">Lunes - 08:00 a 10:00</option>
-				    <option value="2">Lunes - 10:00 a 12:00</option>
-				    <option value="3">Martes - 08:00 a 10:00</option>
-				    <option value="4">Martes - 10:00 a 12:00</option>
-				    <option value="5">Miércoles - 08:00 a 10:00</option>
-				    <option value="6">Miércoles - 10:00 a 12:00</option>
-				    <option value="7">Jueves - 08:00 a 10:00</option>
-				    <option value="8">Jueves - 10:00 a 12:00</option>
-				    <option value="9">Viernes - 08:00 a 10:00</option>
-				    <option value="10">Viernes - 10:00 a 12:00</option>
-				</select>
-					
+					    <option value="">Selecciona un Horario</option>
+					    
+					    <%
+				    	HorarioModel model = new HorarioModel();
+				        List<Horario> listaHorarios = model.listHorario();
+				        for (Horario horario : listaHorarios) {
+					    %>
+		                <option value="<%=horario.getHorarioID()%>">
+		                    <%=horario.getDiaSemana() %>
+		                </option>
+					    <%
+					    }
+					    %>
+					</select>
 				</div>
 
 				

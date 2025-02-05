@@ -4,7 +4,6 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,27 +26,28 @@ public class MatriculaModel implements MatriculaInterface{
 
 	    try {
 	        cn = MySqlConexion.getConexion();
-	        String sql = "SELECT * FROM matricula";
+	        String sql = "SELECT m.codigo_matricula, e.nombres, e.apellidos, h.DiaSemana as Horario, m.fecha_matricula, m.estado_matricula, m.observaciones, m.modo_matricula, m.ciclo \r\n"
+	        		+ "FROM matricula m\r\n"
+	        		+ "JOIN estudiante e ON m.id_estudiante = e.EstudianteID\r\n"
+	        		+ "JOIN horario h ON m.id_horario = h.HorarioID";
 	        psm = cn.prepareStatement(sql);
 	        rs = psm.executeQuery();
 
 	        while (rs.next()) {
 	        	Matricula reg = new Matricula();
-	            reg.setCodigoMatricula(rs.getString("CodigoMatricula"));
-
+	            reg.setCodigoMatricula(rs.getString("codigo_matricula"));
 	            Estudiante estudiante = new Estudiante();
-	            estudiante.setEstudianteID(rs.getInt("EstudianteID"));
+	            estudiante.setNombres(rs.getString("nombres"));
+	            estudiante.setApellidos(rs.getString("apellidos"));
 	            reg.setEstudiante(estudiante);
-
 	            Horario horario = new Horario();
-	            horario.setCodHorario(rs.getInt("IdHorario"));;
+	            horario.setDiaSemana(rs.getString("Horario"));
 	            reg.setHorario(horario);
-
-	            reg.setFechaMatricula(rs.getDate("FechaMatricula"));
-	            reg.setEstadoMatricula(rs.getString("EstadoMatricula"));
-	            reg.setObservaciones(rs.getString("Observaciones"));
-	            reg.setModoMatricula(rs.getString("ModoMatricula"));
-	            reg.setCiclo(rs.getString("Ciclo"));
+	            reg.setFechaMatricula(rs.getDate("fecha_matricula"));
+	            reg.setEstadoMatricula(rs.getString("estado_matricula"));
+	            reg.setObservaciones(rs.getString("observaciones"));
+	            reg.setModoMatricula(rs.getString("modo_matricula"));
+	            reg.setCiclo(rs.getString("ciclo"));
 
 	            listMatricula.add(reg);
 	        }
@@ -74,13 +74,13 @@ public class MatriculaModel implements MatriculaInterface{
 
 		    try {
 		        cn = MySqlConexion.getConexion();
-		        String sql = "INSERT INTO matricula (CodigoMatricula, EstudianteID, IdHorario, FechaMatricula, EstadoMatricula, Observaciones, ModoMatricula, Ciclo) "
+		        String sql = "INSERT INTO matricula (Codigo_Matricula, id_Estudiante, id_Horario, Fecha_Matricula, Estado_Matricula, Observaciones, Modo_Matricula, Ciclo) "
 		                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		        psm = cn.prepareStatement(sql);
 
 		        psm.setString(1, matricula.getCodigoMatricula());
 		        psm.setInt(2, matricula.getEstudiante().getEstudianteID());
-		        psm.setInt(3, matricula.getHorario().getCodHorario());
+		        psm.setInt(3, matricula.getHorario().getHorarioID());
 		        psm.setDate(4, new java.sql.Date(matricula.getFechaMatricula().getTime()));
 		        psm.setString(5, matricula.getEstadoMatricula());
 		        psm.setString(6, matricula.getObservaciones());

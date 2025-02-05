@@ -20,7 +20,6 @@
     </div>
 
     <section class="section dashboard">
-        <a class="btn btn-primary" href="<%= request.getContextPath() %>/matricula/regMatricula.jsp" role="button">Crear Nuevo</a>
         <div class="row">
             <table class="table datatable">
                 <thead>
@@ -30,22 +29,29 @@
                         <th>Horario</th>
                         <th>Fecha Matrícula</th>
                         <th>Estado Matrícula</th>
+                        <th>Observaciones</th>
+                        <th>Modo Matrícula</th>
+                        <th>Ciclo</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <%
-                        @SuppressWarnings("unchecked")
-                        List<Matricula> listaMatriculas = (List<Matricula>)request.getAttribute("listaMatriculas");
-                        if(listaMatriculas != null){
-                            for(Matricula item : listaMatriculas){
-                    %>
-                    <tr>
-                        <td><%= item.getCodigoMatricula() %></td>
-                        <td><%= item.getEstudiante().getNombres() + " " + item.getEstudiante().getApellidos() %></td>
-                        <td>horario pendiente implementar></td>
-                        <td><%= item.getFechaMatricula() != null ? item.getFechaMatricula().toString() : "" %></td>
-                        <td><%= item.getEstadoMatricula() %></td>
+	                    @SuppressWarnings("unchecked")
+	                    List<Matricula> listaMatriculas = (List<Matricula>) request.getAttribute("listaMatricula");
+	
+	                    if (listaMatriculas != null && !listaMatriculas.isEmpty()) {
+	                        for (Matricula item : listaMatriculas) {
+	                %>
+	                <tr>
+	                    <td><%= item.getCodigoMatricula() %></td>
+	                    <td><%= item.getEstudiante().getNombres() + " " + item.getEstudiante().getApellidos() %></td>
+	                    <td><%= item.getHorario() != null ? item.getHorario().getDiaSemana() : "Sin horario" %></td>
+	                    <td><%= item.getFechaMatricula() != null ? item.getFechaMatricula().toString() : "No registrada" %></td>
+	                    <td><%= item.getEstadoMatricula() %></td>
+	                    <td><%= item.getObservaciones() %></td>
+	                    <td><%= item.getModoMatricula() %></td>
+	                    <td><%= item.getCiclo() %></td>
                        
                     </tr>
                     <%              

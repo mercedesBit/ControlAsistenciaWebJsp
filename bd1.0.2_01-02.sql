@@ -192,10 +192,12 @@ CREATE TABLE Matricula (
     id_horario INT,
     fecha_matricula DATE,
     estado_matricula VARCHAR(20),
-    observaciones TEXT,         
-    modo_matricula VARCHAR(20), 
+    observaciones VARCHAR(100),         
+    modo_matricula VARCHAR(30), 
     ciclo VARCHAR(10),          
-    PRIMARY KEY (id_estudiante, id_horario)
+    PRIMARY KEY (id_estudiante, id_horario),
+    FOREIGN KEY (id_estudiante) REFERENCES Estudiante(EstudianteID),
+    FOREIGN KEY (id_horario) REFERENCES Horario(HorarioID)
 );
 
 /*** PROCEDIMIENTOS ALMACENADOS DE USUARIO ***/
@@ -415,6 +417,10 @@ INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Co
 VALUES 
 (2, 1, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin');
 
+-- Insertar datos en la tabla Matricula
+INSERT INTO Matricula (Codigo_Matricula, id_estudiante, id_horario, Fecha_Matricula, Estado_Matricula, Observaciones, Modo_Matricula, Ciclo) 
+VALUES ('MAT123', 1, 1, '2024-02-01', 'Activo', 'Sin observaciones', 'Online', '2024-1');
+
 -- Primero, verificamos si el número de estudiantes actuales en el horario es menor que la capacidad máxima:
 SELECT COUNT(*) AS CantidadEstudiantes
 FROM Horario_Estudiante
@@ -424,4 +430,4 @@ SELECT h.HorarioID, c.NombreCurso, p.Nombres AS NombreProfesor, p.Apellidos AS A
 FROM Horario h
 JOIN Curso c ON h.CursoID = c.CursoID
 JOIN Profesor p ON h.ProfesorID = p.ProfesorID
-JOIN Seccion s ON h.SeccionID = s.SeccionID
+JOIN Seccion s ON h.SeccionID = s.SeccionID;

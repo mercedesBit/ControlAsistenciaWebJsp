@@ -1,22 +1,28 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import entidades.Estudiante;
 import entidades.Horario;
 import entidades.Matricula;
-import entidades.PadresTutores;
 import modelo.EstudianteModel;
 import modelo.MatriculaModel;
 
 @WebServlet("/MatriculaServlet")
-public class MatriculaServlet {
+public class MatriculaServlet extends HttpServlet {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
-    
-    /**
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public MatriculaServlet() {
@@ -32,7 +38,7 @@ public class MatriculaServlet {
         
         switch(tipo) {
         case "list" : listMatricula(request, response); break;
-        case "regist" : registEstudiante(request, response); break;
+        case "regist" : registMatricula(request, response); break;
         default:
             request.setAttribute("mensaje", "Ocurrio un problema");
             request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);
@@ -44,12 +50,11 @@ public class MatriculaServlet {
         
         List<Matricula> lista = model.listMatricula();
         
-        request.setAttribute("listaMatriculas", lista);
+        request.setAttribute("listaMatricula", lista);
         request.getRequestDispatcher("matricula/listMatricula.jsp").forward(request, response);
     }
 
     protected void registMatricula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     	String codigoMatricula = request.getParameter("txtCodigoMatricula");
         int idEstudiante = Integer.parseInt(request.getParameter("txtIdEstudiante"));
         int idHorario = Integer.parseInt(request.getParameter("txtIdHorario"));
@@ -69,7 +74,7 @@ public class MatriculaServlet {
    //     HorarioModel horarioModel = new HorarioModel();
      //   Horario horario = horarioModel.obtenerHorarioPorId(idHorario);
         Horario horario = new Horario();
-        horario.setCodHorario(1);
+        horario.setHorarioID(idHorario);
         matricula.setHorario(horario);
         
         matricula.setFechaMatricula( new java.sql.Date(System.currentTimeMillis()));
@@ -82,7 +87,7 @@ public class MatriculaServlet {
         int value = matriculaModel.registrarMatricula(matricula);
         
         if (value == 1) {
-            listMatriculas(request, response);
+            listMatricula(request, response);
         } else {
             request.setAttribute("mensaje", "Ocurrió un problema al registrar la matrícula.");
             request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);

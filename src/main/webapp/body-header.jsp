@@ -74,6 +74,18 @@
                     <i class="bi bi-circle"></i><span>Registrar Horarios</span>
                 </a></li>
             </ul>
+            
+            <a class="nav-link collapsed" data-bs-target="#components-navMs" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Matricula</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-navMs" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li><a href="<%= request.getContextPath() %>/MatriculaServlet?tipo=list">
+                    <i class="bi bi-circle"></i><span>Ver Matriculas</span>
+                </a></li>
+                <li><a href="<%= request.getContextPath() %>/matricula/regMatricula.jsp">
+                    <i class="bi bi-circle"></i><span>Registrar Matricula</span>
+                </a></li>
+            </ul>
 
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Mantenimientos</span><i class="bi bi-chevron-down ms-auto"></i>
