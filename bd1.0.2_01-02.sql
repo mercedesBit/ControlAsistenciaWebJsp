@@ -129,7 +129,6 @@ CREATE TABLE Asistencia (
     AsistenciaID INT AUTO_INCREMENT PRIMARY KEY,
     EstudianteID INT,
     CursoID INT,
-    PersonalID INT null,
     HoraAsistencia TIMESTAMP,
     Estado VARCHAR(20),
     Comentario TEXT null,
@@ -138,8 +137,7 @@ CREATE TABLE Asistencia (
     UsuarioRegistro VARCHAR(20),
     FechaActualizacion DATE null,
     FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID),
-    FOREIGN KEY (CursoID) REFERENCES Curso(CursoID),
-    FOREIGN KEY (PersonalID) REFERENCES PersonalAdministrativo(PersonalID)
+    FOREIGN KEY (CursoID) REFERENCES Curso(CursoID)
 );
 
 -- Crear tabla Horario

@@ -18,6 +18,8 @@ public class Curso {
     private String usuarioRegistro;
     private Date fechaActualizacion;
     private String notas;
+    
+    private int profesorID;
 
     // Constructor vacío
     public Curso() {}
@@ -234,4 +236,12 @@ public class Curso {
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
+
+	public int getProfesorID() {
+		return profesorID;
+	}
+
+	public void setProfesorID(int profesorID) {
+		this.profesorID = profesorID;
+	}
 }
