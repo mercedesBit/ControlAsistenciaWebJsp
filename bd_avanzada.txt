@@ -272,3 +272,17 @@ VALUES ('Administrador'), ('Profesor'), ('Estudiante'), ('Personal Administrativ
 INSERT INTO Usuarios (NombreUsuario, Contrasena, RoleID, FechaRegistro, Estado)
 VALUES ('admin', 'password123', 1, CURDATE(), 'Activo');
 
+
+
+CREATE TABLE Matricula (
+    codigo_matricula VARCHAR(50) UNIQUE,  
+    id_estudiante INT,
+    id_horario INT,
+    fecha_matricula DATE,
+    estado_matricula VARCHAR(20),
+    observaciones TEXT,         
+    modo_matricula VARCHAR(20), 
+    ciclo VARCHAR(10),          
+    PRIMARY KEY (id_estudiante, id_horario) 
+   
+);
