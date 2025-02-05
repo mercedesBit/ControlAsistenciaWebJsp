@@ -236,4 +236,5 @@ public class Horario {
 				+ ", fechaRegistro=" + fechaRegistro + ", usuarioRegistro=" + usuarioRegistro + ", fechaActualizacion="
 				+ fechaActualizacion + "]";
 	}
+	
 }

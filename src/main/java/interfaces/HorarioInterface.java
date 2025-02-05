@@ -10,6 +10,5 @@ public interface HorarioInterface {
 	public int registrarHorario(Horario horario);
 	public Horario obtenerHorario(int id);
 	public int editarHorario(Horario horario);
-	public int eliminarHorario(int id);
-	
+
 }
