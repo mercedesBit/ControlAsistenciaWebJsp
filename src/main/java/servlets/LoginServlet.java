@@ -1,13 +1,15 @@
 package servlets;
 
-import entidades.Usuario;
-import modelo.UsuarioDAO;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
-import java.io.*;
+import java.io.IOException;
 
-@WebServlet("/login")
+import entidades.Usuario;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.UsuarioDAO;
+
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

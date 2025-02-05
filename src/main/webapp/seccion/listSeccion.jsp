@@ -35,8 +35,9 @@
 				</thead>
 				<tbody>
 					<%
-						@SuppressWarnings("unchecked")
+					@SuppressWarnings("unchecked")
                         List<Seccion> listSeccion = (List<Seccion>)request.getAttribute("secciones");
+                    
                         if(listSeccion != null){
                             for(Seccion seccion : listSeccion){
                     %>

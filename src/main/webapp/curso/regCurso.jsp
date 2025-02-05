@@ -1,7 +1,9 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
+<%@page import="entidades.Curso"%>
 
 <main id="main" class="main">
 	<div class="pagetitle">
@@ -39,26 +41,65 @@
 				</div>
 
 				<div class="form-group">
-					<label for="duracion">Duración (horas)</label> <input type="number"
+					<label for="duracion">Créditos</label> <input type="number"
 						class="form-control" id="duracion" name="duracion" required>
 				</div>
 
-				<div class="form-group">
-					<label for="grado">Grado</label> <input type="text"
-						class="form-control" id="grado" name="grado" required>
+
+				
+<!-- <div class="form-group">
+					<label for="grado">Ciclo</label> <input type="text"
+						class="form-control" id="ciclo" name="ciclo" required>
 				</div>
+				 -->
+
+
+  <div class="mb-3">
+        <label for="grado" class="form-label">Ciclo:</label>
+        <select name="ciclo" id="ciclo" class="form-select " >
+            <% 
+                // Recuperamos la lista de ciclos del request
+                @SuppressWarnings("unchecked")
+                List<Curso> ciclos = (List<Curso>) request.getAttribute("ciclos");
+                
+                // Verificamos si la lista no es null y contiene elementos
+                if (ciclos != null) {
+                    for (Curso ciclo : ciclos) {
+            %>
+                <!-- Creamos las opciones del ComboBox -->
+                <option value="<%= ciclo.getId_ciclo() %>">
+                    <%= ciclo.getCiclo() %>
+                </option>
+            <% 
+                    }
+                }
+            %>
+        </select>
+    </div>
+    
 
 				<div class="form-group">
 					<label for="nivel">Nivel</label> <input type="text"
 						class="form-control" id="nivel" name="nivel" required>
 				</div>
 
+				
+		
+
+			
+
 				<div class="form-group">
+					<label for="notas">Notas</label>
+					<textarea class="form-control" id="notas" name="notas"></textarea>
+				</div>
+			
+		<%--ELIMINAR ESTO.
+
+<div class="form-group">
 					<label for="modalidad">Modalidad</label> <input type="text"
 						class="form-control" id="modalidad" name="modalidad" required>
 				</div>
 				
-				<%--ELIMINAR ESTO.
 
 				<div class="form-group">
 					<label for="fechaInicio">Fecha de Inicio</label> <input type="date"
@@ -88,31 +129,22 @@
 					<label for="seccionID">Profesor ID</label> <input type="number"
 						class="form-control" id="seccionID" name="seccionID" required>
 				</div>
-    
-    --%>
-				<div class="form-group">
-					<label for="requisitosPrevios">Requisitos Previos</label>
-					<textarea class="form-control" id="requisitosPrevios"
-						name="requisitosPrevios" required></textarea>
-				</div>
-
-				<div class="form-group">
+				
+					<div class="form-group">
 					<label for="cantidadMaximaEstudiantes">Máxima Cantidad de
 						Estudiantes</label> <input type="number" class="form-control"
 						id="cantidadMaximaEstudiantes" name="cantidadMaximaEstudiantes"
 						required>
 				</div>
-
-			
-
 				
-
 				<div class="form-group">
-					<label for="notas">Notas</label>
-					<textarea class="form-control" id="notas" name="notas"></textarea>
+					<label for="requisitosPrevios">Requisitos Previos</label>
+					<textarea class="form-control" id="requisitosPrevios"
+						name="requisitosPrevios" required></textarea>
 				</div>
-			
-
+    
+    --%>
+				
 
 				<br />
 				<div class="form-actions">

@@ -3,11 +3,11 @@ package servlets;
 import entidades.Curso;
 import interfaces.Curso_DAO_interface;
 import modelo.CursoDAO;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.awt.image.BufferedImage;
@@ -77,12 +77,10 @@ public class CursoServletDAO extends HttpServlet {
             g2d.drawString(c.getCodigoCurso(), 110, y);
             g2d.drawString(c.getNombreCurso(), 210, y);
             g2d.drawString(c.getDescripcion(), 310, y);
-            g2d.drawString(String.valueOf(c.getDuracion()), 410, y);
-            g2d.drawString(c.getGrado(), 510, y);
+            g2d.drawString(String.valueOf(c.getCreditos()), 410, y);
+            g2d.drawString(c.getCiclo(), 510, y);
             g2d.drawString(c.getNivel(), 610, y);
-            g2d.drawString(c.getModalidad(), 710, y);
-       //     g2d.drawString(c.getFechaInicio().toString(), 810, y);
-         //   g2d.drawString(c.getFechaFin().toString(), 910, y);
+            g2d.drawString(c.getNotas(), 710, y);
             y += 30;
         }
 

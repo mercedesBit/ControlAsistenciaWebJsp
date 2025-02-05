@@ -31,7 +31,7 @@
 						<th>ID</th>
 						<th>Codigo Curso</th>
 						<th>Nombre Curso</th>
-						<th>Duracion</th>
+						<th>Creditos</th>
 						<th>Estado</th>
 						<th>Fecha de Registro</th>
 						<th>Usuario de Registro</th>
@@ -40,8 +40,9 @@
 				</thead>
 				<tbody>
 					<%
-						@SuppressWarnings("unchecked")
+					@SuppressWarnings("unchecked")
                         List<Curso> listCurso = (List<Curso>)request.getAttribute("cursos");
+                         
                         if(listCurso != null){
                             for(Curso curso : listCurso){
                     %>
@@ -49,7 +50,7 @@
 						<td><%=curso.getCursoID()%></td>
 						<td><%=curso.getCodigoCurso()%></td>
 						<td><%=curso.getNombreCurso()%></td>
-						<td><%=curso.getDuracion()%></td>
+						<td><%=curso.getCreditos()%></td>
 						<td><%=curso.getEstado()%></td>
 						<td><%=curso.getFechaRegistro()%></td>
 						<td><%=curso.getUsuarioRegistro()%></td>

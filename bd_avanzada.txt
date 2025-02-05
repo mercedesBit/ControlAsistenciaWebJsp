@@ -82,12 +82,12 @@ CREATE TABLE Curso (
     NombreCurso VARCHAR(100),
     Descripcion VARCHAR(255),
     Duracion INT,
-    Grado VARCHAR(50),
+    Ciclo VARCHAR(50),
     Nivel VARCHAR(50),
     Estado VARCHAR(20),
-    RequisitosPrevios TEXT,
-    CantidadMaximaEstudiantes INT,
-    Modalidad VARCHAR(50),
+  --  RequisitosPrevios TEXT,   Ira en horario
+  --  CantidadMaximaEstudiantes INT, Ira en horario
+  --  Modalidad VARCHAR(50), Ira en tabla horario
     SeccionID INT,
     Notas TEXT,
     FechaRegistro DATE,
@@ -97,7 +97,7 @@ CREATE TABLE Curso (
 );
 
 CREATE TABLE PersonalAdministrativo (
-    PersonalID INT PRIMARY KEY,
+    PersonalID INT AUTO_INCREMENT PRIMARY KEY,
     TipoDocumento VARCHAR(10),
     NumeroDocumento VARCHAR(16),
     Nombres VARCHAR(100),
@@ -116,6 +116,7 @@ CREATE TABLE PersonalAdministrativo (
     UsuarioRegistro VARCHAR(20),
     FechaActualizacion DATE
 );
+
 
 CREATE TABLE Asistencia (
     AsistenciaID INT AUTO_INCREMENT PRIMARY KEY,
@@ -225,4 +226,49 @@ CREATE TABLE Usuarios (
     Estado VARCHAR(20),
     FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
 );
+
+
+
+
+-- Insertar datos en la tabla Seccion
+INSERT INTO Seccion (NombreSeccion, NumeroAula, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('Sección A', 'A-101', 'Activo', CURDATE(), 'admin', CURDATE());
+
+INSERT INTO Seccion (NombreSeccion, NumeroAula, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('Sección B', 'B-202', 'Inactivo', CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla PadresTutores
+INSERT INTO PadresTutores (TipoDocumento, NumeroDocumento, Nombres, Apellidos, CorreoElectronico, TelefonoMovil, TelefonoCasa, Direccion, RelacionEstudiante, FechaNacimiento, Ocupacion, Estado, RedesSociales, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('DNI', '12345678', 'Carlos', 'Mendoza', 'carlos.mendoza@mail.com', '987654321', '012345678', 'Av. Principal 123', 'Padre', '1980-05-10', 'Ingeniero', 'Activo', 'Facebook: carlos.mendoza', CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla Estudiante
+INSERT INTO Estudiante (TipoDocumento, NumeroDocumento, Nombres, Apellidos, FechaNacimiento, Genero, Email, Telefono, Direccion, EstadoCivil, FechaIngreso, Estado, RedesSociales, EmergenciaContacto, TutorID, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('DNI', '87654321', 'Juan', 'Perez', '2000-03-15', 'Masculino', 'juan.perez@mail.com', '987654322', 'Calle Ejemplo 456', 'Soltero', '2022-08-01', 'Activo', 'Instagram: juanperez', 'Mamá: 987654323', 1, CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla Profesor
+INSERT INTO Profesor (TipoDocumento, NumeroDocumento, Nombres, Apellidos, FechaNacimiento, CorreoInstitucional, TelefonoMovil, TelefonoTrabajo, FechaContratacion, Especialidad, GradoAcademico, HorasDocencia, Estado, Direccion, ModalidadTrabajo, RedesSociales, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('DNI', '11223344', 'Luis', 'Gomez', '1985-07-20', 'luis.gomez@instituto.edu', '987654324', '022345678', '2015-02-15', 'Matemáticas', 'Licenciado', 20, 'Activo', 'Av. Universitaria 789', 'Presencial', 'Twitter: @luisgomez', CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla Curso
+INSERT INTO Curso (CodigoCurso, NombreCurso, Descripcion, Duracion, Ciclo, Nivel, Estado, SeccionID, Notas, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES ('MAT101', 'Matemáticas Básicas', 'Curso de introducción a las matemáticas', 36, '1er ciclo', 'Básico', 'Activo', 1, 'Exámenes mensuales', CURDATE(), 'admin', CURDATE());
+
+
+
+INSERT INTO PersonalAdministrativo 
+(TipoDocumento, NumeroDocumento, Nombres, Apellidos, CorreoElectronico, TelefonoMovil, TelefonoTrabajo, FechaNacimiento, Direccion, Cargo, FechaContratacion, Estado, Sueldo, RedesSociales, FechaRegistro, UsuarioRegistro, FechaActualizacion) 
+VALUES 
+('DNI', '44556677', 'Ana', 'Lopez', 'ana.lopez@mail.com', '987654325', '022345679', '1990-08-30', 'Calle Central 890', 'Secretaria', '2018-06-05', 'Activo', 1500.00, 'LinkedIn: ana.lopez', CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla Asistencia
+INSERT INTO Asistencia (EstudianteID, CursoID, PersonalID, HoraAsistencia, Estado, Comentario, TipoAsistencia, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+VALUES (1, 1, 1, CURTIME(), 'Presente', 'Sin observaciones', 'Presencial', CURDATE(), 'admin', CURDATE());
+
+-- Insertar datos en la tabla Roles
+INSERT INTO Roles (NombreRole)
+VALUES ('Administrador'), ('Profesor'), ('Estudiante'), ('Personal Administrativo');
+
+-- Insertar datos en la tabla Usuarios
+INSERT INTO Usuarios (NombreUsuario, Contrasena, RoleID, FechaRegistro, Estado)
+VALUES ('admin', 'password123', 1, CURDATE(), 'Activo');
 

@@ -27,17 +27,15 @@
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th>Duración</th>
-                    <th>Grado</th>
+                    <th>Creditos</th>
+                    <th>Ciclo</th>
                     <th>Nivel</th>
-                    <th>Modalidad</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
+                    <th>Notas</th>
                 </tr>
             </thead>
             <tbody>
                 <%
-                	@SuppressWarnings("unchecked")
+                @SuppressWarnings("unchecked")
                     List<Curso> cursos = (List<Curso>) request.getAttribute("cursos");
                     if (cursos != null) {
                         for (Curso c : cursos) {
@@ -47,12 +45,10 @@
                     <td><%=c.getCodigoCurso()%></td>
                     <td><%=c.getNombreCurso()%></td>
                     <td><%=c.getDescripcion()%></td>
-                    <td><%=c.getDuracion()%></td>
-                    <td><%=c.getGrado()%></td>
+                    <td><%=c.getCreditos()%></td>
+                    <td><%=c.getCiclo()%></td>
                     <td><%=c.getNivel()%></td>
-                    <td><%=c.getModalidad()%></td>
-                    <td><%=c.getFechaRegistro()%></td>
-                    <td><%=c.getFechaActualizacion()%></td>
+                    <td><%=c.getNotas()%></td>
                 </tr>
                 <%
                         }

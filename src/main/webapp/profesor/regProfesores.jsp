@@ -8,7 +8,7 @@
 		<h1>Registro Profesor</h1>
 		<nav>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+				<li class="breadcrumb-item"><a href="<%= request.getContextPath() %>/index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">Inicio</li>
 			</ol>
 		</nav>
@@ -86,7 +86,7 @@
 				<br>
 				<div class="button">
 					<input type="submit" class="btn btn-danger" value="Registrar">
-					<a href="ProfesorServlet?tipo=list" role="button"
+					<a href="../ProfesorServlet?tipo=list" role="button"
 						class="btn btn-secondary">Listar</a>
 				</div>
 			</form>

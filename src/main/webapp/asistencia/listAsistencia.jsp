@@ -37,16 +37,16 @@
 							name="cursoID" class="form-control">
 							<option value="">Selecciona un Curso</option>
 							<%
-								@SuppressWarnings("unchecked")
-				                List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
-				                for (Curso curso : listaCursos) {
-			              	%>
+							@SuppressWarnings("unchecked")
+                List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
+                for (Curso curso : listaCursos) {
+              %>
 							<option value="<%= curso.getCursoID() %>">
 								<%= curso.getNombreCurso() %>
 							</option>
 							<%
-			               		}
-			              	%>
+                }
+              %>
 						</select>
 					</div>
 					<div class="col-md-3">
@@ -71,11 +71,11 @@
 				</thead>
 				<tbody>
 					<%
-						@SuppressWarnings("unchecked")
-			            List<Asistencia> listaAsistencia = (List<Asistencia>) request.getAttribute("lista");
-			            if (listaAsistencia != null) {
-			                for (Asistencia item : listaAsistencia) {
-		          	%>
+					@SuppressWarnings("unchecked")
+            List<Asistencia> listaAsistencia = (List<Asistencia>) request.getAttribute("lista");
+            if (listaAsistencia != null) {
+                for (Asistencia item : listaAsistencia) {
+          %>
 					<tr>
 						<td><%= item.getAsistenciaID() %></td>
 						<td><%= item.getEstudiante().getNombres() + " " + item.getEstudiante().getApellidos() %></td>
@@ -92,9 +92,9 @@
                 </a>     --></td>
 					</tr>
 					<%
-			                }
-			            }
-		          	%>
+                }
+            }
+          %>
 				</tbody>
 			</table>
 		</div>

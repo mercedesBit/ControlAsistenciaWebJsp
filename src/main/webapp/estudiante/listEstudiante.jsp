@@ -40,6 +40,7 @@
 					<%
 						@SuppressWarnings("unchecked")
                         List<Estudiante> listaEstudiantes = (List<Estudiante>)request.getAttribute("lista");
+                    
                         if(listaEstudiantes != null){
                             for(Estudiante item : listaEstudiantes){
                     %>
