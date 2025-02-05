@@ -234,7 +234,7 @@ public class Horario {
 				+ diaSemana + ", horaInicioFin=" + horaInicioFin + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + ", maxEstudiantes=" + maxEstudiantes + ", modalidad=" + modalidad + ", estado=" + estado
 				+ ", fechaRegistro=" + fechaRegistro + ", usuarioRegistro=" + usuarioRegistro + ", fechaActualizacion="
-				+ fechaActualizacion + "]";
+				+ fechaActualizacion + ", curso=" + curso + ", profesor=" + profesor + ", seccion=" + seccion + "]";
 	}
 	
 }
