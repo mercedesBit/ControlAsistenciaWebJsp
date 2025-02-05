@@ -40,7 +40,7 @@ public class HorarioServlet extends HttpServlet {
         case "info": detalleHorario(request, response); break;
         case "modif": modificarHorario(request, response); break;
         case "edit": actualizarHorario(request, response); break;
-        case "delete": eliminarHorario(request, response); break;        
+        case "delete": eliminarHorario(request, response); break;      
         default:
             request.setAttribute("mensaje", "Ocurrio un problema");
             request.getRequestDispatcher("horario/listHorario.jsp").forward(request, response);

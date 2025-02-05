@@ -55,6 +55,7 @@ public class Horario {
 		this.fechaRegistro = fechaRegistro;
 		this.usuarioRegistro = usuarioRegistro;
 		this.fechaActualizacion = fechaActualizacion;
+		
 	}
 
 	public int getHorarioID() {
@@ -233,6 +234,7 @@ public class Horario {
 				+ diaSemana + ", horaInicioFin=" + horaInicioFin + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + ", maxEstudiantes=" + maxEstudiantes + ", modalidad=" + modalidad + ", estado=" + estado
 				+ ", fechaRegistro=" + fechaRegistro + ", usuarioRegistro=" + usuarioRegistro + ", fechaActualizacion="
-				+ fechaActualizacion + "]";
+				+ fechaActualizacion + ", curso=" + curso + ", profesor=" + profesor + ", seccion=" + seccion + "]";
 	}
+	
 }
