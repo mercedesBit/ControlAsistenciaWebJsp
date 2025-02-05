@@ -55,6 +55,7 @@ public class Horario {
 		this.fechaRegistro = fechaRegistro;
 		this.usuarioRegistro = usuarioRegistro;
 		this.fechaActualizacion = fechaActualizacion;
+		
 	}
 
 	public int getHorarioID() {

@@ -56,7 +56,6 @@ public class HorarioModel implements HorarioInterface{
 	            e.printStackTrace();
 	        }
 	    }
-	            
 	    return listHorario;
 	}
 

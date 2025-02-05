@@ -11,4 +11,5 @@ public interface HorarioInterface {
 	public Horario obtenerHorario(int id);
 	public int editarHorario(Horario horario);
 	public int eliminarHorario(int id);
+	
 }
