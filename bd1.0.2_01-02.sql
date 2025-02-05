@@ -186,6 +186,17 @@ CREATE TABLE ASISTENCIA_ESTUDIANTE (
     ON UPDATE CASCADE
 );
 
+CREATE TABLE Matricula (
+    codigo_matricula VARCHAR(50) UNIQUE,  
+    id_estudiante INT,
+    id_horario INT,
+    fecha_matricula DATE,
+    estado_matricula VARCHAR(20),
+    observaciones TEXT,         
+    modo_matricula VARCHAR(20), 
+    ciclo VARCHAR(10),          
+    PRIMARY KEY (id_estudiante, id_horario)
+);
 
 /*** PROCEDIMIENTOS ALMACENADOS DE USUARIO ***/
 -- Procedimiento para obtener la asistencia
