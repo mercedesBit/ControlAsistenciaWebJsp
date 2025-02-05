@@ -36,6 +36,7 @@
 
 				<tbody>
 					<%
+					@SuppressWarnings("unchecked")
                         List<Profesor> listaProfesores = (List<Profesor>)request.getAttribute("lista");
                     
                         if(listaProfesores != null){

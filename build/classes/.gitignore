@@ -1,5 +1,4 @@
-/interfaces/
-/modelo/
 /servlets/
-/util/
 /entidades/
+/modelo/
+/interfaces/

@@ -36,6 +36,7 @@
 
 				<tbody>
 					<%
+					@SuppressWarnings("unchecked")
                         List<PadresTutores> listaTutores = (List<PadresTutores>)request.getAttribute("lista");
                     
                         if(listaTutores != null){

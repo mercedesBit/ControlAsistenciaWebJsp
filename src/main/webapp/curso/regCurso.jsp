@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="duracion">Duración (créditos)</label> <input type="number"
+					<label for="duracion">Créditos</label> <input type="number"
 						class="form-control" id="duracion" name="duracion" required>
 				</div>
 
@@ -59,6 +59,7 @@
         <select name="ciclo" id="ciclo" class="form-select " >
             <% 
                 // Recuperamos la lista de ciclos del request
+                @SuppressWarnings("unchecked")
                 List<Curso> ciclos = (List<Curso>) request.getAttribute("ciclos");
                 
                 // Verificamos si la lista no es null y contiene elementos

@@ -48,7 +48,7 @@
 				<div class="form-group">
 					<label class="text-secondary">Duración</label> <input
 						class="form-control" type="text" name="txtDuracion"
-						value="<%=(curso != null)? curso.getDuracion():""%>" readonly>
+						value="<%=(curso != null)? curso.getCreditos():""%>" readonly>
 				</div>
 
 				

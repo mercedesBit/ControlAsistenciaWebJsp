@@ -16,13 +16,13 @@ public class CursoModel implements CursoInterface {
 		int resultado = 0;
 		try {
 			conn = MySqlConexion.getConexion();
-			String sql = "INSERT INTO Curso (CursoID, CodigoCurso, NombreCurso, Descripcion, Duracion, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro) "
+			String sql = "INSERT INTO Curso (CursoID, CodigoCurso, NombreCurso, Descripcion, Creditos, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro) "
 					+ "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
 			PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, curso.getCodigoCurso());
 			pst.setString(2, curso.getNombreCurso());
 			pst.setString(3, curso.getDescripcion());
-			pst.setInt(4, curso.getDuracion());
+			pst.setInt(4, curso.getCreditos());
 			pst.setString(5, curso.getCiclo());
 			pst.setString(6, curso.getNivel());
 			pst.setString(7, curso.getEstado());
@@ -66,7 +66,7 @@ public class CursoModel implements CursoInterface {
 			pst.setString(1, curso.getCodigoCurso());
 			pst.setString(2, curso.getNombreCurso());
 			pst.setString(3, curso.getDescripcion());
-			pst.setInt(4, curso.getDuracion());
+			pst.setInt(4, curso.getCreditos());
 			pst.setString(5, curso.getCiclo());
 			pst.setString(6, curso.getNivel());
 			pst.setString(7, curso.getEstado());
@@ -139,7 +139,7 @@ public class CursoModel implements CursoInterface {
 				curso.setCodigoCurso(rs.getString("CodigoCurso"));
 				curso.setNombreCurso(rs.getString("NombreCurso"));
 				curso.setDescripcion(rs.getString("Descripcion"));
-				curso.setDuracion(rs.getInt("Duracion"));
+				curso.setCreditos(rs.getInt("Creditos"));
 				
 				
 				//Metodo que obtiene el string dependiendo el Id que se obtiene 
@@ -187,7 +187,7 @@ public class CursoModel implements CursoInterface {
 				curso.setCodigoCurso(rs.getString("CodigoCurso"));
 				curso.setNombreCurso(rs.getString("NombreCurso"));
 				curso.setDescripcion(rs.getString("Descripcion"));
-				curso.setDuracion(rs.getInt("Duracion"));
+				curso.setCreditos(rs.getInt("Creditos"));
 				
 				
 				curso.setCiclo(rs.getString("Ciclo"));

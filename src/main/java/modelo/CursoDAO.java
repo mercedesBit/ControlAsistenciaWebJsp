@@ -27,9 +27,10 @@ public class CursoDAO implements Curso_DAO_interface {
                 c.setCodigoCurso(rs.getString("codigoCurso"));
                 c.setNombreCurso(rs.getString("nombreCurso"));
                 c.setDescripcion(rs.getString("descripcion"));
-                c.setDuracion(rs.getInt("duracion"));
+                c.setCreditos(rs.getInt("creditos"));
                 c.setCiclo(rs.getString("ciclo"));
                 c.setNivel(rs.getString("nivel"));
+                
          
                 c.setEstado(rs.getString("estado"));
                 

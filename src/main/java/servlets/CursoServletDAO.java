@@ -17,11 +17,14 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.RenderingHints;
-import java.util.Base64;
 
 @WebServlet("/CursoReporteServlet")
 public class CursoServletDAO extends HttpServlet {
-    private Curso_DAO_interface cursoDAO = new CursoDAO();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Curso_DAO_interface cursoDAO = new CursoDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -74,12 +77,10 @@ public class CursoServletDAO extends HttpServlet {
             g2d.drawString(c.getCodigoCurso(), 110, y);
             g2d.drawString(c.getNombreCurso(), 210, y);
             g2d.drawString(c.getDescripcion(), 310, y);
-            g2d.drawString(String.valueOf(c.getDuracion()), 410, y);
+            g2d.drawString(String.valueOf(c.getCreditos()), 410, y);
             g2d.drawString(c.getCiclo(), 510, y);
             g2d.drawString(c.getNivel(), 610, y);
-            g2d.drawString(c.getModalidad(), 710, y);
-            g2d.drawString(c.getFechaInicio().toString(), 810, y);
-            g2d.drawString(c.getFechaFin().toString(), 910, y);
+            g2d.drawString(c.getNotas(), 710, y);
             y += 30;
         }
 

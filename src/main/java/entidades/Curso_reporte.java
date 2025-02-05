@@ -7,7 +7,7 @@ public class Curso_reporte	 {
     private String codigoCurso;
     private String nombreCurso;
     private String descripcion;
-    private int duracion;
+    private int creditos;
     private String grado;
     private String nivel;
     private Date fechaInicio;
@@ -58,12 +58,12 @@ public class Curso_reporte	 {
         this.descripcion = descripcion;
     }
 
-    public int getDuracion() {
-        return duracion;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
 
     public String getGrado() {

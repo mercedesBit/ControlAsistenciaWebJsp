@@ -7,7 +7,7 @@ public class Curso {
     private String codigoCurso;
     private String nombreCurso;
     private String descripcion;
-    private int duracion;
+    private int creditos;
     private String ciclo;
     private int id_ciclo;
   
@@ -18,23 +18,12 @@ public class Curso {
     private String usuarioRegistro;
     private Date fechaActualizacion;
     private String notas;
-    
-    /* Atributos no utilizados */
-    /* private String requisitosPrevios; */
-    /* private int cantidadMaximaEstudiantes; */
-    /* private String modalidad; */
-    /* private Date fechaInicio; */
-    /* private Date fechaFin; */
-    /* private int seccionID; */
-    /* private String temario; */
-    /* private String horario; */
-    /* private int profesorID; */
 
     // Constructor vacío
     public Curso() {}
 
     // Constructor completo
-    public Curso(int cursoID, String codigoCurso, String nombreCurso, String descripcion, int duracion, 
+    public Curso(int cursoID, String codigoCurso, String nombreCurso, String descripcion, int creditos, 
             String ciclo, int id_ciclo, String nivel, /* Date fechaInicio, Date fechaFin, */ String estado, 
             /* String requisitosPrevios, int cantidadMaximaEstudiantes, String modalidad, */ 
             /* int seccionID, String temario, String horario, */ String notas, 
@@ -43,7 +32,7 @@ public class Curso {
         this.codigoCurso = codigoCurso;
         this.nombreCurso = nombreCurso;
         this.descripcion = descripcion;
-        this.duracion = duracion;
+        this.creditos = creditos;
         this.ciclo = ciclo;
         
         this.id_ciclo = id_ciclo;
@@ -110,12 +99,12 @@ public class Curso {
         this.descripcion = descripcion;
     }
 
-    public int getDuracion() {
-        return duracion;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
 
     public String getCiclo() {

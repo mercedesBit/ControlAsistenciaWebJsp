@@ -7,12 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.List;
 
 @WebServlet("/PersonalAdministrativoServlet")
 public class PersonalAdministrativoServlet extends HttpServlet {
 
-    private PersonalAdministrativoModel personalModel;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PersonalAdministrativoModel personalModel;
 
     @Override
     public void init() throws ServletException {
@@ -161,12 +164,4 @@ public class PersonalAdministrativoServlet extends HttpServlet {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-    private void buscarPersonales(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filtro = request.getParameter("filtro");
-        List<PersonalAdministrativo> resultados = personalModel.buscarPorFiltro(filtro);
-        request.setAttribute("personales", resultados);
-        request.getRequestDispatcher("personal/listarPersonal.jsp").forward(request, response);
-    }
-
-
 }

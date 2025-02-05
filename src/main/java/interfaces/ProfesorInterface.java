@@ -2,7 +2,6 @@ package interfaces;
 
 import java.util.List;
 
-import entidades.Estudiante;
 import entidades.Profesor;
 //METODOS
 public interface ProfesorInterface {

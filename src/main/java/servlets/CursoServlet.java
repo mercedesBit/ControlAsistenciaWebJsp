@@ -15,6 +15,11 @@ import java.time.LocalDate;
 
 @WebServlet("/CursoServlet")
 public class CursoServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private CursoModel cursoModel = new CursoModel();
 
 	LocalDate fechaActual = LocalDate.now();
@@ -115,10 +120,9 @@ public class CursoServlet extends HttpServlet {
 		String codigoCurso = request.getParameter("codigoCurso");
 		String nombreCurso = request.getParameter("nombreCurso");
 		String descripcion = request.getParameter("descripcion");
-		int duracion = Integer.parseInt(request.getParameter("duracion"));
+		int creditos = Integer.parseInt(request.getParameter("creditos"));
 		String ciclo = request.getParameter("ciclo");
 		String nivel = request.getParameter("nivel");
-		String temario = request.getParameter("temario");
 		String notas = request.getParameter("notas");
 
 		/*
@@ -140,7 +144,7 @@ public class CursoServlet extends HttpServlet {
 		curso.setCodigoCurso(codigoCurso);
 		curso.setNombreCurso(nombreCurso);
 		curso.setDescripcion(descripcion);
-		curso.setDuracion(duracion);
+		curso.setCreditos(creditos);
 		curso.setCiclo(ciclo);
 		curso.setNivel(nivel);
 		curso.setEstado("Activo");
@@ -178,7 +182,7 @@ public class CursoServlet extends HttpServlet {
 		String codigoCurso = request.getParameter("codigoCurso");
 		String nombreCurso = request.getParameter("nombreCurso");
 		String descripcion = request.getParameter("descripcion");
-		int duracion = Integer.parseInt(request.getParameter("duracion"));
+		int creditos = Integer.parseInt(request.getParameter("creditos"));
 		String ciclo = request.getParameter("ciclo");
 		String nivel = request.getParameter("nivel");
 		String estado = request.getParameter("estado");
@@ -199,7 +203,7 @@ public class CursoServlet extends HttpServlet {
 		curso.setCodigoCurso(codigoCurso);
 		curso.setNombreCurso(nombreCurso);
 		curso.setDescripcion(descripcion);
-		curso.setDuracion(duracion);
+		curso.setCreditos(creditos);
 		curso.setCiclo(ciclo);
 		curso.setNivel(nivel);
 		curso.setEstado(estado);

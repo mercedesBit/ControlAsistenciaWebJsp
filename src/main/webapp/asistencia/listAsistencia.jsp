@@ -37,6 +37,7 @@
 							name="cursoID" class="form-control">
 							<option value="">Selecciona un Curso</option>
 							<%
+							@SuppressWarnings("unchecked")
                 List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
                 for (Curso curso : listaCursos) {
               %>
@@ -70,6 +71,7 @@
 				</thead>
 				<tbody>
 					<%
+					@SuppressWarnings("unchecked")
             List<Asistencia> listaAsistencia = (List<Asistencia>) request.getAttribute("lista");
             if (listaAsistencia != null) {
                 for (Asistencia item : listaAsistencia) {

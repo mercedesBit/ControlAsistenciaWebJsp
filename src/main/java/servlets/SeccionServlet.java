@@ -14,7 +14,11 @@ import java.util.List;
 
 @WebServlet("/SeccionServlet")
 public class SeccionServlet extends HttpServlet {
-    private SeccionModel seccionModel = new SeccionModel();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private SeccionModel seccionModel = new SeccionModel();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("accion");
@@ -82,7 +86,6 @@ public class SeccionServlet extends HttpServlet {
         String nombreSeccion = request.getParameter("nombreSeccion");
         String numeroAula = request.getParameter("numeroAula");
         String estado = request.getParameter("estado");
-        String usuarioRegistro = request.getParameter("usuarioRegistro");
 
         Seccion seccion = new Seccion();
         seccion.setNombreSeccion(nombreSeccion);

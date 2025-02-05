@@ -13,7 +13,7 @@
 		<h1>Registro de Asistencia</h1>
 		<nav>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">Inicio</li>
 			</ol>
 		</nav>
@@ -29,6 +29,7 @@
 						name="cursoID" class="form-control">
 						<option value="">Selecciona un Curso</option>
 						<%
+						@SuppressWarnings("unchecked")
                 List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
                 for (Curso curso : listaCursos) {
               %>
@@ -55,6 +56,7 @@
 				</thead>
 				<tbody>
 					<%
+					@SuppressWarnings("unchecked")
                 List<Estudiante> listaEstudiante = (List<Estudiante>) request.getAttribute("listaEstudiante");
                 if (listaEstudiante != null) {
                     for (Estudiante item : listaEstudiante) {

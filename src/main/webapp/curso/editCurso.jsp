@@ -72,6 +72,7 @@
 								ciclo:</label> <select name="ciclo" id="ciclo"
 								class="form-select">
 								<%
+								@SuppressWarnings("unchecked")
 								List<Curso> ciclos = (List<Curso>) request.getAttribute("ciclos");
 								if (ciclos != null) {
 									for (Curso ciclo : ciclos) {
