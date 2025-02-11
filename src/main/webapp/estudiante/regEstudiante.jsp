@@ -27,10 +27,13 @@
 		<div class="row">
 
 			<form action="../EstudianteServlet?tipo=regist" method="post">
-				<div class="form-group">
-					<label>Tipo de Documento</label> <input class="form-control"
-						type="text" name="txtTipoDocumento">
-				</div>
+				<label>Tipo de documento</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">DNI</option>
+					  <option value="2">Carné de extranjería</option>
+					</select>
+						
+				
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
 						type="text" name="txtNumeroDocumento">
@@ -48,8 +51,11 @@
 						type="date" name="txtFechaNacimiento">
 				</div>
 				<div class="form-group">
-					<label>Género</label> <input class="form-control" type="text"
-						name="txtGenero">
+					<label>Género</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">Masculino</option>
+					  <option value="2">Femenino</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Email</label> <input class="form-control" type="email"
@@ -63,17 +69,17 @@
 					<label>Dirección</label> <input class="form-control" type="text"
 						name="txtDireccion">
 				</div>
-				<div class="form-group">
-					<label>Estado Civil</label> <input class="form-control" type="text"
-						name="txtEstadoCivil">
-				</div>
+
 				<div class="form-group">
 					<label>Fecha de Ingreso</label> <input class="form-control"
 						type="date" name="txtFechaIngreso">
 				</div>
 				<div class="form-group">
-					<label>Estado</label> <input class="form-control" type="text"
-						name="txtEstado">
+					<label>Estado</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">Matriculado</option>
+					  <option value="2">Retirado</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"
