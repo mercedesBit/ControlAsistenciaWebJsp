@@ -16,12 +16,13 @@
 
 	<section class="section dashboard">
 		<div class="row">
-			<h3>Registrar Profesor</h3>
-
 			<form action="../ProfesorServlet?tipo=regist" method="post">
 				<div class="form-group">
-					<label>Tipo de Documento</label> <input class="form-control"
-						type="text" name="txtTipoDocumento" required>
+					<label>Tipo de Documento</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">DNI</option>
+					  <option value="2">Carné de extranjería</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
@@ -68,16 +69,22 @@
 						type="number" name="txtHorasDocencia" required>
 				</div>
 				<div class="form-group">
-					<label>Estado</label> <input class="form-control" type="text"
-						name="txtEstado" required>
+					<label>Estado</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">Contratado</option>
+					  <option value="2">Con cese laboral</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Dirección</label> <input class="form-control" type="text"
 						name="txtDireccion" required>
 				</div>
 				<div class="form-group">
-					<label>Modalidad de Trabajo</label> <input class="form-control"
-						type="text" name="txtModalidadTrabajo" required>
+					<label>Modalidad de trabajo</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">Presencial</option>
+					  <option value="2">Remota</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"
