@@ -73,6 +73,19 @@
                     %>
 				</tbody>
 			</table>
+			
+<%
+    String error = (String) session.getAttribute("error");
+    if (error != null) {
+%>
+    <p style="color: red;"><%= error %></p>
+<%
+        session.removeAttribute("error"); // Eliminar el mensaje después de mostrarlo
+    }
+%>
+
+
+			
 		</div>
 	</section>
 </main>

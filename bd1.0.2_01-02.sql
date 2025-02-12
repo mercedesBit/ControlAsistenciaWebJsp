@@ -164,15 +164,43 @@ CREATE TABLE Horario (
 -- Crear tabla Horario_Estudiante
 CREATE TABLE Horario_Estudiante (
     EstudianteID INT,                               -- Referencia al Estudiante
-    HorarioID INT,                                  -- Referencia al Horario
+    HorarioID INT,     
+    Nombres VARCHAR(100),
+    Apellidos VARCHAR(100),
+    -- Referencia al Horario
     PRIMARY KEY (EstudianteID, HorarioID),          -- Clave primaria compuesta por EstudianteID y HorarioID
     FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID) ON DELETE CASCADE ON UPDATE CASCADE, -- Relaciona con la tabla Estudiante
     FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)ON DELETE CASCADE ON UPDATE CASCADE           -- Relaciona con la tabla Horario
 );
 
+
+
+
+DELIMITER //
+CREATE TRIGGER llenar_nombres_apellidos BEFORE INSERT ON Horario_Estudiante
+FOR EACH ROW
+BEGIN
+    DECLARE nombre_estudiante VARCHAR(100);
+    DECLARE apellido_estudiante VARCHAR(100);
+
+    -- Obtener los nombres y apellidos del estudiante
+    SELECT Nombres, Apellidos INTO nombre_estudiante, apellido_estudiante
+    FROM Estudiante WHERE EstudianteID = NEW.EstudianteID;
+
+    -- Asignar los valores al nuevo registro
+    SET NEW.Nombres = nombre_estudiante;
+    SET NEW.Apellidos = apellido_estudiante;
+END;
+//
+DELIMITER ;
+
+
+
+
 -- Crear tabla ASISTENCIA_ESTUDIANTE
 CREATE TABLE ASISTENCIA_ESTUDIANTE (
     AsistenciaID INT PRIMARY KEY AUTO_INCREMENT,
+    NombreCompleto Varchar(300),
     EstudianteID INT,                                 -- Referencia al Estudiante
     HorarioID INT,                                   -- Referencia al Horario
     EstadoAsistencia ENUM('Asistió', 'Inasistencia', 'Inasistencia Justificada') NOT NULL, 
@@ -371,13 +399,10 @@ VALUES
 (5, 'Quinto ciclo'),
 (6, 'Sexto ciclo ');
 
--- Insertar datos en la tabla Curso
-INSERT INTO Curso (CodigoCurso, NombreCurso, Descripcion, Duracion, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro, FechaActualizacion)
+-- Insertar daStos en la tabla Curso
+INSERT INTO Curso (CodigoCurso, NombreCurso, Descripcion, Creditos, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro, FechaActualizacion)
 VALUES ('CS101', 'Introducción a la Programación', 'Curso de introducción a la programación en Java', 5, 1, 'Básico', 'Activo', 'Ninguno', '2025-03-01', 'admin', '2025-03-01');
 
--- Insertar datos en la tabla Asistencia
-INSERT INTO Asistencia (EstudianteID, CursoID, PersonalID, HoraAsistencia, Estado, Comentario, TipoAsistencia, FechaRegistro, UsuarioRegistro, FechaActualizacion)
-VALUES (1, 1, 1, CURTIME(), 'Presente', 'Sin observaciones', 'Presencial', CURDATE(), 'admin', CURDATE());
 
 -- Insertar datos en la tabla Horario
 INSERT INTO Horario (CursoID, ProfesorID, SeccionID, DiaSemana, HoraInicioFin, FechaInicio, FechaFin, MaxEstudiantes, Modalidad, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
@@ -388,34 +413,34 @@ VALUES
 -- Insertar datos en la tabla Horario_Estudiante
 INSERT INTO Horario_Estudiante (EstudianteID, HorarioID)
 VALUES 
-(1, 1),  -- Juan Pérez, Horario 1
-(2, 1),  -- María Gómez, Horario 1
-(3, 1),  -- Carlos Martínez, Horario 1
-(4, 2),  -- Ana Ramírez, Horario 2
-(5, 2),  -- Luis Sánchez, Horario 2
-(6, 2),  -- Patricia Fernández, Horario 2
-(7, 1),  -- Miguel Díaz, Horario 1
-(8, 2),  -- Lucía Torres, Horario 2
-(9, 1);  -- Andrés Vega, Horario 1
+(1, 2),  -- Juan Pérez, Horario 1
+(2, 2),  -- María Gómez, Horario 1
+(3, 2),  -- Carlos Martínez, Horario 1
+(4, 1),  -- Ana Ramírez, Horario 2
+(5, 1),  -- Luis Sánchez, Horario 2
+(6, 1),  -- Patricia Fernández, Horario 2
+(7, 2),  -- Miguel Díaz, Horario 1
+(8, 1),  -- Lucía Torres, Horario 2
+(9, 2);  -- Andrés Vega, Horario 1
 
 -- Insertar datos en la tabla ASISTENCIA_ESTUDIANTE
 INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
 VALUES 
-(1, 1, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin'),
-(1, 1, 'Inasistencia Justificada', 'Problemas de salud', '2025-03-02', 'admin'),
-(1, 1, 'Asistió', 'Clase introductoria - sesión 2', '2025-03-03', 'admin'),
-(1, 1, 'Asistió', 'Clase de nivelación', '2025-03-04', 'admin'),
-(1, 1, 'Asistió', 'Clase de nivelación - sesión 1', '2025-03-05', 'admin'),
-(1, 1, 'Inasistencia', 'No pudo asistir por motivos personales', '2025-03-06', 'admin'),
-(1, 1, 'Asistió', 'Clase introductoria - sesión 3', '2025-03-07', 'admin'),
-(1, 1, 'Asistió', 'Clase introductoria - sesión 4', '2025-03-08', 'admin'),
-(1, 1, 'Inasistencia Justificada', 'Problemas familiares', '2025-03-09', 'admin'),
-(1, 1, 'Asistió', 'Clase de nivelación - sesión 2', '2025-03-10', 'admin');
+(1, 2, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin'),
+(1, 2, 'Inasistencia Justificada', 'Problemas de salud', '2025-03-02', 'admin'),
+(1, 2, 'Asistió', 'Clase introductoria - sesión 2', '2025-03-03', 'admin'),
+(1, 2, 'Asistió', 'Clase de nivelación', '2025-03-04', 'admin'),
+(1, 2, 'Asistió', 'Clase de nivelación - sesión 1', '2025-03-05', 'admin'),
+(1, 2, 'Inasistencia', 'No pudo asistir por motivos personales', '2025-03-06', 'admin'),
+(1, 2, 'Asistió', 'Clase introductoria - sesión 3', '2025-03-07', 'admin'),
+(1, 2, 'Asistió', 'Clase introductoria - sesión 4', '2025-03-08', 'admin'),
+(1, 2, 'Inasistencia Justificada', 'Problemas familiares', '2025-03-09', 'admin'),
+(1, 2, 'Asistió', 'Clase de nivelación - sesión 2', '2025-03-10', 'admin');
 
 -- Insertar datos en la tabla ASISTENCIA_ESTUDIANTE para un solo estudiante (EstudianteID = 1)
 INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
 VALUES 
-(2, 1, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin');
+(1, 2, 'Asistió', 'Clase introductoria - sesión 1', '2025-03-01', 'admin');
 
 -- Insertar datos en la tabla Matricula
 INSERT INTO Matricula (Codigo_Matricula, id_estudiante, id_horario, Fecha_Matricula, Estado_Matricula, Observaciones, Modo_Matricula, Ciclo) 

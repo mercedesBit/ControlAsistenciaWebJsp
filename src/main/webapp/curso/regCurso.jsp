@@ -41,17 +41,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="duracion">Créditos</label> <input type="number"
-						class="form-control" id="duracion" name="duracion" required>
+					<label for="creditos">Créditos</label> <input type="number"
+						class="form-control" id="creditos" name="creditos" required>
 				</div>
 
 
 				
-<!-- <div class="form-group">
-					<label for="grado">Ciclo</label> <input type="text"
-						class="form-control" id="ciclo" name="ciclo" required>
-				</div>
-				 -->
+
 
 
   <div class="mb-3">

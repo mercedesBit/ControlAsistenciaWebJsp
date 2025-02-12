@@ -16,6 +16,8 @@ public class CursoModel implements CursoInterface {
 		int resultado = 0;
 		try {
 			conn = MySqlConexion.getConexion();
+			
+			
 			String sql = "INSERT INTO Curso (CursoID, CodigoCurso, NombreCurso, Descripcion, Creditos, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro) "
 					+ "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
 			PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -29,17 +31,7 @@ public class CursoModel implements CursoInterface {
 			pst.setString(8, curso.getNotas());
 			pst.setDate(9, new java.sql.Date(curso.getFechaRegistro().getTime()));
 			pst.setString(10, curso.getUsuarioRegistro());
-		/*
-			// pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
-			// pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
-			pst.setString(8, curso.getRequisitosPrevios());
-			pst.setInt(9, curso.getCantidadMaximaEstudiantes());
-			pst.setString(10, curso.getModalidad());
-			// pst.setInt(13, curso.getSeccionID());
-			// pst.setString(14, curso.getTemario());
-			// pst.setString(15, curso.getHorario());
-			pst.setString(8, curso.getNotas());
-			// pst.setInt(17, curso.getProfesorID());*/
+	
 		
 
 			resultado = pst.executeUpdate();
@@ -61,7 +53,7 @@ public class CursoModel implements CursoInterface {
 		int resultado = 0;
 		try {
 			conn = MySqlConexion.getConexion();
-			String sql = "UPDATE Curso SET CodigoCurso=?, NombreCurso=?, Descripcion=?,Duracion=?,  Ciclo=?, Nivel=?, Estado=?, Notas=?, FechaActualizacion=? WHERE CursoID=?";
+			String sql = "UPDATE Curso SET CodigoCurso=?, NombreCurso=?, Descripcion=?,Creditos=?,  Ciclo=?, Nivel=?, Estado=?, Notas=?, FechaActualizacion=? WHERE CursoID=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, curso.getCodigoCurso());
 			pst.setString(2, curso.getNombreCurso());
@@ -73,18 +65,7 @@ public class CursoModel implements CursoInterface {
 			pst.setString(8, curso.getNotas());
 			pst.setDate(9, new java.sql.Date(curso.getFechaActualizacion().getTime()));	
 			pst.setInt(10, curso.getCursoID());
-			/*
-			 * 		// pst.setDate(7, new java.sql.Date(curso.getFechaInicio().getTime()));
-			// pst.setDate(8, new java.sql.Date(curso.getFechaFin().getTime()));
-			pst.setString(8, curso.getRequisitosPrevios());
-			pst.setInt(9, curso.getCantidadMaximaEstudiantes());
-			pst.setString(10, curso.getModalidad());
-			// pst.setInt(13, curso.getSeccionID());
-			// pst.setString(14, curso.getTemario());
-			// pst.setString(15, curso.getHorario());
-			 			// pst.setInt(17, curso.getProfesorID());
-			 // pst.setDate(12, new java.sql.Date(System.currentTimeMillis()));
-			 * */
+		
 			 
 			resultado = pst.executeUpdate();
 			pst.close();
