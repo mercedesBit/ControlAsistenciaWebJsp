@@ -317,16 +317,17 @@ VALUES ('Administrador'), ('Profesor'), ('Estudiante'), ('Personal Administrativ
 INSERT INTO Usuarios (NombreUsuario, Contrasena, RoleID, FechaRegistro, Estado)
 VALUES ('admin', 'password123', 1, CURDATE(), 'Activo');
 
+-- Agregado por Patrick, Inserción de un docente en la tabla Usuarios
+use bd_control_asistencia_alumnadoPRUEBA;
+
+INSERT INTO Usuarios (NombreUsuario, Contrasena, RoleID, FechaRegistro, Estado)
+values ('luisgomez', 'luguz123', 2, CURDATE(), 'Activo')
 
 -- AGRREGADO POR TONY-- Insertar datos en la tabla Asistencia
 
 INSERT INTO Asistencia (EstudianteID, CursoID, PersonalID, HoraAsistencia, Estado, Comentario, TipoAsistencia, FechaRegistro, UsuarioRegistro, FechaActualizacion)
 VALUES (1, 1, 1, CURTIME(), 'Presente', 'Sin observaciones', 'Presencial', CURDATE(), 'admin', CURDATE());
  
-
-
-
-
 
 CREATE TABLE Horario (
     HorarioID INT AUTO_INCREMENT PRIMARY KEY,        -- Identificador del horario

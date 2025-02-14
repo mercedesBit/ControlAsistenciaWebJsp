@@ -1,10 +1,14 @@
 package entidades;
 
-public class Usuario {
+import java.sql.Date;
+
+public class Usuario{
     private int usuarioID;
     private String nombreUsuario;
     private String contrasena;
+    private Rol rol;
     private int roleID;
+    private Date fechaRegistro;
     private String estado;
 
     // Getters
@@ -18,10 +22,6 @@ public class Usuario {
 
     public String getContrasena() {
         return contrasena;
-    }
-
-    public int getRoleID() {
-        return roleID;
     }
 
     public String getEstado() {
@@ -41,11 +41,31 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
-    }
-
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public int getRoleID() {
+		return roleID;
+	}
+
+	public void setRoleID(int roleID) {
+		this.roleID = roleID;
+	}
 }

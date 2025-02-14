@@ -63,42 +63,10 @@
 				</a></li>
 				<%}	%>
 			</ul> <%
-				if(rol.equals("Administrador")) {
-					%>
-				
-      	 <a class="nav-link collapsed"
-			data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-				<i class="bi bi-menu-button-wide"></i><span>Mantenimientos</span><i
-				class="bi bi-chevron-down ms-auto"></i>
-		</a>
-			<ul id="components-nav" class="nav-content collapse"
-				data-bs-parent="#sidebar-nav">
-				<li><a
-					href="<%= request.getContextPath() %>/EstudianteServlet?tipo=list">
-						<i class="bi bi-circle"></i><span>Estudiante</span>
-				</a></li>
-				<li><a
-					href="<%= request.getContextPath() %>/ProfesorServlet?tipo=list">
-						<i class="bi bi-circle"></i><span>Profesor</span>
-				</a></li>
-				<li><a
-					href="<%= request.getContextPath() %>/CursoServlet?tipo=listar">
-						<i class="bi bi-circle"></i><span>Curso</span>
-				</a></li>
-				<li><a
-					href="<%= request.getContextPath() %>/SeccionServlet?tipo=listar">
-						<i class="bi bi-circle"></i><span>Seccion</span>
-				</a></li>
-				
-				<li><a href="<%= request.getContextPath() %>/PadresTutoresServlet?tipo=list">
-						<i class="bi bi-circle"></i><span>Padres</span>
-				</a></li>
-				
-				<li><a href="<%= request.getContextPath() %>/ServletUsuarios?tipo=list">
-						<i class="bi bi-circle"></i><span>Usuarios</span>
-				</a></li>
-				
-			</ul> <a class="nav-link collapsed"
+				if(rol.equals("Administrador")){
+				%>
+         	  
+         	<a class="nav-link collapsed"
 			data-bs-target="#components-navReporte" data-bs-toggle="collapse"
 			href="#"> <i class="bi bi-card-list"></i><span>Reportes</span><i
 				class="bi bi-chevron-down ms-auto"></i>

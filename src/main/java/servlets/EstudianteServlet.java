@@ -36,7 +36,6 @@ public class EstudianteServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tipo = request.getParameter("tipo");
-        
         switch(tipo) {
         case "list" : listEstudiante(request, response); break;
         case "regist" : registEstudiante(request, response); break;
@@ -52,7 +51,6 @@ public class EstudianteServlet extends HttpServlet {
 
     protected void listEstudiante(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         EstudianteModel model = new EstudianteModel();
-        
         List<Estudiante> lista = model.listEstudiante();
         
         request.setAttribute("lista", lista);

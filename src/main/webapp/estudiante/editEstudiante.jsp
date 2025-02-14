@@ -30,9 +30,13 @@
 					value="<%=(estudiante != null) ? estudiante.getEstudianteID() : ""%>">
 
 				<div class="form-group">
-					<label class="text-secondary">Tipo de Documento</label> <input
-						class="form-control" type="text" name="txtTipoDocumento"
-						value="<%=(estudiante != null) ? estudiante.getTipoDocumento() : ""%>">
+					<label class="text-secondary">Tipo de Documento</label>
+						
+					<select class="form-select" aria-label="Default select example" value="<%=(estudiante != null) ? estudiante.getTipoDocumento() : ""%>">
+
+					  <option value="1">DNI</option>
+					  <option value="2">Carné de extranjería</option>
+					</select>	
 				</div>
 
 				<div class="form-group">
@@ -85,16 +89,9 @@
 				</div>
 
 				<div class="form-group">
-					<label class="text-secondary">Estado Civil</label> <input
-						class="form-control" type="text" name="txtEstadoCivil"
-						value="<%=(estudiante != null) ? estudiante.getEstadoCivil() : ""%>">
-				</div>
-
-				<div class="form-group">
 					<label class="text-secondary">Fecha de Ingreso</label> <input
 						class="form-control" type="date" name="txtFechaIngreso"
-						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : ""
-		: ""%>">
+						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : "": ""%>">
 				</div>
 
 				<div class="form-group">

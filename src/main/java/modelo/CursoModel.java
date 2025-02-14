@@ -153,10 +153,6 @@ public class CursoModel implements CursoInterface {
 				curso.setUsuarioRegistro(rs.getString("UsuarioRegistro"));
 				curso.setFechaActualizacion(rs.getDate("FechaActualizacion"));
 			
-	
-				
-				
-		
 			}
 			rs.close();
 			pst.close();
