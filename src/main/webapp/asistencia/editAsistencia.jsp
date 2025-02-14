@@ -25,7 +25,7 @@
 					<input type="hidden" name="asistenciaID" id="asistenciaID" value="${asistenciaEstudiante.asistenciaID}">
 
 			<div class="col-md-6 mb-3">
-    <label for="estado" class="form-label">Estado de Asistencia</label>
+    <label for="estado" class="form-label">Estado  </label>
     <select class="form-control" id="estado" name="estado" required>
         <option value="Asistencia" ${asistenciaEstudiante.estadoAsistencia == 'Asistencia' ? 'selected' : ''}>Asistencia</option>
         <option value="Inasistencia" ${asistenciaEstudiante.estadoAsistencia == 'Inasistencia' ? 'selected' : ''}>Inasistencia</option>
