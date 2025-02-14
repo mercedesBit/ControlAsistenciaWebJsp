@@ -15,4 +15,5 @@ public interface AsistenciaInterface {
     public int eliminarAsistencia(List<Asistencia> lstAsistencia);
     public int eliminarAsistencia(int id);
     List<Asistencia> obtenerAsistenciaPorTipoAndFecha(String tipoAsistencia, Date fecha);
+	
 }

@@ -19,5 +19,13 @@ public interface AsistenciaEstudianteDAO {
     List<HorarioEstudiante> listHorario();
     
 
-    List<AsistenciaEstudiante> obtenerAsistencia(int horarioID, int estudianteID);
+	List<AsistenciaEstudiante> obtenerAsistencia(String horarioIDParam, String estudianteIDParam);
+	
+	AsistenciaEstudiante obtenerPorID(int asistenciaID);
+
+
+	int eliminar(int asistenciaID);
+
+
+	int actualizar(AsistenciaEstudiante asistenciaEstudiante);
 }

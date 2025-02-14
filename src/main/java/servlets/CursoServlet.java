@@ -117,6 +117,8 @@ public class CursoServlet extends HttpServlet {
 		request.getRequestDispatcher("curso/detCurso.jsp").forward(request, response);
 	}
 
+	
+	
 	private void registrarCurso(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String codigoCurso = request.getParameter("codigoCurso");

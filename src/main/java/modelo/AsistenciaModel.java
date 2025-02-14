@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import interfaces.AsistenciaInterface;
 import util.MySqlConexion;
 
 public class AsistenciaModel implements AsistenciaInterface{
-
+	private Connection conn;
 	@Override
 	public List<Asistencia> listAsistencia() {
 		// TODO Auto-generated method stub
@@ -27,15 +28,15 @@ public class AsistenciaModel implements AsistenciaInterface{
 	@Override
 	public int registrarAsistencia(List<Asistencia> lstAsistencia) {
 		  int value = 0;
-		    Connection cn = null;
+		    
 		    PreparedStatement psm = null;
 		    
 		    try {
-		        cn = MySqlConexion.getConexion();
+		        conn = MySqlConexion.getConexion();
 		        
 		        for(Asistencia asistencia : lstAsistencia) {
 		        	String sql = "Insert into asistencia values(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			        psm = cn.prepareStatement(sql);
+			        psm = conn.prepareStatement(sql);
 		        	psm.setInt(1, asistencia.getEstudiante().getEstudianteID());
 		        	psm.setInt(2, asistencia.getCurso().getCursoID());
 		        	psm.setInt(3, 1);
@@ -53,7 +54,7 @@ public class AsistenciaModel implements AsistenciaInterface{
 		        e.printStackTrace();
 		    } finally {
 		        try { 
-		            if(cn != null) cn.close();
+		            if(conn != null) conn.close();
 		            if(psm != null) psm.close();
 		        } catch(Exception e) {
 		            e.printStackTrace();
@@ -65,15 +66,15 @@ public class AsistenciaModel implements AsistenciaInterface{
 	@Override
 	public List<Asistencia> obtenerAsistencia(Curso curso, Date fechaInicial, Date fechaFinal) {
 		 List<Asistencia> listAsistencia = new ArrayList<Asistencia>();
-		    Connection cn = null;
+		  
 			CallableStatement stmt = null;
 		    ResultSet rs = null;
 		    
 		    try {
-		        cn = MySqlConexion.getConexion();
+		        conn = MySqlConexion.getConexion();
 		        String sql = "CALL usp_obtener_asistencia(?,?,?)";//PROCEDIMIENTO ALMACENADO
 	  
-		        stmt = (CallableStatement) cn.prepareCall(sql);
+		        stmt = (CallableStatement) conn.prepareCall(sql);
 				stmt.setInt(1, curso.getCursoID());
 				stmt.setDate(2, fechaInicial);
 				stmt.setDate(3, fechaFinal);
@@ -115,7 +116,7 @@ public class AsistenciaModel implements AsistenciaInterface{
 		    } finally {
 		        try {
 		            if(rs != null) rs.close();
-		            if(cn != null) cn.close();
+		            if(conn != null) conn.close();
 		            if(stmt != null) stmt.close();
 		        } catch(Exception e) {
 		            e.printStackTrace();
@@ -128,15 +129,15 @@ public class AsistenciaModel implements AsistenciaInterface{
 	@Override
 	public List<Asistencia> obtenerAsistenciaPorTipoAndFecha(String tipoAsistencia, Date fecha) {
 		 List<Asistencia> listAsistencia = new ArrayList<Asistencia>();
-		    Connection cn = null;
+		   
 			CallableStatement stmt = null;
 		    ResultSet rs = null;
 		    
 		    try {
-		        cn = MySqlConexion.getConexion();
+		        conn = MySqlConexion.getConexion();
 		        String sql = "CALL usp_obtener_asistencia_por_tipo_fecha(?,?)";
 	  
-		        stmt = (CallableStatement) cn.prepareCall(sql);
+		        stmt = (CallableStatement) conn.prepareCall(sql);
 				stmt.setString(1, tipoAsistencia);
 				stmt.setDate(2, fecha);
 				rs = stmt.executeQuery();
@@ -177,7 +178,7 @@ public class AsistenciaModel implements AsistenciaInterface{
 		    } finally {
 		        try {
 		            if(rs != null) rs.close();
-		            if(cn != null) cn.close();
+		            if(conn != null) conn.close();
 		            if(stmt != null) stmt.close();
 		        } catch(Exception e) {
 		            e.printStackTrace();
@@ -186,6 +187,8 @@ public class AsistenciaModel implements AsistenciaInterface{
 		            
 		    return listAsistencia;
 	}
+	
+	
 	@Override
 	public int editarAsistencia(List<Asistencia> lstAsistencia) {
 		// TODO Auto-generated method stub
@@ -224,5 +227,10 @@ public class AsistenciaModel implements AsistenciaInterface{
 		    
 		    return value;
 	}
+
+
+	
+	
+	
 
 }
