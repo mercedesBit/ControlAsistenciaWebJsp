@@ -66,11 +66,8 @@
 						type="number" name="txtHorasDocencia" required>
 				</div>
 				<div class="form-group">
-					<label>Estado</label>
-					<select class="form-select" aria-label="Default select example">
-					  <option value="1">Contratado</option>
-					  <option value="2">Con cese laboral</option>
-					</select>
+					<label>Estado</label> <input class="form-control" type="text"
+						name="txtEstado" required>
 				</div>
 				<div class="form-group">
 					<label>Dirección</label> <input class="form-control" type="text"
