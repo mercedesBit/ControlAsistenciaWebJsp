@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import entidades.Rol;
 import entidades.Usuario;
+import modelo.EstudianteModel;
 import modelo.MySqlUsuarioDAO;
 
 /**
@@ -53,7 +54,7 @@ public class ServletUsuarios extends HttpServlet {
 
 	private void registUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String nombreUsuario= request.getParameter("txtNombreUsuario");
-		String 	contraseña=request.getParameter("txtContraseña");
+		String 	contraseña=request.getParameter("txtContrasena");
 		int roleID=Integer.parseInt(request.getParameter("txtRoleID"));
 		String estado=request.getParameter("txtEstado");
 		
@@ -86,23 +87,31 @@ public class ServletUsuarios extends HttpServlet {
 	}
 	private void modificarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 int idUsuario = Integer.parseInt(request.getParameter("id"));
+	       
+	     MySqlUsuarioDAO model = new MySqlUsuarioDAO();
+	     Usuario usuario = model.obtenerUsuario(idUsuario);
 	        
-	        MySqlUsuarioDAO model = new MySqlUsuarioDAO();
-	        
-	        Usuario usuario = model.obtenerUsuario(idUsuario);
-	        
-	        request.setAttribute("usuarioData", usuario);
-	        request.getRequestDispatcher("usuario/editUsuario.jsp").forward(request, response);
+	     request.setAttribute("usuarioData", usuario);
+	     request.getRequestDispatcher("usuario/editUsuario.jsp").forward(request, response);
 	}
 	
-	private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        MySqlUsuarioDAO model = new MySqlUsuarioDAO();
+        int value = model.eliminarUsuario(id);
+        
+        if(value == 1) {
+            listarUsuario(request, response);          
+        } else {
+            request.setAttribute("mensaje", "Ocurrio un problema");
+            request.getRequestDispatcher("usuario/listUsuario.jsp").forward(request, response);         
+        }
 		
 	}
 	private void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("idUsuario"));
+		int id = Integer.parseInt(request.getParameter("txtidUsuario"));
         String nombreUsuario = request.getParameter("txtNombreUsuario");
-		String contraseña=request.getParameter("txtContraseña");
+		String contraseña=request.getParameter("txtContrasena");
 		int roleID = Integer.parseInt(request.getParameter("txtRoleID"));
 		String estado=request.getParameter("txtEstado");
 		

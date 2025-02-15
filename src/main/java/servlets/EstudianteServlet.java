@@ -110,7 +110,6 @@ public class EstudianteServlet extends HttpServlet {
         int idEstudiante = Integer.parseInt(request.getParameter("id"));
         
         EstudianteModel model = new EstudianteModel();
-        
         Estudiante estudiante = model.obtenerEstudiante(idEstudiante);
         
         request.setAttribute("estudianteData", estudiante);
@@ -121,7 +120,6 @@ public class EstudianteServlet extends HttpServlet {
         int idEstudiante = Integer.parseInt(request.getParameter("id"));
         
         EstudianteModel model = new EstudianteModel();
-        
         Estudiante estudiante = model.obtenerEstudiante(idEstudiante);
         
         request.setAttribute("estudianteData", estudiante);

@@ -26,7 +26,7 @@
 
 		<div class="row">
 
-			<form action="../EstudianteServlet?tipo=regist" method="post">
+			<form action="../ServletUsuarios?tipo=regist" method="post">
 				
 				<div class="form-group">
 					<label>Nombre de usuario</label> <input class="form-control"
@@ -34,20 +34,20 @@
 				</div>
 				<div class="form-group">
 					<label>Contraseña</label> <input class="form-control" type="text"
-						name="txtContraseña">
+						name="txtContrasena">
 				</div>
 
 				<div class="form-group">
-					<label>Rol</label> <select id="txtTutorID"
-						name="txtTutorID" class="form-control">
+					<label>Rol</label> <select id="txtRoleID"
+						name="txtRoleID" class="form-control">
 						<option value="">Rol</option>
 						<%
 						 MySqlRolDAO model = new MySqlRolDAO();
 						List<Rol> lista = model.listRol();
 						for (Rol obj : lista) {
 						%>
-						<option value="<%=obj.getTutorID()%>">
-							<%=obj.getNombres() + " " + obj.getApellidos()%>
+						<option value="<%=obj.getRoleID()%>">
+							<%=obj.getNombreRole()%>
 						</option>
 						<%
 						}
@@ -55,10 +55,14 @@
 					</select>
 
 				</div>
+				<div class="form-group">
+					<label>Estado</label> <input class="form-control" type="text"
+						name="txtEstado">
+				</div>
 				<br>
 				<div class="button">
 					<input type="submit" class="btn btn-danger" value="Registrar">
-					<a href="../EstudianteServlet?tipo=list" role="button"
+					<a href="../ServletUsuarios?tipo=list" role="button"
 						class="btn btn-secondary">Listar</a>
 				</div>
 			</form>

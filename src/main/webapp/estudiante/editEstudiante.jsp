@@ -30,13 +30,8 @@
 					value="<%=(estudiante != null) ? estudiante.getEstudianteID() : ""%>">
 
 				<div class="form-group">
-					<label class="text-secondary">Tipo de Documento</label>
-						
-					<select class="form-select" aria-label="Default select example" value="<%=(estudiante != null) ? estudiante.getTipoDocumento() : ""%>">
-
-					  <option value="1">DNI</option>
-					  <option value="2">Carné de extranjería</option>
-					</select>	
+					<label>Tipo de Documento</label> <input class="form-control"
+						type="text" name="txtTipoDocumento">
 				</div>
 
 				<div class="form-group">

@@ -104,7 +104,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 				usua = new Usuario();
 				usua.setUsuarioID(rs.getInt("UsuarioID"));
 				usua.setNombreUsuario(rs.getString("NombreUsuario"));
-				usua.setContrasena(rs.getString("Contraseña"));
+				usua.setContrasena(rs.getString("Contrasena"));
 				
 				Rol rol= new Rol();
 		        rol.setRoleID(rs.getInt("RoleID"));
@@ -134,14 +134,14 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 		PreparedStatement pstm = null;
 		try {
 			cn=MySqlConexion.getConexion();
-			String sql="update usuarios set NombreUsuario=?, Contrasena=?, RoleID=?, FechaRegistro=?, Estado=? where UsuarioID=?"; // ? --> Parámetros
+			String sql="Update usuarios set NombreUsuario=?, Contrasena=?, RoleID=?, FechaRegistro=?, Estado=? where UsuarioID=?"; // ? --> Parámetros
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, user.getNombreUsuario());
 			pstm.setString(2, user.getContrasena());
 			pstm.setInt(3, user.getRol().getRoleID());
 			pstm.setDate(4, new java.sql.Date(System.currentTimeMillis()));
 			pstm.setString(5, user.getEstado());
-			pstm.setInt(5, user.getUsuarioID());
+			pstm.setInt(6, user.getUsuarioID());
 
 			// Paso 5: Ejecutar pstm y guardar su valor de retorno en la variable salida
 			salida = pstm.executeUpdate();

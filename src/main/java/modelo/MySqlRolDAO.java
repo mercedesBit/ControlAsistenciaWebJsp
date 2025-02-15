@@ -15,7 +15,7 @@ public class MySqlRolDAO implements RolDAO{
 
 	@Override
 	public List<Rol> listRol() {
-		List<Rol> roles=new ArrayList<>();
+		List<Rol> roles=new ArrayList<Rol>();
 		String sql="SELECT * FROM roles";
 		try(Connection con=MySqlConexion.getConexion();
 				PreparedStatement ps = con.prepareStatement(sql);

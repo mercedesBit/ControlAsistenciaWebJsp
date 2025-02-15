@@ -15,7 +15,7 @@
 		<h1>Registrar Estudiante</h1>
 		<nav>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+				<li class="breadcrumb-item"><a href="<%= request.getContextPath() %>/index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">Inicio</li>
 			</ol>
 		</nav>
@@ -27,13 +27,11 @@
 		<div class="row">
 
 			<form action="../EstudianteServlet?tipo=regist" method="post">
-				<label>Tipo de documento</label>
-					<select class="form-select" aria-label="Default select example">
-					  <option value="1">DNI</option>
-					  <option value="2">Carné de extranjería</option>
-					</select>
+				<div class="form-group">
+					<label>Tipo de Documento</label> <input class="form-control"
+						type="text" name="txtTipoDocumento">
+				</div>
 						
-				
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
 						type="text" name="txtNumeroDocumento">
@@ -51,11 +49,8 @@
 						type="date" name="txtFechaNacimiento">
 				</div>
 				<div class="form-group">
-					<label>Género</label>
-					<select class="form-select" aria-label="Default select example">
-					  <option value="1">Masculino</option>
-					  <option value="2">Femenino</option>
-					</select>
+					<label>Género</label> <input class="form-control" type="text"
+						name="txtGenero">
 				</div>
 				<div class="form-group">
 					<label>Email</label> <input class="form-control" type="email"

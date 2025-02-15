@@ -18,11 +18,8 @@
 		<div class="row">
 			<form action="../ProfesorServlet?tipo=regist" method="post">
 				<div class="form-group">
-					<label>Tipo de Documento</label>
-					<select class="form-select" aria-label="Default select example">
-					  <option value="1">DNI</option>
-					  <option value="2">Carné de extranjería</option>
-					</select>
+					<label>Tipo de Documento</label> <input class="form-control"
+						type="text" name="txtTipoDocumento" required>
 				</div>
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
@@ -79,12 +76,9 @@
 					<label>Dirección</label> <input class="form-control" type="text"
 						name="txtDireccion" required>
 				</div>
-				<div class="form-group">
-					<label>Modalidad de trabajo</label>
-					<select class="form-select" aria-label="Default select example">
-					  <option value="1">Presencial</option>
-					  <option value="2">Remota</option>
-					</select>
+			<div class="form-group">
+					<label>Modalidad de Trabajo</label> <input class="form-control"
+						type="text" name="txtModalidadTrabajo" required>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"
