@@ -52,7 +52,7 @@
 
   <div class="mb-3">
         <label for="grado" class="form-label">Ciclo:</label>
-        <select name="ciclo" id="ciclo" class="form-select " >
+        <select name="ciclo" id="ciclo" class="form-select " required>
             <% 
                 // Recuperamos la lista de ciclos del request
                 @SuppressWarnings("unchecked")

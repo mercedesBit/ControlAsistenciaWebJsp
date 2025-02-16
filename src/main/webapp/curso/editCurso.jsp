@@ -53,9 +53,6 @@
 						</div>
 					</div>
 
-
-
-
 					<div class="row">
 
 						<div class="col-md-6 mb-3">
@@ -64,13 +61,10 @@
 								value="${curso.nivel}" required>
 						</div>
 
-
-
-
 						<div class="col-md-6 mb-3">
 							<label for="ciclo" class="text-secondary">Selecciona un
 								ciclo:</label> <select name="ciclo" id="ciclo"
-								class="form-select">
+								class="form-select" required>
 								<%
 								@SuppressWarnings("unchecked")
 								List<Curso> ciclos = (List<Curso>) request.getAttribute("ciclos");
@@ -86,13 +80,7 @@
 								%>
 							</select>
 						</div>
-
 					</div>
-				
-
-
-
-
 
 				<div class="row">
 				
@@ -113,9 +101,6 @@
 
 				</div>
 
-
-
-
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="fechaRegistro" class="form-label">Fecha de
@@ -123,7 +108,6 @@
 							id="fechaRegistro" name="fechaRegistro"
 							value="${curso.fechaRegistro}" readonly>
 					</div>
-
 
 					<div class="col-md-6 mb-3">
 						<label for="usuarioRegistro" class="form-label">Usuario de

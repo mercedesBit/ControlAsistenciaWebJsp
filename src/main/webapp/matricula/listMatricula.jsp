@@ -44,9 +44,6 @@
 	                        for (Matricula item : listaMatriculas) {
 	                %>
 	                <tr>
-	                
-	             
-	                
 	                    <td><%= item.getCodigoMatricula() %></td>
 	                    <td><%= item.getEstudiante().getNombres() + " " + item.getEstudiante().getApellidos() %></td>
 	                    <td><%= item.getHorario() != null ? "Curso: " + item.getHorario().getNombreCurso() + "     -     " +"\n Profesor: "+ item.getHorario().getNombreProfesor() + " "+item.getHorario().getApellidoProfesor() +"  Días: " + item.getHorario().getDiaSemana()  : "Sin horario" %></td>
@@ -55,7 +52,6 @@
 	                    <td><%= item.getObservaciones() %></td>
 	                    <td><%= item.getModoMatricula() %></td>
 	                    <td><%= item.getCiclo() %></td>
-                       
                     </tr>
                     <%              
                             }

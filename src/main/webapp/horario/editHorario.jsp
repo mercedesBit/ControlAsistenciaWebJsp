@@ -28,7 +28,7 @@
                 
                 <div class="form-group">
                     <label>Curso</label>
-                    <select name="txtCursoID" class="form-control">
+                    <select name="txtCursoID" class="form-control" required>
                         <% for (Curso obj : cursoModel.listarTodos()) { %>
                         <option value="<%=obj.getCursoID()%>" <%= (horario != null && obj.getCursoID() == horario.getCursoID()) ? "selected" : "" %>>
                             <%=obj.getNombreCurso()%>
@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                     <label>Profesor</label>
-                    <select name="txtProfesorID" class="form-control">
+                    <select name="txtProfesorID" class="form-control" required>
                         <% for (Profesor obj : profesorModel.listProfesor()) { %>
                         <option value="<%=obj.getProfesorID()%>" <%= (horario != null && obj.getProfesorID() == horario.getProfesorID()) ? "selected" : "" %>>
                             <%=obj.getNombres() + " " + obj.getApellidos()%>
@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <label>Sección</label>
-                    <select name="txtSeccionID" class="form-control">
+                    <select name="txtSeccionID" class="form-control" required>
                         <% for (Seccion obj : seccionModel.listarTodos()) { %>
                         <option value="<%=obj.getSeccionID()%>" <%= (horario != null && obj.getSeccionID() == horario.getSeccionID()) ? "selected" : "" %>>
                             <%=obj.getNombreSeccion()%>
@@ -61,37 +61,37 @@
 
                 <div class="form-group">
                     <label>Día de la Semana</label>
-                    <input class="form-control" type="text" name="txtDiaSemana" value="<%=(horario != null) ? horario.getDiaSemana() : ""%>">
+                    <input class="form-control" type="text" name="txtDiaSemana" value="<%=(horario != null) ? horario.getDiaSemana() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Hora de Inicio y Fin</label>
-                    <input class="form-control" type="text" name="txtHoraInicioFin" value="<%=(horario != null) ? horario.getHoraInicioFin() : ""%>">
+                    <input class="form-control" type="text" name="txtHoraInicioFin" value="<%=(horario != null) ? horario.getHoraInicioFin() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Fecha de Inicio</label>
-                    <input class="form-control" type="date" name="txtFechaInicio" value="<%=(horario != null && horario.getFechaInicio() != null) ? horario.getFechaInicio().toString() : ""%>">
+                    <input class="form-control" type="date" name="txtFechaInicio" value="<%=(horario != null && horario.getFechaInicio() != null) ? horario.getFechaInicio().toString() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Fecha de Fin</label>
-                    <input class="form-control" type="date" name="txtFechaFin" value="<%=(horario != null && horario.getFechaFin() != null) ? horario.getFechaFin().toString() : ""%>">
+                    <input class="form-control" type="date" name="txtFechaFin" value="<%=(horario != null && horario.getFechaFin() != null) ? horario.getFechaFin().toString() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Máximo de Estudiantes</label>
-                    <input class="form-control" type="text" name="txtMaxEstudiantes" value="<%=(horario != null) ? horario.getMaxEstudiantes() : ""%>">
+                    <input class="form-control" type="text" name="txtMaxEstudiantes" value="<%=(horario != null) ? horario.getMaxEstudiantes() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Modalidad</label>
-                    <input class="form-control" type="text" name="txtModalidad" value="<%=(horario != null) ? horario.getModalidad() : ""%>">
+                    <input class="form-control" type="text" name="txtModalidad" value="<%=(horario != null) ? horario.getModalidad() : ""%>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Estado</label>
-                    <input class="form-control" type="text" name="txtEstado" value="<%=(horario != null) ? horario.getEstado() : ""%>">
+                    <input class="form-control" type="text" name="txtEstado" value="<%=(horario != null) ? horario.getEstado() : ""%>" required>
                 </div>
 
                 <br>

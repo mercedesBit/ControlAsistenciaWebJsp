@@ -1,9 +1,5 @@
-<%@page import="modelo.CursoModel"%>
-<%@page import="modelo.ProfesorModel"%>
-<%@page import="modelo.SeccionModel"%>
-<%@page import="entidades.Curso"%>
-<%@page import="entidades.Profesor"%>
-<%@page import="entidades.Seccion"%>
+<%@page import="modelo.*"%>
+<%@page import="entidades.*"%>
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -27,7 +23,7 @@
             <form action="../HorarioServlet?tipo=regist" method="post">
                 <div class="form-group">
                     <label>Curso</label>
-                    <select name="txtCursoID" class="form-control">
+                    <select name="txtCursoID" class="form-control" required>
                         <option value="">Selecciona un curso</option>
                         <% CursoModel modelC = new CursoModel();
                            List<Curso> listaC = modelC.listarTodos();
@@ -39,7 +35,7 @@
 
                 <div class="form-group">
                     <label>Profesor</label>
-                    <select name="txtProfesorID" class="form-control">
+                    <select name="txtProfesorID" class="form-control" required>
                         <option value="">Selecciona un profesor</option>
                         <% ProfesorModel modelP = new ProfesorModel();
                            List<Profesor> listaP = modelP.listProfesor();
@@ -51,7 +47,7 @@
 
                 <div class="form-group">
                     <label>Sección</label>
-                    <select name="txtSeccionID" class="form-control">
+                    <select name="txtSeccionID" class="form-control" required>
                         <option value="">Selecciona una sección</option>
                         <% SeccionModel modelS = new SeccionModel();
                            List<Seccion> listaS = modelS.listarTodos();
@@ -63,32 +59,32 @@
 
                 <div class="form-group">
                     <label>Día de la Semana</label>
-                    <input class="form-control" type="text" name="txtDiaSemana">
+                    <input class="form-control" type="text" name="txtDiaSemana" required>
                 </div>
 
                 <div class="form-group">
                     <label>Hora Inicio - Fin</label>
-                    <input class="form-control" type="text" name="txtHoraInicioFin">
+                    <input class="form-control" type="text" name="txtHoraInicioFin" required>
                 </div>
 
                 <div class="form-group">
                     <label>Fecha de Inicio</label>
-                    <input class="form-control" type="date" name="txtFechaInicio">
+                    <input class="form-control" type="date" name="txtFechaInicio" required>
                 </div>
 
                 <div class="form-group">
                     <label>Fecha de Fin</label>
-                    <input class="form-control" type="date" name="txtFechaFin">
+                    <input class="form-control" type="date" name="txtFechaFin" required>
                 </div>
 
                 <div class="form-group">
                     <label>Máximo de Estudiantes</label>
-                    <input class="form-control" type="number" name="txtMaxEstudiantes">
+                    <input class="form-control" type="number" name="txtMaxEstudiantes" required>
                 </div>
 
                 <div class="form-group">
 				    <label>Modalidad</label>
-				    <select name="txtModalidad" class="form-control">
+				    <select name="txtModalidad" class="form-control" required>
 				        <option value="">Selecciona una modalidad</option>
 				        <option value="Presencial">Presencial</option>
 				        <option value="Virtual">Virtual</option>
@@ -98,7 +94,7 @@
 				
 				<div class="form-group">
 				    <label>Estado</label>
-				    <select name="txtEstado" class="form-control">
+				    <select name="txtEstado" class="form-control" required>
 				        <option value="">Selecciona un estado</option>
 				        <option value="Activo">Activo</option>
 				        <option value="Inactivo">Inactivo</option>

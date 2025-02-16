@@ -72,38 +72,28 @@
 			
 			 <div class="mb-3">
             <label for="estudianteID" class="form-label">Seleccionar Estudiante:</label>
-            <select class="form-select" name="estudianteID" id="estudianteID">
-					<%
-						@SuppressWarnings("unchecked")
-						List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
-								.getAttribute("listaHorarioEstudiante");
-						String estudianteSeleccionado = request.getParameter("estudianteID");
-	
-						if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
-							for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
-					%>
-					<option value="<%=estudiante.getEstudianteID()%>"
-						<%=(estudianteSeleccionado != null && estudianteSeleccionado.equals(String.valueOf(estudiante.getEstudianteID())))
-				? "selected"
-				: ""%>>
-				<%="I2025-" + estudiante.getEstudianteID()%> 
-						<%=estudiante.getNombre()%>
-						<%=estudiante.getApellido()%>
-						
-					</option>
-					<%
-					}
-					} else {
-					%>
-					<option value="">Seleccione un horario para ver los
-						estudiantes</option>
-					<%
-					}
-					%>
-				</select>
+            <select class="form-select" name="estudianteID" id="estudianteID" onchange="this.form.submit()">
+			    <option value="" disabled selected>Seleccione el estudiante</option>
+			    <%
+			    @SuppressWarnings("unchecked")
+			    List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request.getAttribute("listaHorarioEstudiante");
+			    String estudianteSeleccionado = request.getParameter("estudianteID");
+			
+			    if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
+			        for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
+			    %>
+			            <option value="<%= estudiante.getEstudianteID() %>"
+			                <%= (estudianteSeleccionado != null && estudianteSeleccionado.equals(String.valueOf(estudiante.getEstudianteID()))) 
+			                    ? "selected" 
+			                    : "" %>>
+			                <%= estudiante.getNombre() %> <%= estudiante.getApellido() %>
+			            </option>
+			    <%
+			        }
+			    }
+			    %>
+			</select>
 			</div>
-			   <button type="submit" class="btn btn-primary">Buscar Asistencia</button>
-
 		</form>
 
 <br>

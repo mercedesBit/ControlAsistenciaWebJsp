@@ -24,11 +24,7 @@
         <div class="row">
             <%
                 Horario horario = (Horario) request.getAttribute("horarioData");
-                
-                
-                
-
-
+  
             %>
 
             <form>

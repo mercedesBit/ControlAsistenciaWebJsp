@@ -32,19 +32,19 @@
 				<div class="form-group">
 					<label class="text-secondary">Nombre de usuario</label> <input
 						class="form-control" type="text" name="txtNombreUsuario"
-						value="<%=(usuario != null) ? usuario.getNombreUsuario() : ""%>">
+						value="<%=(usuario != null) ? usuario.getNombreUsuario() : ""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Contraseña</label> <input
 						class="form-control" type="text" name="txtContrasena"
-						value="<%=(usuario != null) ? usuario.getContrasena() : ""%>">
+						value="<%=(usuario != null) ? usuario.getContrasena() : ""%>" required>
 				</div>
 
 				<!-- Información sobre el rol del usuario -->
 				<div class="form-group">
 					<label class="text-secondary">Rol</label> <select id="txtRoleID"
-						name="txtRoleID" class="form-control">
+						name="txtRoleID" class="form-control" required>
 						<option value="">Selecciona rol</option>
 						<%
 						int selectedRoleID= (usuario != null && usuario.getRol() != null) ? usuario.getRol().getRoleID() : 0;
@@ -67,7 +67,7 @@
 				<div class="form-group">
 					<label class="text-secondary">Estado</label> <input
 						class="form-control" type="text" name="txtEstado"
-						value="<%=(usuario != null) ? usuario.getEstado() : ""%>">
+						value="<%=(usuario != null) ? usuario.getEstado() : ""%>" required>
 				</div>
 
 				<br>

@@ -20,55 +20,55 @@
 			<form action="../PadresTutoresServlet?tipo=regist" method="post">
 				<div class="form-group">
 					<label>Tipo de Documento</label> <input class="form-control"
-						type="text" name="txtTipoDocumento">
+						type="text" name="txtTipoDocumento" required>
 				</div>
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
-						type="text" name="txtNumeroDocumento">
+						type="text" name="txtNumeroDocumento" required>
 				</div>
 				<div class="form-group">
 					<label>Nombres</label> <input class="form-control" type="text"
-						name="txtNombres">
+						name="txtNombres" required>
 				</div>
 				<div class="form-group">
 					<label>Apellidos</label> <input class="form-control" type="text"
-						name="txtApellidos">
+						name="txtApellidos" required>
 				</div>
 				<div class="form-group">
 					<label>Correo Electrónico</label> <input class="form-control"
-						type="email" name="txtCorreoElectronico">
+						type="email" name="txtCorreoElectronico" required>
 				</div>
 				<div class="form-group">
 					<label>Teléfono Móvil</label> <input class="form-control"
-						type="text" name="txtTelefonoMovil">
+						type="text" name="txtTelefonoMovil" required>
 				</div>
 				<div class="form-group">
 					<label>Teléfono Casa</label> <input class="form-control"
-						type="text" name="txtTelefonoCasa">
+						type="text" name="txtTelefonoCasa" required>
 				</div>
 				<div class="form-group">
 					<label>Dirección</label> <input class="form-control" type="text"
-						name="txtDireccion">
+						name="txtDireccion" required>
 				</div>
 				<div class="form-group">
 					<label>Relación con el Estudiante</label> <input
-						class="form-control" type="text" name="txtRelacionEstudiante">
+						class="form-control" type="text" name="txtRelacionEstudiante" required>
 				</div>
 				<div class="form-group">
 					<label>Fecha de Nacimiento</label> <input class="form-control"
-						type="date" name="txtFechaNacimiento">
+						type="date" name="txtFechaNacimiento" required>
 				</div>
 				<div class="form-group">
 					<label>Ocupación</label> <input class="form-control" type="text"
-						name="txtOcupacion">
+						name="txtOcupacion" required>
 				</div>
 				<div class="form-group">
 					<label>Estado</label> <input class="form-control" type="text"
-						name="txtEstado">
+						name="txtEstado" required>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"
-						type="text" name="txtRedesSociales">
+						type="text" name="txtRedesSociales" required>
 				</div>
 				<br>
 				<div class="button">

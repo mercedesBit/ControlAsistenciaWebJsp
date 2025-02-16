@@ -31,86 +31,86 @@
 
 				<div class="form-group">
 					<label>Tipo de Documento</label> <input class="form-control"
-						type="text" name="txtTipoDocumento">
+						type="text" name="txtTipoDocumento"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Número de Documento</label> <input
 						class="form-control" type="text" name="txtNumeroDocumento"
-						value="<%=(estudiante != null) ? estudiante.getNumeroDocumento() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getNumeroDocumento() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Nombres</label> <input
 						class="form-control" type="text" name="txtNombres"
-						value="<%=(estudiante != null) ? estudiante.getNombres() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getNombres() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Apellidos</label> <input
 						class="form-control" type="text" name="txtApellidos"
-						value="<%=(estudiante != null) ? estudiante.getApellidos() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getApellidos() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Fecha de Nacimiento</label> <input
 						class="form-control" type="date" name="txtFechaNacimiento"
 						value="<%=(estudiante != null) ? estudiante.getFechaNacimiento() != null ? estudiante.getFechaNacimiento().toString() : ""
-				: ""%>">
+				: ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Género</label> <input
 						class="form-control" type="text" name="txtGenero"
-						value="<%=(estudiante != null) ? estudiante.getGenero() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getGenero() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Email</label> <input
 						class="form-control" type="email" name="txtEmail"
-						value="<%=(estudiante != null) ? estudiante.getEmail() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getEmail() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Teléfono</label> <input
 						class="form-control" type="text" name="txtTelefono"
-						value="<%=(estudiante != null) ? estudiante.getTelefono() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getTelefono() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Dirección</label> <input
 						class="form-control" type="text" name="txtDireccion"
-						value="<%=(estudiante != null) ? estudiante.getDireccion() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getDireccion() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Fecha de Ingreso</label> <input
 						class="form-control" type="date" name="txtFechaIngreso"
-						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : "": ""%>">
+						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : "": ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Estado</label> <input
 						class="form-control" type="text" name="txtEstado"
-						value="<%=(estudiante != null) ? estudiante.getEstado() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getEstado() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Redes Sociales</label> <input
 						class="form-control" type="text" name="txtRedesSociales"
-						value="<%=(estudiante != null) ? estudiante.getRedesSociales() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getRedesSociales() : ""%>"  required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Emergencia Contacto</label> <input
 						class="form-control" type="text" name="txtEmergenciaContacto"
-						value="<%=(estudiante != null) ? estudiante.getEmergenciaContacto() : ""%>">
+						value="<%=(estudiante != null) ? estudiante.getEmergenciaContacto() : ""%>"  required>
 				</div>
 
 				<!-- Información sobre el Tutor -->
 				<div class="form-group">
 					<label class="text-secondary">Tutor</label> <select id="txtTutorID"
-						name="txtTutorID" class="form-control">
+						name="txtTutorID" class="form-control"  required>
 						<option value="">Selecciona una opción</option>
 						<%
 						int selectedTutorID = (estudiante != null && estudiante.getTutor() != null) ? estudiante.getTutor().getTutorID() : 0;

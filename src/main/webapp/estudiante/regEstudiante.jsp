@@ -29,64 +29,64 @@
 			<form action="../EstudianteServlet?tipo=regist" method="post">
 				<div class="form-group">
 					<label>Tipo de Documento</label> <input class="form-control"
-						type="text" name="txtTipoDocumento">
+						type="text" name="txtTipoDocumento"  required>
 				</div>
 						
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
-						type="text" name="txtNumeroDocumento">
+						type="text" name="txtNumeroDocumento"  required>
 				</div>
 				<div class="form-group">
 					<label>Nombres</label> <input class="form-control" type="text"
-						name="txtNombres">
+						name="txtNombres"  required>
 				</div>
 				<div class="form-group">
 					<label>Apellidos</label> <input class="form-control" type="text"
-						name="txtApellidos">
+						name="txtApellidos"  required>
 				</div>
 				<div class="form-group">
 					<label>Fecha de Nacimiento</label> <input class="form-control"
-						type="date" name="txtFechaNacimiento">
+						type="date" name="txtFechaNacimiento"  required>
 				</div>
 				<div class="form-group">
 					<label>Género</label> <input class="form-control" type="text"
-						name="txtGenero">
+						name="txtGenero"  required>
 				</div>
 				<div class="form-group">
 					<label>Email</label> <input class="form-control" type="email"
-						name="txtEmail">
+						name="txtEmail"  required>
 				</div>
 				<div class="form-group">
 					<label>Teléfono</label> <input class="form-control" type="text"
-						name="txtTelefono">
+						name="txtTelefono"  required>
 				</div>
 				<div class="form-group">
 					<label>Dirección</label> <input class="form-control" type="text"
-						name="txtDireccion">
+						name="txtDireccion"  required>
 				</div>
 
 				<div class="form-group">
 					<label>Fecha de Ingreso</label> <input class="form-control"
-						type="date" name="txtFechaIngreso">
+						type="date" name="txtFechaIngreso"  required>
 				</div>
 				<div class="form-group">
 					<label>Estado</label>
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select" aria-label="Default select example"  required>
 					  <option value="1">Matriculado</option>
 					  <option value="2">Retirado</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"
-						type="text" name="txtRedesSociales">
+						type="text" name="txtRedesSociales"  required>
 				</div>
 				<div class="form-group">
 					<label>Emergencia Contacto</label> <input class="form-control"
-						type="text" name="txtEmergenciaContacto">
+						type="text" name="txtEmergenciaContacto"  required>
 				</div>
 				<div class="form-group">
 					<label>Id Tutor o Padre</label> <select id="txtTutorID"
-						name="txtTutorID" class="form-control">
+						name="txtTutorID" class="form-control"  required>
 						<option value="">Selecciona una opción</option>
 						<%
 						PadresTutoresModel model = new PadresTutoresModel();

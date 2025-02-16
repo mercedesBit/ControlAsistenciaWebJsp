@@ -29,79 +29,79 @@
 				<div class="form-group">
 					<label class="text-secondary">Tipo de Documento</label> <input
 						class="form-control" type="text" name="txtTipoDocumento"
-						value="<%=(tutor != null)? tutor.getTipoDocumento():""%>">
+						value="<%=(tutor != null)? tutor.getTipoDocumento():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Número de Documento</label> <input
 						class="form-control" type="text" name="txtNumeroDocumento"
-						value="<%=(tutor != null)? tutor.getNumeroDocumento():""%>">
+						value="<%=(tutor != null)? tutor.getNumeroDocumento():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Nombres</label> <input
 						class="form-control" type="text" name="txtNombres"
-						value="<%=(tutor != null)? tutor.getNombres():""%>">
+						value="<%=(tutor != null)? tutor.getNombres():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Apellidos</label> <input
 						class="form-control" type="text" name="txtApellidos"
-						value="<%=(tutor != null)? tutor.getApellidos():""%>">
+						value="<%=(tutor != null)? tutor.getApellidos():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Correo Electrónico</label> <input
 						class="form-control" type="email" name="txtCorreoElectronico"
-						value="<%=(tutor != null)? tutor.getCorreoElectronico():""%>">
+						value="<%=(tutor != null)? tutor.getCorreoElectronico():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Teléfono Móvil</label> <input
 						class="form-control" type="text" name="txtTelefonoMovil"
-						value="<%=(tutor != null)? tutor.getTelefonoMovil():""%>">
+						value="<%=(tutor != null)? tutor.getTelefonoMovil():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Teléfono Casa</label> <input
 						class="form-control" type="text" name="txtTelefonoCasa"
-						value="<%=(tutor != null)? tutor.getTelefonoCasa():""%>">
+						value="<%=(tutor != null)? tutor.getTelefonoCasa():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Dirección</label> <input
 						class="form-control" type="text" name="txtDireccion"
-						value="<%=(tutor != null)? tutor.getDireccion():""%>">
+						value="<%=(tutor != null)? tutor.getDireccion():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Relación con el Estudiante</label> <input
 						class="form-control" type="text" name="txtRelacionEstudiante"
-						value="<%=(tutor != null)? tutor.getRelacionEstudiante():""%>">
+						value="<%=(tutor != null)? tutor.getRelacionEstudiante():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Fecha de Nacimiento</label> <input
 						class="form-control" type="date" name="txtFechaNacimiento"
-						value="<%=(tutor != null)? tutor.getFechaNacimiento() != null ? tutor.getFechaNacimiento().toString() : "" : "" %>">
+						value="<%=(tutor != null)? tutor.getFechaNacimiento() != null ? tutor.getFechaNacimiento().toString() : "" : "" %>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Ocupación</label> <input
 						class="form-control" type="text" name="txtOcupacion"
-						value="<%=(tutor != null)? tutor.getOcupacion():""%>">
+						value="<%=(tutor != null)? tutor.getOcupacion():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Estado</label> <input
 						class="form-control" type="text" name="txtEstado"
-						value="<%=(tutor != null)? tutor.getEstado():""%>">
+						value="<%=(tutor != null)? tutor.getEstado():""%>" required>
 				</div>
 
 				<div class="form-group">
 					<label class="text-secondary">Redes Sociales</label> <input
 						class="form-control" type="text" name="txtRedesSociales"
-						value="<%=(tutor != null)? tutor.getRedesSociales():""%>">
+						value="<%=(tutor != null)? tutor.getRedesSociales():""%>" required>
 				</div>
 
 				<br>

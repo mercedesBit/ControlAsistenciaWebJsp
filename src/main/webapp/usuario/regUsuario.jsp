@@ -30,17 +30,17 @@
 				
 				<div class="form-group">
 					<label>Nombre de usuario</label> <input class="form-control"
-						type="text" name="txtNombreUsuario">
+						type="text" name="txtNombreUsuario" required>
 				</div>
 				<div class="form-group">
 					<label>Contraseña</label> <input class="form-control" type="text"
-						name="txtContrasena">
+						name="txtContrasena" required>
 				</div>
 
 				<div class="form-group">
 					<label>Rol</label> <select id="txtRoleID"
-						name="txtRoleID" class="form-control">
-						<option value="">Rol</option>
+						name="txtRoleID" class="form-control" required>
+						<option value="">Selecciona un Rol</option>
 						<%
 						 MySqlRolDAO model = new MySqlRolDAO();
 						List<Rol> lista = model.listRol();
@@ -57,11 +57,11 @@
 				</div>
 				<div class="form-group">
 					<label>Estado</label> <input class="form-control" type="text"
-						name="txtEstado">
+						name="txtEstado" required>
 				</div>
 				<br>
 				<div class="button">
-					<input type="submit" class="btn btn-danger" value="Registrar">
+					<input type="submit" class="btn btn-danger" value="Registrar" required>
 					<a href="../ServletUsuarios?tipo=list" role="button"
 						class="btn btn-secondary">Listar</a>
 				</div>

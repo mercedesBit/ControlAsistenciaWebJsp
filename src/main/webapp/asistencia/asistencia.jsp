@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@page import="entidades.HorarioEstudiante"%>
 <%@page import="entidades.Estudiante"%>
 <%@page import="entidades.Horario"%>
@@ -12,7 +12,7 @@
 <main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>Lista de Asistencia por Estudiante</h1>
+		<h1>Registro de Asistencia por Alumno</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
@@ -22,34 +22,39 @@
 	</div>
 
 	<section class="section dashboard">
+
 		<div class="mt-4">
-			<form id="horarioForm" action="AsistenciaEstudianteServlet" method="get">
+			<form id="horarioForm" action="AsistenciaEstudianteServlet"
+				method="get">
 				<input type="hidden" name="tipo" value="listAsistenciaxAlumno">
+
+
 				<div class="mb-3">
+
 					<label for="horarioID" class="form-label">Seleccionar
 						Horario:</label> <select class="form-select" name="horarioID"
 						id="horarioID" onchange="this.form.submit()">
 						<option value="">Seleccione un horario</option>
 						<%
-							@SuppressWarnings("unchecked")
-							List<Horario> listaHorarios = (List<Horario>) request.getAttribute("listaHorario");
-							String horarioSeleccionado = request.getParameter("horarioID"); // Obtiene el horario seleccionado
-		
-							if (listaHorarios != null && !listaHorarios.isEmpty()) {
-								for (Horario item : listaHorarios) {
-							%>
-							<option value="<%=item.getHorarioID()%>"
-								<%=(horarioSeleccionado != null && horarioSeleccionado.equals(String.valueOf(item.getHorarioID()))) ? "selected" : ""%>>
-								<%="Curso: " + item.getNombreCurso() %> -
-								<%="Profesor: " + item.getNombreProfesor()%>
-								<%=item.getApellidoProfesor()%> -
-								<%=item.getDiaSemana()%> -
-								<%=item.getHoraInicioFin()%> - 
-									<%="Fecha de Inicio: " + item.getFechaInicio()%> -
-										<%="Fecha de Fin: " + item.getFechaFin()%>
-							</option>
-							<%
-							}
+						@SuppressWarnings("unchecked")
+						List<Horario> listaHorarios = (List<Horario>) request.getAttribute("listaHorario");
+						String horarioSeleccionado = request.getParameter("horarioID"); // Obtiene el horario seleccionado
+
+						if (listaHorarios != null && !listaHorarios.isEmpty()) {
+							for (Horario item : listaHorarios) {
+						%>
+						<option value="<%=item.getHorarioID()%>"
+							<%=(horarioSeleccionado != null && horarioSeleccionado.equals(String.valueOf(item.getHorarioID())))
+		? "selected"
+		: ""%>>
+							<%="Curso: " + item.getNombreCurso()%> -
+							<%="Profesor: " + item.getNombreProfesor()%>
+							<%=item.getApellidoProfesor()%> -
+							<%=item.getDiaSemana()%> -
+							<%=item.getHoraInicioFin()%>
+						</option>
+						<%
+						}
 						} else {
 						%>
 						<option value="">No hay horarios disponibles</option>
@@ -59,47 +64,41 @@
 					</select>
 				</div>
 				<br>
-	
-	
+
 				<div class="mb-3">
-					<label for="estudianteID" class="form-label">Seleccionar Estudiante:</label>
-					<select class="form-select" name="estudianteID" id="estudianteID">
+					<label for="estudianteID" class="form-label">Seleccionar
+						Estudiante:</label><select class="form-select" name="estudianteID"
+						id="estudianteID" onchange="this.form.submit()">
+						<option value="" disabled selected>Seleccione el
+							estudiante</option>
 						<%
-							@SuppressWarnings("unchecked")
-							List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
-									.getAttribute("listaHorarioEstudiante");
-							String estudianteSeleccionado = request.getParameter("estudianteID");
-		
-							if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
-								for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
+						@SuppressWarnings("unchecked")
+						List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
+								.getAttribute("listaHorarioEstudiante");
+						String estudianteSeleccionado = request.getParameter("estudianteID");
+
+						if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
+							for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
 						%>
 						<option value="<%=estudiante.getEstudianteID()%>"
 							<%=(estudianteSeleccionado != null && estudianteSeleccionado.equals(String.valueOf(estudiante.getEstudianteID())))
-					? "selected"
-					: ""%>>
-					<%="I2025-" + estudiante.getEstudianteID()%> 
+				? "selected"
+				: ""%>>
 							<%=estudiante.getNombre()%>
 							<%=estudiante.getApellido()%>
-							
 						</option>
 						<%
 						}
-						} else {
-						%>
-						<option value="">Seleccione un horario para ver los
-							estudiantes</option>
-						<%
 						}
 						%>
 					</select>
+
 				</div>
-				<button type="submit" class="btn btn-primary">Buscar
-					Asistencia</button>
-	
+
 			</form>
-	
+
 			<br>
-	
+
 		</div>
 		<%
 		String mensaje = (String) session.getAttribute("mensaje");
@@ -120,9 +119,7 @@
 		<%
 		}
 		%>
-	
-	
-	
+
 		<div class="row">
 			<%
 			@SuppressWarnings("unchecked")
@@ -130,7 +127,7 @@
 					.getAttribute("listaAsistenciaEstudiante");
 			String horarioID = request.getParameter("horarioID");
 			String estudianteID = request.getParameter("estudianteID");
-	
+
 			if ((horarioID == null || horarioID.isEmpty()) || (estudianteID == null || estudianteID.isEmpty())) {
 			%>
 			<p>Seleccione el horario y el estudiante.</p>
@@ -149,40 +146,32 @@
 			<%
 			} else {
 			%>
-	
-	
-	
-	
-	
+
 			<%
 			if (listaAsistenciaEstudiante != null && !listaAsistenciaEstudiante.isEmpty()) {
 				AsistenciaEstudiante asistencia = listaAsistenciaEstudiante.get(0);
 			%>
-	
-	
+
+
 			<!-- Formulario que envía los datos al servlet -->
 			<form action="AsistenciaEstudianteServlet?tipo=nuevo" method="POST">
 				<input type="hidden" name="horarioID"
-					value="<%=asistencia.getHorarioID()%>"> <input type="hidden"
-					name="estudianteID" value="<%=asistencia.getEstudianteID()%>">
+					value="<%=asistencia.getHorarioID()%>"> <input
+					type="hidden" name="estudianteID"
+					value="<%=asistencia.getEstudianteID()%>">
 				<button type="submit" class="btn btn-primary">Registrar
 					Asistencia</button>
 			</form>
-	
+
 			<%
 			} else {
 			%>
 			<p>No hay datos de asistencia disponibles.</p>
-	
+
 			<%
 			}
 			%>
-	
-	
-	
-	
-	
-	
+
 			<table class="table datatable">
 				<thead>
 					<tr>
@@ -196,14 +185,11 @@
 					</tr>
 				</thead>
 				<tbody>
-	
 					<tr>
 						<%
 						for (AsistenciaEstudiante asistencia : listaAsistenciaEstudiante) {
 						%>
-	
-	
-	
+
 						<td><%=asistencia.getFechaDeClase()%></td>
 						<td><%=asistencia.getDiaAsistencia()%></td>
 						<td><%=asistencia.getComentario()%></td>
@@ -222,16 +208,14 @@
 							onclick="return confirm('¿Está seguro de eliminar este curso?')">
 								<img alt="" src="image/ic_delete.svg" width="15" height="15"
 								title="Eliminar">
-						</a> 
-						</td>
-						
-						<td>
-						<a
+						</a></td>
+
+						<td><a
 							href="AsistenciaEstudianteServlet?tipo=aprobar&id=<%=asistencia.getAsistenciaID()%>">
 								<img alt="Aprobar"
 								src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
 								width="15" height="15" title="Aprobar">
-						</a>  <a
+						</a> <a
 							href="AsistenciaEstudianteServlet?tipo=rechazar&id=<%=asistencia.getAsistenciaID()%>">
 								<img alt="Rechazar"
 								src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png"
@@ -246,11 +230,15 @@
 			<%
 			}
 			%>
+
 		</div>
+
 	</section>
 
 </main>
+
 <%@ include file="../footer.jsp"%>
+
 <script>
 
 		
@@ -287,5 +275,6 @@ document.getElementById("asistenciaForm").addEventListener("submit", function(e)
         e.preventDefault();
         alert("Por favor seleccione tanto el horario como el estudiante antes de registrar la asistencia.");
     }
-});	
-	</script>
+});
+
+</script>

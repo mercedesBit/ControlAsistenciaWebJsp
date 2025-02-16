@@ -107,9 +107,7 @@
 				        <option value="Sexto Ciclo">Sexto Ciclo</option>
 				    </select>
 				</div>
-				
-				
-				
+
 				<br>
 				<div class="button">
 					<input type="submit" class="btn btn-danger" >
