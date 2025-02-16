@@ -170,6 +170,7 @@ public class AsistenciaServlet extends HttpServlet {
 
 
 		AsistenciaModel model = new AsistenciaModel();
+		@SuppressWarnings("unused")
 		int result = model.registrarAsistencia(listaAsistencias);
 		CursoModel cursoModel = new CursoModel();
 		List<Curso> cursos = cursoModel.listarTodos();
@@ -184,6 +185,7 @@ public class AsistenciaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		AsistenciaModel model = new AsistenciaModel();
+		@SuppressWarnings("unused")
 		int value = model.eliminarAsistencia(id);
 
 		CursoModel cursoModel = new CursoModel();

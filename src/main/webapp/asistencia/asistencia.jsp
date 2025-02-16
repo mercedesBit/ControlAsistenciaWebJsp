@@ -28,7 +28,7 @@
 	</div>
 
 
-	<section class="section dashboard"></section>
+	<section class="section dashboard">
 
 
 
@@ -82,6 +82,7 @@
 					Estudiante:</label> <select class="form-select" name="estudianteID"
 					id="estudianteID">
 					<%
+					@SuppressWarnings("unchecked")
 					List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
 							.getAttribute("listaHorarioEstudiante");
 					String estudianteSeleccionado = request.getParameter("estudianteID");
@@ -139,6 +140,7 @@
 
 	<div class="row">
 		<%
+		@SuppressWarnings("unchecked")
 		List<AsistenciaEstudiante> listaAsistenciaEstudiante = (List<AsistenciaEstudiante>) request
 				.getAttribute("listaAsistenciaEstudiante");
 		String horarioID = request.getParameter("horarioID");

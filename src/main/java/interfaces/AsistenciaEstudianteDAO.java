@@ -1,18 +1,10 @@
 package interfaces;
 
-import java.sql.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import entidades.Asistencia;
 import entidades.AsistenciaEstudiante;
-import entidades.Curso;
 //METODOS 
 import entidades.HorarioEstudiante;
-
-import java.util.List;
 
 public interface AsistenciaEstudianteDAO {
 	

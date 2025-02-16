@@ -3,22 +3,17 @@ package entidades;
 import java.sql.Date;
 import java.time.LocalDate;
 
-import entidades.Estudiante;
-
 public class AsistenciaEstudiante  {
 	
-	 private Estudiante estudiante; // Relación con Estudiante
-	 
-	    private Horario horario; // Relación con Horario
-	    private Curso curso; // Relación con Curso
+	private Estudiante estudiante; // Relación con Estudiante
+	private Horario horario; // Relación con Horario
+	private Curso curso; // Relación con Curso
 	
     private int asistenciaID;
     private int estudianteID;
     private int horarioID;
-    private String estadoAsistencia;
-    
+    private String estadoAsistencia;    
     private String comentario;
-    
     private Date fechaDeClase;
     private LocalDate fechaPrueba;
     

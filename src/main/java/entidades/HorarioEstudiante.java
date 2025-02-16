@@ -1,7 +1,5 @@
 package entidades;
 
-import java.sql.Date;
-
 public class HorarioEstudiante {
 	
 	    private int estudianteID;

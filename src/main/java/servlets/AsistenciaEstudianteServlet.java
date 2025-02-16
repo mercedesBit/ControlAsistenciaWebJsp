@@ -5,16 +5,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import entidades.AsistenciaEstudiante;
-import entidades.Curso;
-import entidades.Estudiante;
 import entidades.Horario;
 import entidades.HorarioEstudiante;
 import modelo.AsistenciaEstudianteModel;
-import modelo.AsistenciaModel;
-import modelo.EstudianteModel;
 import modelo.HorarioModel;
 import modelo.ReporteAsistenciaModel;
-import modelo.ReportePadresTutores;
 
 import java.io.*;
 import java.sql.Date;
@@ -24,14 +19,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.time.format.DateTimeParseException;
-
 @WebServlet("/AsistenciaEstudianteServlet")
 public class AsistenciaEstudianteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private AsistenciaEstudianteModel modelo = new AsistenciaEstudianteModel();
-
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -106,10 +96,10 @@ public class AsistenciaEstudianteServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	/*@Override
 	public void init() throws ServletException {
-		modelo = new AsistenciaEstudianteModel();
-	}
+		modelAsistencia = new AsistenciaEstudianteModel();
+	}*/
 
 	AsistenciaEstudianteModel modelAsistencia = new AsistenciaEstudianteModel();
 	

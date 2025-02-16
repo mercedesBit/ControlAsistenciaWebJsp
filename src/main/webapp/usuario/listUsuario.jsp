@@ -1,7 +1,6 @@
 <%@page import="entidades.Usuario"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
 
@@ -37,6 +36,7 @@
 
 				<tbody>
 					<%
+						@SuppressWarnings("unchecked")
                         List<Usuario> listaUsuarios = (List<Usuario>)request.getAttribute("lista");
                     
                         if(listaUsuarios != null){

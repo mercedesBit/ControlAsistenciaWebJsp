@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-
-
 <%@page import="entidades.HorarioEstudiante"%>
 <%@page import="entidades.Estudiante"%>
 <%@page import="entidades.Horario"%>
@@ -27,11 +25,7 @@
 	</div>
 
 
-	<section class="section dashboard"></section>
-
-
-
-
+	<section class="section dashboard">
 
 	<div class="container mt-4">
 		<form id="horarioForm" action="AsistenciaEstudianteServlet"
@@ -83,12 +77,13 @@
             <label for="estudianteID" class="form-label">Seleccionar Estudiante:</label>
             <select class="form-select" name="estudianteID" id="estudianteID">
 					<%
-					List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
-							.getAttribute("listaHorarioEstudiante");
-					String estudianteSeleccionado = request.getParameter("estudianteID");
-
-					if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
-						for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
+						@SuppressWarnings("unchecked")
+						List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
+								.getAttribute("listaHorarioEstudiante");
+						String estudianteSeleccionado = request.getParameter("estudianteID");
+	
+						if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
+							for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
 					%>
 					<option value="<%=estudiante.getEstudianteID()%>"
 						<%=(estudianteSeleccionado != null && estudianteSeleccionado.equals(String.valueOf(estudiante.getEstudianteID())))
@@ -117,34 +112,35 @@
 <br>
 
 	</div>
-<% String mensaje = (String) session.getAttribute("mensaje"); %>
-<% if (mensaje != null) { %>
+		<% String mensaje = (String) session.getAttribute("mensaje"); %>
+		<% if (mensaje != null) { %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <%= mensaje %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <% session.removeAttribute("mensaje"); %>  <!-- Eliminar para que no se repita -->
-<% } %>
+	    <% session.removeAttribute("mensaje"); %>  <!-- Eliminar para que no se repita -->
+		<% } %>
 
 
 
 <div class="row">
     <%
-    List<AsistenciaEstudiante> listaAsistenciaEstudiante = (List<AsistenciaEstudiante>) request.getAttribute("listaAsistenciaEstudiante");
-    String horarioID = request.getParameter("horarioID");
-    String estudianteID = request.getParameter("estudianteID");
-
-    if ((horarioID == null || horarioID.isEmpty()) || (estudianteID == null || estudianteID.isEmpty())) {
+	    @SuppressWarnings("unchecked")
+	    List<AsistenciaEstudiante> listaAsistenciaEstudiante = (List<AsistenciaEstudiante>) request.getAttribute("listaAsistenciaEstudiante");
+	    String horarioID = request.getParameter("horarioID");
+	    String estudianteID = request.getParameter("estudianteID");
+	
+	    if ((horarioID == null || horarioID.isEmpty()) || (estudianteID == null || estudianteID.isEmpty())) {
     %>
    
         <p>Seleccione el horario y el estudiante.</p>
     <%
-    } else if (listaAsistenciaEstudiante == null || listaAsistenciaEstudiante.isEmpty()) {
+    	} else if (listaAsistenciaEstudiante == null || listaAsistenciaEstudiante.isEmpty()) {
     %>
     
         <p>No hay registros de asistencia para este estudiante en este horario.</p>
     <%
-    } else {
+    	} else {
     %>
     
     
