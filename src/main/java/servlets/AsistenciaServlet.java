@@ -28,7 +28,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import entidades.Asistencia;
 import entidades.Curso;
 import entidades.Estudiante;
-import entidades.PersonalAdministrativo;
 import entidades.Profesor;
 import modelo.AsistenciaModel;
 import modelo.CursoModel;

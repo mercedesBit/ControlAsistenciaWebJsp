@@ -106,6 +106,9 @@
                 <li><a href="<%= request.getContextPath() %>/PadresTutoresServlet?tipo=list">
                     <i class="bi bi-circle"></i><span>Padres/Tutores</span>
                 </a></li>
+                <li><a href="<%= request.getContextPath() %>/ServletUsuarios?tipo=list">
+						<i class="bi bi-circle"></i><span>Usuarios</span>
+				</a></li>
             </ul>
 
             <a class="nav-link collapsed" data-bs-target="#components-navReporte" data-bs-toggle="collapse" href="#">
