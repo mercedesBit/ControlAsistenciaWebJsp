@@ -30,9 +30,8 @@
 					value="<%=(estudiante != null) ? estudiante.getEstudianteID() : ""%>">
 
 				<div class="form-group">
-					<label class="text-secondary">Tipo de Documento</label> <input
-						class="form-control" type="text" name="txtTipoDocumento"
-						value="<%=(estudiante != null) ? estudiante.getTipoDocumento() : ""%>">
+					<label>Tipo de Documento</label> <input class="form-control"
+						type="text" name="txtTipoDocumento">
 				</div>
 
 				<div class="form-group">
@@ -85,16 +84,9 @@
 				</div>
 
 				<div class="form-group">
-					<label class="text-secondary">Estado Civil</label> <input
-						class="form-control" type="text" name="txtEstadoCivil"
-						value="<%=(estudiante != null) ? estudiante.getEstadoCivil() : ""%>">
-				</div>
-
-				<div class="form-group">
 					<label class="text-secondary">Fecha de Ingreso</label> <input
 						class="form-control" type="date" name="txtFechaIngreso"
-						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : ""
-		: ""%>">
+						value="<%=(estudiante != null) ? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : "": ""%>">
 				</div>
 
 				<div class="form-group">

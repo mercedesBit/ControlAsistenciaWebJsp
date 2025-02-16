@@ -84,12 +84,6 @@
 				</div>
 
 				<div class="form-group">
-					<label class="text-secondary">Estado Civil</label> <input
-						class="form-control" type="text" name="txtEstadoCivil"
-						value="<%=(estudiante != null)? estudiante.getEstadoCivil():""%>" readonly>
-				</div>
-
-				<div class="form-group">
 					<label class="text-secondary">Fecha de Ingreso</label> <input
 						class="form-control" type="date" name="txtFechaIngreso"
 						value="<%=(estudiante != null)? estudiante.getFechaIngreso() != null ? estudiante.getFechaIngreso().toString() : "" : "" %>" readonly>

@@ -31,6 +31,7 @@
 					<label>Tipo de Documento</label> <input class="form-control"
 						type="text" name="txtTipoDocumento">
 				</div>
+						
 				<div class="form-group">
 					<label>Número de Documento</label> <input class="form-control"
 						type="text" name="txtNumeroDocumento">
@@ -63,17 +64,17 @@
 					<label>Dirección</label> <input class="form-control" type="text"
 						name="txtDireccion">
 				</div>
-				<div class="form-group">
-					<label>Estado Civil</label> <input class="form-control" type="text"
-						name="txtEstadoCivil">
-				</div>
+
 				<div class="form-group">
 					<label>Fecha de Ingreso</label> <input class="form-control"
 						type="date" name="txtFechaIngreso">
 				</div>
 				<div class="form-group">
-					<label>Estado</label> <input class="form-control" type="text"
-						name="txtEstado">
+					<label>Estado</label>
+					<select class="form-select" aria-label="Default select example">
+					  <option value="1">Matriculado</option>
+					  <option value="2">Retirado</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>Redes Sociales</label> <input class="form-control"

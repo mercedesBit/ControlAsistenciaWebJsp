@@ -16,8 +16,6 @@
 
 	<section class="section dashboard">
 		<div class="row">
-			<h3>Registrar Profesor</h3>
-
 			<form action="../ProfesorServlet?tipo=regist" method="post">
 				<div class="form-group">
 					<label>Tipo de Documento</label> <input class="form-control"
@@ -75,7 +73,7 @@
 					<label>Dirección</label> <input class="form-control" type="text"
 						name="txtDireccion" required>
 				</div>
-				<div class="form-group">
+			<div class="form-group">
 					<label>Modalidad de Trabajo</label> <input class="form-control"
 						type="text" name="txtModalidadTrabajo" required>
 				</div>
