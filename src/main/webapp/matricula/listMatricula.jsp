@@ -10,7 +10,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Matriculas</h1>
+        <h1>Lista de Estudiantes Matriculados</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>

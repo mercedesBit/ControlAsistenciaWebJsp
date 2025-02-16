@@ -11,7 +11,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Detalle Horario</h1>
+        <h1>Detalle de Horario</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>

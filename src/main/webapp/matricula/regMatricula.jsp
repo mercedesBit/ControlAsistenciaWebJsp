@@ -13,7 +13,7 @@
 <main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>Registrar Matrícula</h1>
+		<h1>Registrar Matrícula de Estudiante</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="../index.jsp">Home</a></li>

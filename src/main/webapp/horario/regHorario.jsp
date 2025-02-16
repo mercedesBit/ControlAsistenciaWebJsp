@@ -13,7 +13,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Registrar Horario</h1>
+        <h1>Registrar Horario de Curso</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<%= request.getContextPath() %>/index.jsp">Home</a></li>

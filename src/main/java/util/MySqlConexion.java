@@ -34,7 +34,5 @@ public class MySqlConexion {
 			System.out.println("Problemas al cerrar la conexion");
 		}
 	}
-	
-	
 
 }

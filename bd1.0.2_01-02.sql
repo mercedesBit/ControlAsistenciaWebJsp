@@ -1,5 +1,5 @@
-create database bd_control_asistencia_alumnadoPRUEBA;
-use bd_control_asistencia_alumnadoPRUEBA;
+create database bd_control_asistencia_alumnadoprueba;
+use bd_control_asistencia_alumnadoprueba;
 
 
 SHOW VARIABLES LIKE 'lc_time_names';

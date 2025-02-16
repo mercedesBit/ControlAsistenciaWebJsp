@@ -8,14 +8,11 @@
 
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
 
 <main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>Reporte de Asistencia por Alumno</h1>
+		<h1>Reporte de Asistencia por Estudiante</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
@@ -27,7 +24,7 @@
 
 	<section class="section dashboard">
 
-	<div class="container mt-4">
+	<div class="mt-4">
 		<form id="horarioForm" action="AsistenciaEstudianteServlet"
 			method="get">
 			 <input type="hidden" name="tipo"
