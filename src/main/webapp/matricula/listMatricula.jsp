@@ -24,7 +24,7 @@
             <table class="table datatable">
                 <thead>
                     <tr>
-                        <th>Código de Matrícula</th>
+                        <th>Código</th>
                         <th>Estudiante</th>
                         <th>Horario</th>
                         <th>Fecha Matrícula</th>
@@ -44,9 +44,12 @@
 	                        for (Matricula item : listaMatriculas) {
 	                %>
 	                <tr>
+	                
+	             
+	                
 	                    <td><%= item.getCodigoMatricula() %></td>
 	                    <td><%= item.getEstudiante().getNombres() + " " + item.getEstudiante().getApellidos() %></td>
-	                    <td><%= item.getHorario() != null ? item.getHorario().getDiaSemana() : "Sin horario" %></td>
+	                    <td><%= item.getHorario() != null ? "Curso: " + item.getHorario().getNombreCurso() + "     -     " +"\n Profesor: "+ item.getHorario().getNombreProfesor() + " "+item.getHorario().getApellidoProfesor() +"  Días: " + item.getHorario().getDiaSemana()  : "Sin horario" %></td>
 	                    <td><%= item.getFechaMatricula() != null ? item.getFechaMatricula().toString() : "No registrada" %></td>
 	                    <td><%= item.getEstadoMatricula() %></td>
 	                    <td><%= item.getObservaciones() %></td>

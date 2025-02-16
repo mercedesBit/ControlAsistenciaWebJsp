@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import entidades.Curso;
 import entidades.Estudiante;
 import entidades.Horario;
 import entidades.Matricula;
@@ -26,10 +27,12 @@ public class MatriculaModel implements MatriculaInterface{
 
 	    try {
 	        cn = MySqlConexion.getConexion();
-	        String sql = "SELECT m.codigo_matricula, e.nombres, e.apellidos, h.DiaSemana as Horario, m.fecha_matricula, m.estado_matricula, m.observaciones, m.modo_matricula, m.ciclo \r\n"
-	        		+ "FROM matricula m\r\n"
-	        		+ "JOIN estudiante e ON m.id_estudiante = e.EstudianteID\r\n"
-	        		+ "JOIN horario h ON m.id_horario = h.HorarioID";
+	        String sql = "SELECT m.codigo_matricula,c.NombreCurso,p.Nombres as nomProf , p.Apellidos as apeProf,  e.nombres, e.apellidos, h.DiaSemana as Horario, m.fecha_matricula, m.estado_matricula, m.observaciones, m.modo_matricula, m.ciclo \r\n"
+	        		+ " FROM matricula m\r\n"
+	        		+ "	JOIN estudiante e ON m.id_estudiante = e.EstudianteID\r\n"
+	        		+ "JOIN horario h ON m.id_horario = h.HorarioID\r\n"
+	        		+ "JOIN curso c ON c.CursoID = h.CursoID\r\n"
+	        		+ "JOIN profesor p ON p.ProfesorID = h.ProfesorID ";
 	        psm = cn.prepareStatement(sql);
 	        rs = psm.executeQuery();
 
@@ -40,9 +43,19 @@ public class MatriculaModel implements MatriculaInterface{
 	            estudiante.setNombres(rs.getString("nombres"));
 	            estudiante.setApellidos(rs.getString("apellidos"));
 	            reg.setEstudiante(estudiante);
+	            
+	            
 	            Horario horario = new Horario();
 	            horario.setDiaSemana(rs.getString("Horario"));
+	            horario.setNombreCurso(rs.getString("NombreCurso"));
+	            horario.setNombreProfesor(rs.getString("nomProf"));
+	            horario.setApellidoProfesor(rs.getString("apeProf"));
 	            reg.setHorario(horario);
+	            
+	            
+	            
+	       
+	            
 	            reg.setFechaMatricula(rs.getDate("fecha_matricula"));
 	            reg.setEstadoMatricula(rs.getString("estado_matricula"));
 	            reg.setObservaciones(rs.getString("observaciones"));

@@ -47,9 +47,9 @@
 						</div>
 
 						<div class="col-md-6 mb-3">
-							<label for="duracion" class="form-label">Duración (horas)</label>
-							<input type="number" class="form-control" id="duracion"
-								name="duracion" value="${curso.duracion}" required>
+							<label for="creditos" class="form-label">Créditos</label>
+							<input type="number" class="form-control" id="creditos"
+								name="creditos" value="${curso.creditos}" required>
 						</div>
 					</div>
 

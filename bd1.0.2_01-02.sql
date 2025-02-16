@@ -1,6 +1,9 @@
 create database bd_control_asistencia_alumnadoPRUEBA;
 use bd_control_asistencia_alumnadoPRUEBA;
 
+
+SHOW VARIABLES LIKE 'lc_time_names';
+SET SESSION lc_time_names = 'es_ES';
 SET lc_time_names = 'es_ES';
 
 -- Crear tabla Roles
@@ -161,10 +164,18 @@ CREATE TABLE Horario (
     FOREIGN KEY (SeccionID) REFERENCES Seccion(SeccionID)
 );
 
+  
+
+    
 -- Crear tabla Horario_Estudiante
 CREATE TABLE Horario_Estudiante (
     EstudianteID INT,                               -- Referencia al Estudiante
     HorarioID INT,     
+    codigo_matricula VARCHAR(50),
+       fecha_matricula DATE,
+    estado_matricula VARCHAR(20),
+    observaciones VARCHAR(100),         
+    modo_matricula VARCHAR(30), 
     Nombres VARCHAR(100),
     Apellidos VARCHAR(100),
     -- Referencia al Horario
@@ -172,6 +183,8 @@ CREATE TABLE Horario_Estudiante (
     FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID) ON DELETE CASCADE ON UPDATE CASCADE, -- Relaciona con la tabla Estudiante
     FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)ON DELETE CASCADE ON UPDATE CASCADE           -- Relaciona con la tabla Horario
 );
+
+
 
 
 
@@ -214,7 +227,8 @@ CREATE TABLE ASISTENCIA_ESTUDIANTE (
 );
 
 
-
+ 
+    
 CREATE TABLE Matricula (
     codigo_matricula VARCHAR(50) UNIQUE,  
     id_estudiante INT,
@@ -223,12 +237,41 @@ CREATE TABLE Matricula (
     estado_matricula VARCHAR(20),
     observaciones VARCHAR(100),         
     modo_matricula VARCHAR(30), 
-    ciclo VARCHAR(10),          
+    ciclo VARCHAR(30),          
     PRIMARY KEY (id_estudiante, id_horario),
     FOREIGN KEY (id_estudiante) REFERENCES Estudiante(EstudianteID),
     FOREIGN KEY (id_horario) REFERENCES Horario(HorarioID)
 );
 
+
+
+DELIMITER //
+
+CREATE TRIGGER trg_InsertHorarioEstudiante
+AFTER INSERT ON Matricula
+FOR EACH ROW
+BEGIN
+    INSERT INTO Horario_Estudiante (
+        EstudianteID, HorarioID, Nombres, Apellidos, codigo_matricula, 
+        fecha_matricula, estado_matricula, observaciones, modo_matricula
+    )
+    SELECT 
+        NEW.id_estudiante, 
+        NEW.id_horario, 
+        e.Nombres, 
+        e.Apellidos, 
+        NEW.codigo_matricula, 
+        NEW.fecha_matricula, 
+        NEW.estado_matricula, 
+        NEW.observaciones, 
+        NEW.modo_matricula
+    FROM Estudiante e
+    WHERE e.EstudianteID = NEW.id_estudiante;
+END;
+
+//
+
+DELIMITER ;
 /*** PROCEDIMIENTOS ALMACENADOS DE USUARIO ***/
 -- Procedimiento para obtener la asistencia
 DELIMITER $$
@@ -320,9 +363,12 @@ DELIMITER ;
 
 
 
--- Trigger para validar la fecha de incio y fin del curso segun el horario 
+
+
 DELIMITER $$
-CREATE TRIGGER ValidarFechaClase
+
+-- Trigger para validar fecha al insertar
+CREATE TRIGGER ValidarFechaClase_Insert
 BEFORE INSERT ON ASISTENCIA_ESTUDIANTE
 FOR EACH ROW
 BEGIN
@@ -336,10 +382,33 @@ BEGIN
 
     -- Verifica que la fecha de clase esté dentro del rango
     IF NEW.FECHADECLASE < fecha_inicio OR NEW.FECHADECLASE > fecha_fin THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La fecha de la clase está fuera del rango permitido.';
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Error: La fecha de la clase está fuera del rango permitido.';
     END IF;
 END $$
+
+-- Trigger para validar fecha al actualizar
+CREATE TRIGGER ValidarFechaClase_Update
+BEFORE UPDATE ON ASISTENCIA_ESTUDIANTE
+FOR EACH ROW
+BEGIN
+    DECLARE fecha_inicio DATE;
+    DECLARE fecha_fin DATE;
+
+    -- Obtiene las fechas de inicio y fin del horario
+    SELECT FechaInicio, FechaFin INTO fecha_inicio, fecha_fin
+    FROM Horario
+    WHERE HorarioID = NEW.HorarioID;
+
+    -- Verifica que la fecha de clase esté dentro del rango
+    IF NEW.FECHADECLASE < fecha_inicio OR NEW.FECHADECLASE > fecha_fin THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Error: No se puede actualizar a una fecha fuera del rango permitido.';
+    END IF;
+END $$
+
 DELIMITER ;
+
 
 
 
@@ -406,46 +475,26 @@ VALUES
 
 -- Insertar daStos en la tabla Curso
 INSERT INTO Curso (CodigoCurso, NombreCurso, Descripcion, Creditos, Ciclo, Nivel, Estado, Notas, FechaRegistro, UsuarioRegistro, FechaActualizacion)
-VALUES ('CS101', 'Introducción a la Programación', 'Curso de introducción a la programación en Java', 5, 1, 'Básico', 'Activo', 'Ninguno', '2025-03-01', 'admin', '2025-03-01');
+VALUES ('CS101', 'Introduccion a la Programacion', 'Curso de introducción a la programación en Java', 5, 1, 'Básico', 'Activo', 'Ninguno', '2025-03-01', 'admin', '2025-03-01');
 
 
 -- Insertar datos en la tabla Horario
 INSERT INTO Horario (CursoID, ProfesorID, SeccionID, DiaSemana, HoraInicioFin, FechaInicio, FechaFin, MaxEstudiantes, Modalidad, Estado, FechaRegistro, UsuarioRegistro, FechaActualizacion)
 VALUES 
-(1, 1, 1, 'Lunes, Miércoles y Viernes', '08:00 - 10:00', '2025-03-01', '2025-06-30', 30, 'Presencial', 'Activo', CURDATE(), 'admin', CURDATE()),
-(1, 1, 1, 'Martes y Jueves', '10:00 - 12:00', '2025-03-01', '2025-06-30', 30, 'Semipresencial', 'Activo', CURDATE(), 'admin', CURDATE());
-
--- Insertar datos en la tabla Horario_Estudiante
-INSERT INTO Horario_Estudiante (EstudianteID, HorarioID)
-VALUES 
-(1, 2),  -- Juan Pérez, Horario 1
-(2, 2),  -- María Gómez, Horario 1
-(3, 2),  -- Carlos Martínez, Horario 1
-(4, 1),  -- Ana Ramírez, Horario 2
-(5, 1),  -- Luis Sánchez, Horario 2
-(6, 1),  -- Patricia Fernández, Horario 2
-(7, 2),  -- Miguel Díaz, Horario 1
-(8, 1),  -- Lucía Torres, Horario 2
-(9, 2);  -- Andrés Vega, Horario 1
-
--- Insertar datos en la tabla ASISTENCIA_ESTUDIANTE
-INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
-VALUES 
-(4, 1, 'Asistencia', 'Clase introductoria - sesión 1', '2025-03-01', 'admin'),
-(4, 1, 'Inasistencia Justificada', 'Problemas de salud', '2025-03-02', 'admin'),
-(4, 1, 'Asistencia', 'Clase introductoria - sesión 2', '2025-03-03', 'admin'),
-(4, 1, 'Asistencia', 'Clase de nivelación', '2025-03-04', 'admin'),
-(4, 1, 'Asistencia', 'Clase de nivelación - sesión 1', '2025-03-05', 'admin'),
-(4, 1, 'Inasistencia', 'No pudo asistir por motivos personales', '2025-03-06', 'admin'),
-(4, 1, 'Asistencia', 'Clase introductoria - sesión 3', '2025-03-07', 'admin'),
-(4, 1, 'Asistencia', 'Clase introductoria - sesión 4', '2025-03-08', 'admin'),
-(4, 1, 'Inasistencia Justificada', 'Problemas familiares', '2025-03-09', 'admin'),
-(4, 1, 'Asistencia', 'Clase de nivelación - sesión 2', '2025-03-10', 'admin');
+(1, 1, 1, 'Lunes, Miércoles y Viernes', '08:00 - 10:00', '2025-03-01', '2025-03-30', 30, 'Presencial', 'Activo', CURDATE(), 'admin', CURDATE()),
+(1, 1, 1, 'Martes y Jueves', '10:00 - 12:00', '2025-03-01', '2025-03-30', 30, 'Semipresencial', 'Activo', CURDATE(), 'admin', CURDATE());
 
 
 -- Insertar datos en la tabla Matricula
 INSERT INTO Matricula (Codigo_Matricula, id_estudiante, id_horario, Fecha_Matricula, Estado_Matricula, Observaciones, Modo_Matricula, Ciclo) 
-VALUES ('MAT123', 1, 1, '2024-02-01', 'Activo', 'Sin observaciones', 'Online', '2024-1');
+VALUES ('MAT123', 1, 1, '2024-02-01', 'Activo', 'Sin observaciones', 'Online', 'Primer Ciclo');
+
+
+-- Insertar datos en la tabla ASISTENCIA_ESTUDIANTE
+INSERT INTO ASISTENCIA_ESTUDIANTE (EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)
+VALUES 
+(1, 1, 'Asistencia', 'Clase introductoria - sesión 1', '2025-03-01', 'admin'),
+(1, 1, 'Inasistencia Justificada', 'Problemas de salud', '2025-03-02', 'admin');
 
 -- Primero, verificamos si el número de estudiantes actuales en el horario es menor que la capacidad máxima:
 SELECT COUNT(*) AS CantidadEstudiantes
@@ -491,21 +540,6 @@ END $$
 DELIMITER ;
 
 
-CALL ObtenerAsistenciaxID (2);
-
-DELIMITER $$
-
-CREATE TRIGGER trg_set_dia_asistencia
-BEFORE INSERT ON ASISTENCIA_ESTUDIANTE
-FOR EACH ROW
-BEGIN
-    SET NEW.DIAASISTENCIA = CONCAT(UPPER(LEFT(DAYNAME(NEW.FECHADECLASE), 1)), LOWER(SUBSTRING(DAYNAME(NEW.FECHADECLASE), 2)));
-END$$
-
-
-
-DELIMITER ;
-
 
 
 DELIMITER $$
@@ -514,7 +548,132 @@ CREATE TRIGGER trg_update_dia_asistencia
 BEFORE UPDATE ON ASISTENCIA_ESTUDIANTE
 FOR EACH ROW
 BEGIN
-    SET NEW.DIAASISTENCIA = CONCAT(UPPER(LEFT(DAYNAME(NEW.FECHADECLASE), 1)), LOWER(SUBSTRING(DAYNAME(NEW.FECHADECLASE), 2)));
+    DECLARE dia_en_ingles VARCHAR(20);
+    DECLARE dia_en_espanol VARCHAR(20);
+
+    SET dia_en_ingles = DAYNAME(NEW.FECHADECLASE);
+
+    SET dia_en_espanol = CASE dia_en_ingles
+        WHEN 'Monday' THEN 'Lunes'
+        WHEN 'Tuesday' THEN 'Martes'
+        WHEN 'Wednesday' THEN 'Miércoles'
+        WHEN 'Thursday' THEN 'Jueves'
+        WHEN 'Friday' THEN 'Viernes'
+        WHEN 'Saturday' THEN 'Sábado'
+        WHEN 'Sunday' THEN 'Domingo'
+    END;
+
+    SET NEW.DIAASISTENCIA = dia_en_espanol;
 END$$
 
 DELIMITER ;
+
+SELECT DAYNAME('2024-02-16');
+
+
+SHOW VARIABLES LIKE 'character_set_database';
+SHOW VARIABLES LIKE 'collation_database';
+
+ALTER DATABASE bd_control_asistencia_alumnadoprueba CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+ALTER TABLE asistencia_estudiante CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+
+
+SELECT @@lc_time_names;
+
+SHOW VARIABLES LIKE 'character_set_database';
+SHOW VARIABLES LIKE 'collation_database';
+SHOW TABLE STATUS WHERE Name = 'asistencia_estudiante';
+
+ALTER DATABASE bd_control_asistencia_alumnadoprueba CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+
+SHOW TABLE STATUS FROM bd_control_asistencia_alumnadoprueba;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerAsistenciaPorEstudianteYHorario(
+    IN p_EstudianteID INT,
+    IN p_HorarioID INT
+)
+BEGIN
+    SELECT DISTINCT 
+        ae.*,  -- Trae todas las columnas de asistencia_estudiante
+        e.Nombres, 
+        e.TipoDocumento,
+        e.Apellidos,
+        e.NumeroDocumento,
+        c.NombreCurso,
+        h.FechaInicio, 
+        h.FechaFin,
+        h.DiaSemana,
+        p.Nombres AS profesor,
+        p.Apellidos AS  profesorApe
+    FROM asistencia_estudiante ae
+    INNER JOIN estudiante e ON ae.EstudianteID = e.EstudianteID
+    INNER JOIN horario h ON ae.HorarioID = h.HorarioID
+    INNER JOIN curso c ON h.CursoID = c.CursoID
+    INNER JOIN profesor p ON h.ProfesorID = p.ProfesorID
+    WHERE ae.EstudianteID = p_EstudianteID 
+    AND ae.HorarioID = p_HorarioID;
+    
+END$$
+
+DELIMITER ;
+
+call ObtenerAsistenciaPorEstudianteYHorario(1,1)
+
+
+
+
+
+DELIMITER $$
+
+CREATE PROCEDURE GenerarAsistenciaAutomatica(
+    IN p_HorarioID INT,
+    IN p_EstudianteID INT
+)
+BEGIN
+    DECLARE fecha_actual DATE;
+    DECLARE fecha_fin DATE;
+    
+    -- Obtener las fechas de inicio y fin del horario
+    SELECT FechaInicio, FechaFin INTO fecha_actual, fecha_fin
+    FROM horario
+    WHERE HorarioID = p_HorarioID;
+
+    -- Si el horario no existe, lanzar un error
+    IF fecha_actual IS NULL OR fecha_fin IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: No se encontró el horario especificado.';
+    END IF;
+
+    -- Recorrer todas las fechas dentro del rango y registrar asistencia
+    WHILE fecha_actual <= fecha_fin DO
+        -- Insertar solo si no existe ya un registro para esa fecha
+        IF NOT EXISTS (
+            SELECT 1 FROM asistencia_estudiante
+            WHERE HorarioID = p_HorarioID 
+            AND EstudianteID = p_EstudianteID 
+            AND FECHADECLASE = fecha_actual
+        ) THEN
+            INSERT INTO asistencia_estudiante (EstudianteID, HorarioID, FECHADECLASE, Comentario, EstadoAsistencia, UsuarioRegistro)
+            VALUES (
+                p_EstudianteID,
+                p_HorarioID,
+                fecha_actual,
+                'Generado automáticamente',
+                'En espera', -- Puedes cambiar a "Presente" si lo deseas
+                'admin'
+            );
+        END IF;
+        
+        -- Avanzar al siguiente día
+        SET fecha_actual = DATE_ADD(fecha_actual, INTERVAL 1 DAY);
+    END WHILE;
+END $$
+
+DELIMITER ;
+
+

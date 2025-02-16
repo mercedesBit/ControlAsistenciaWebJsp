@@ -1,89 +1,138 @@
-<%@page import="entidades.Asistencia"%>
-<%@page import="entidades.Estudiante"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="entidades.Curso"%>
+<%@page import="entidades.Horario"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+
+	
+	
+<%@page import="java.util.Date"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../body-header.jsp"%>
-
+<%@page import="entidades.AsistenciaEstudiante"%>
 <main id="main" class="main">
 	<div class="pagetitle">
-		<h1>Registro de Asistencia</h1>
+		<h1>Registrar Asistencia</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">Inicio</li>
 			</ol>
 		</nav>
-		<h3>Asistencia</h3>
-		<br>
-		<form method="post" action="AsistenciaServlet?tipo=regist">
+	</div>
 
-			<!-- Formulario de búsqueda -->
-			<div class="row mb-3">
-
-				<div class="col-md-3">
-					<label for="cursoID">Curso:</label> <select id="cursoID"
-						name="cursoID" class="form-control">
-						<option value="">Selecciona un Curso</option>
-						<%
-						@SuppressWarnings("unchecked")
-                List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
-                for (Curso curso : listaCursos) {
-              %>
-						<option value="<%= curso.getCursoID() %>">
-							<%= curso.getNombreCurso() %>
-						</option>
-						<%
-                }
-              %>
-					</select>
-				</div>
-
+	<section class="section dashboard">
+		<div class="row">
+			<%
+			Horario horario = (Horario) request.getAttribute("horarioData");
+			%>
+			<div class="form-group">
+				<label class="text-secondary">Horario</label> <input
+					class="form-control" type="text"
+					value="<%=(horario != null) ? horario.getDiaSemana() : ""%>"
+					readonly>
+					<br>
+					 <input
+					class="form-control" type="text"
+					value="<%=(horario != null) ? horario.getHoraInicioFin() : ""%>"
+					readonly>
+					<br>
+					   <input class="form-control" type="text"
+        value="<%=(horario != null && horario.getFechaInicio() != null && horario.getFechaFin() != null) 
+                ? "De " + horario.getFechaInicio().toString() + "hasta " + horario.getFechaFin().toString() 
+                : ""%>" 
+        readonly>
 			</div>
 
-			<hr>
+			
 
-			<!-- Tabla de resultados de asistencia -->
-			<table class="table datatable">
-				<thead>
-					<tr>
-						<th>Estudiante</th>
-						<th>Tipo Asistencia</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					@SuppressWarnings("unchecked")
-                List<Estudiante> listaEstudiante = (List<Estudiante>) request.getAttribute("listaEstudiante");
-                if (listaEstudiante != null) {
-                    for (Estudiante item : listaEstudiante) {
-            %>
-					<tr>
-						<td><%= item.getNombres() + " "+ item.getApellidos() %></td>
-						<td><select
-							name="tipoAsistencia_<%= item.getEstudianteID() %>"
-							class="form-control">
-								<option value="Presente">Presente</option>
-								<option value="Ausente">Ausente</option>
-								<option value="Ausente Justificado">Ausente Justificado</option>
-								<option value="Llego Tarde">Llegó Tarde</option>
-								<option value="Evadio">Evadió</option>
-						</select></td>
-					</tr>
-					<%
-                    }
-                }
-            %>
-				</tbody>
-			</table>
-			<br> <input type="submit" class="btn btn-danger"
-				value="Registrar">
+
+		</div>
+
+
+		<form action="AsistenciaEstudianteServlet" method="post" accept-charset="UTF-8">
+			<input type="hidden" name="tipo" value="registrar"> <input
+				type="hidden" id="horarioID" name="horarioID"
+				value="<%=request.getAttribute("horarioID")%>" readonly> <input
+				type="hidden" id="estudianteID" name="estudianteID"
+				value="<%=request.getAttribute("EstudianteID")%>" readonly>
+
+
+<br>
+		
+
+
+			<div class="col-md-6 mb-3">
+				<label for="estado" class="form-label">Estado de Asistencia
+				</label> <select class="form-control" id="estado" name="estado" required>
+					<option value="Asistencia">Asistencia</option>
+					<option value="Inasistencia">Inasistencia</option>
+
+					<option value="En espera">En espera</option>
+					<option value="Inasistencia Justificada">Inasistencia
+						Justificada</option>
+				</select>
+			</div>
+
+
+
+			<div class="form-group">
+				<label for="nombreCurso">Comentario</label> <input type="text"
+					class="form-control" id="comentario" name="comentario" required>
+			</div>
+
+<div class="form-group">
+    <label for="fecha">Fecha de la Clase</label>
+    <input 
+        type="date" 
+        class="form-control" 
+        id="fecha" 
+        name="fecha" 
+        required>
+</div>
+
+			<br />
+			<div class="form-actions">
+				<button type="submit" class="btn btn-danger">Registrar</button>
+				
+				<%
+    int horarioID = (request.getAttribute("horarioID") != null) ? (int) request.getAttribute("horarioID") : 0;
+    int estudianteID = (request.getAttribute("EstudianteID") != null) ? (int) request.getAttribute("EstudianteID") : 0;
+%>
+
+<a href="AsistenciaEstudianteServlet?tipo=listAsistenciaxAlumno&horarioID=<%= horarioID %>&estudianteID=<%= estudianteID %>" 
+  
+   class="btn btn-secondary">Cancelar</a>
+   
+   <a href="AsistenciaEstudianteServlet?tipo=generarAutomatico&horarioID=<%= horarioID %>&estudianteID=<%= estudianteID %>" 
+  
+   class="btn btn-danger">Generar Asistencias AutomÃ¡ticas</a>
+				
+			
+			</div>
 		</form>
-
-	</div>
+		<%
+		String mensaje = (String) session.getAttribute("mensaje");
+		%>
+		<%
+		if (mensaje != null) {
+		%>
+		<div class="alert alert-success">
+			<%=mensaje%>
+		</div>
+		<%
+		session.removeAttribute("mensaje");
+		%>
+		<!-- Eliminar para que no se repita -->
+		<%
+		}
+		%>
+		</div>
+	</section>
 </main>
+
+<script>
+    document.getElementById("fecha").valueAsDate = new Date();
+</script>
 
 <%@ include file="../footer.jsp"%>

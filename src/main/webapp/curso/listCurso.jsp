@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.Date"%>
+
+
 <%@page import="entidades.Curso"%>
 <%@page import="java.util.List"%>
 <%@ include file="../head.jsp"%>
@@ -73,6 +74,19 @@
                     %>
 				</tbody>
 			</table>
+			
+<%
+    String error = (String) session.getAttribute("error");
+    if (error != null) {
+%>
+    <p style="color: red;"><%= error %></p>
+<%
+        session.removeAttribute("error"); // Eliminar el mensaje después de mostrarlo
+    }
+%>
+
+
+			
 		</div>
 	</section>
 </main>

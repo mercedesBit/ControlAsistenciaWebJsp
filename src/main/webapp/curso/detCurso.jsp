@@ -71,70 +71,7 @@
 			
 
 
-<!-- 
 
-
-
-				<div class="form-group">
-    <label class="text-secondary">Fecha de Inicio</label> 
-    <input class="form-control" type="date" name="txtFechaInicio"
-        value="<%-- (curso != null)? curso.getFechaInicio() != null ? curso.getFechaInicio().toString() : "" : "" --%>"
-        readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Fecha de Fin</label> 
-    <input class="form-control" type="date" name="txtFechaFin"
-        value="<%-- (curso != null)? curso.getFechaFin() != null ? curso.getFechaFin().toString() : "" : "" --%>"
-        readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Sección ID</label> 
-    <input class="form-control" type="text" name="txtSeccionID"
-        value="<%-- (curso != null)? curso.getSeccionID():"" --%>" readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Temario</label> 
-    <input class="form-control" type="text" name="txtTemario"
-        value="<%-- (curso != null)? curso.getTemario():"" --%>" readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Horario</label> 
-    <input class="form-control" type="text" name="txtHorario"
-        value="<%-- (curso != null)? curso.getHorario():"" --%>" readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Profesor ID</label> 
-    <input class="form-control" type="text" name="txtProfesorID"
-        value="<%-- (curso != null)? curso.getProfesorID():"" --%>" readonly>
-</div>
-
-			
-<div class="form-group">
-    <label class="text-secondary">Requisitos Previos</label> 
-    <input class="form-control" type="text" name="txtRequisitosPrevios"
-        value="<%--(curso != null)? curso.getRequisitosPrevios():""--%>"
-        readonly>
-<%--
-<div class="form-group">
-    <label class="text-secondary">Cantidad Máxima de Estudiantes</label> 
-    <input class="form-control" type="text" name="txtCantidadMaximaEstudiantes"
-        value="<%=(curso != null)? curso.getCantidadMaximaEstudiantes():""%>" readonly>
-</div>
-
-<div class="form-group">
-    <label class="text-secondary">Modalidad</label> 
-    <input class="form-control" type="text" name="txtModalidad"
-        value="<%=(curso != null)? curso.getModalidad():""%>" readonly>
-</div>
---%>
-
-				-->
-				
 
 				<div class="form-group">
 					<label class="text-secondary">Estado</label> <input
