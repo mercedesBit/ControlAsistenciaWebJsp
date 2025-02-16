@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="entidades.HorarioEstudiante"%>
 <%@page import="entidades.Estudiante"%>
 <%@page import="entidades.Horario"%>
@@ -62,24 +62,25 @@
 	
 	
 				<div class="mb-3">
-					<label for="estudianteID" class="form-label">Seleccionar
-						Estudiante:</label> <select class="form-select" name="estudianteID"
-						id="estudianteID">
+					<label for="estudianteID" class="form-label">Seleccionar Estudiante:</label>
+					<select class="form-select" name="estudianteID" id="estudianteID">
 						<%
-						@SuppressWarnings("unchecked")
-						List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
-								.getAttribute("listaHorarioEstudiante");
-						String estudianteSeleccionado = request.getParameter("estudianteID");
-	
-						if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
-							for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
+							@SuppressWarnings("unchecked")
+							List<HorarioEstudiante> listaHorarioEstudiante = (List<HorarioEstudiante>) request
+									.getAttribute("listaHorarioEstudiante");
+							String estudianteSeleccionado = request.getParameter("estudianteID");
+		
+							if (listaHorarioEstudiante != null && !listaHorarioEstudiante.isEmpty()) {
+								for (HorarioEstudiante estudiante : listaHorarioEstudiante) {
 						%>
 						<option value="<%=estudiante.getEstudianteID()%>"
 							<%=(estudianteSeleccionado != null && estudianteSeleccionado.equals(String.valueOf(estudiante.getEstudianteID())))
 					? "selected"
 					: ""%>>
+					<%="I2025-" + estudiante.getEstudianteID()%> 
 							<%=estudiante.getNombre()%>
 							<%=estudiante.getApellido()%>
+							
 						</option>
 						<%
 						}
@@ -136,7 +137,7 @@
 			<%
 			} else if (listaAsistenciaEstudiante == null || listaAsistenciaEstudiante.isEmpty()) {
 			%>
-			<!-- Formulario que envía los datos al servlet -->
+			<!-- Formulario que envÃ­a los datos al servlet -->
 			<form action="AsistenciaEstudianteServlet?tipo=nuevo" method="POST">
 				<input type="hidden" name="horarioID" value="<%=horarioID%>">
 				<input type="hidden" name="estudianteID" value="<%=estudianteID%>">
@@ -159,7 +160,7 @@
 			%>
 	
 	
-			<!-- Formulario que envía los datos al servlet -->
+			<!-- Formulario que envÃ­a los datos al servlet -->
 			<form action="AsistenciaEstudianteServlet?tipo=nuevo" method="POST">
 				<input type="hidden" name="horarioID"
 					value="<%=asistencia.getHorarioID()%>"> <input type="hidden"
@@ -186,7 +187,7 @@
 				<thead>
 					<tr>
 						<th>Fecha de Clase</th>
-						<th>Día de Asistencia</th>
+						<th>DÃ­a de Asistencia</th>
 						<th>Comentario</th>
 						<th>Estado</th>
 						<th>Usuario de Registro</th>
@@ -218,7 +219,7 @@
 								title="Editar">
 						</a> <a
 							href="AsistenciaEstudianteServlet?tipo=eliminar&id=<%=asistencia.getAsistenciaID()%>"
-							onclick="return confirm('¿Está seguro de eliminar este curso?')">
+							onclick="return confirm('Â¿EstÃ¡ seguro de eliminar este curso?')">
 								<img alt="" src="image/ic_delete.svg" width="15" height="15"
 								title="Eliminar">
 						</a> 
