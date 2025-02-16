@@ -1,5 +1,5 @@
-<%@ include file="../head.jsp"%>
-<%@ include file="../body-header.jsp"%>
+<%@ include file="../head.jsp" %>
+<%@ include file="../body-header.jsp" %>
 
 <main id="main" class="main">
 	<div class="pagetitle">
@@ -17,4 +17,4 @@
 	</section>
 </main>
 
-<%@ include file="../footer.jsp"%>
+<%@ include file="../footer.jsp" %>
