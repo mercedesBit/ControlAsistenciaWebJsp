@@ -89,58 +89,7 @@
 					<textarea class="form-control" id="notas" name="notas"></textarea>
 				</div>
 			
-		<%--ELIMINAR ESTO.
-
-<div class="form-group">
-					<label for="modalidad">Modalidad</label> <input type="text"
-						class="form-control" id="modalidad" name="modalidad" required>
-				</div>
-				
-
-				<div class="form-group">
-					<label for="fechaInicio">Fecha de Inicio</label> <input type="date"
-						class="form-control" id="fechaInicio" name="fechaInicio" required>
-				</div>
-
-				<div class="form-group">
-					<label for="fechaFin">Fecha de Fin</label> <input type="date"
-						class="form-control" id="fechaFin" name="fechaFin" required>
-				</div>
-				
-					<div class="form-group">
-					<label for="temario">Temario</label>
-					<textarea class="form-control" id="temario" name="temario" required></textarea>
-				</div>
-				
-				<div class="form-group">
-					<label for="horario">Horario</label>
-					<textarea class="form-control" id="horario" name="horario" required></textarea>
-				</div>
-				
-					<div class="form-group">
-					<label for="profesorID">Seccion ID</label> <input type="number"
-						class="form-control" id="profesorID" name="profesorID" required>
-				</div>
-				<div class="form-group">
-					<label for="seccionID">Profesor ID</label> <input type="number"
-						class="form-control" id="seccionID" name="seccionID" required>
-				</div>
-				
-					<div class="form-group">
-					<label for="cantidadMaximaEstudiantes">Máxima Cantidad de
-						Estudiantes</label> <input type="number" class="form-control"
-						id="cantidadMaximaEstudiantes" name="cantidadMaximaEstudiantes"
-						required>
-				</div>
-				
-				<div class="form-group">
-					<label for="requisitosPrevios">Requisitos Previos</label>
-					<textarea class="form-control" id="requisitosPrevios"
-						name="requisitosPrevios" required></textarea>
-				</div>
-    
-    --%>
-				
+	
 
 				<br />
 				<div class="form-actions">

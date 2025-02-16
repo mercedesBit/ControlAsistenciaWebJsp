@@ -52,30 +52,26 @@
 			<ul id="components-navAs" class="nav-content collapse"
 				data-bs-parent="#sidebar-nav">
 				
-				<li> 
-				<a href="<%=request.getContextPath()%>/AsistenciaServlet?tipo=list">
-						<i class="bi bi-circle"></i><span>Ver Asistencias</span>
-				</a>
-				</li>
+			
 				
 				<%
 				String rol = (String) session.getAttribute("rol");
 				if (rol != null && (rol.equals("Administrador") || rol.equals("Profesor"))) {
 				%>
-				<li><a
-					href="<%=request.getContextPath()%>/AsistenciaServlet?tipo=registGet">
-						<i class="bi bi-circle"></i><span>Registrar Asistencias</span>
-				</a></li>
+				
+						<li> 
+				<a href="<%=request.getContextPath()%>/AsistenciaEstudianteServlet?tipo=list">
+						<i class="bi bi-circle"></i><span>Lista de Asistencias</span>
+				</a>
+				</li>
+				
+			
 				<%
 				}
 				%>
 
 
-		<li> 
-				<a href="<%=request.getContextPath()%>/AsistenciaEstudianteServlet?tipo=list">
-						<i class="bi bi-circle"></i><span>Lista de Asistencias</span>
-				</a>
-				</li>
+
 
 
 			</ul> <%
@@ -149,7 +145,7 @@
 						<i class="bi bi-circle"></i><span>Reporte Cursos</span>
 				</a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/AsistenciaServlet?tipo=viewreporte">
+					href="<%=request.getContextPath()%>/AsistenciaEstudianteServlet?tipo=reporte">
 						<i class="bi bi-circle"></i><span>Reporte Asistencia</span>
 				</a></li>
 				<li><a

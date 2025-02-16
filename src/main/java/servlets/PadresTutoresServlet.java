@@ -172,7 +172,7 @@ public class PadresTutoresServlet extends HttpServlet {
         }
     }
     protected void generarReporte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filePath = "reporte_padres_tutores.pdf";
+        String filePath = "reporte_asistencias_Alumno.pdf";
         ReportePadresTutores.generarReporte(filePath);
 
         // Descargar el archivo PDF

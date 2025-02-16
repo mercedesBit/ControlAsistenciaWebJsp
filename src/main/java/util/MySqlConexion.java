@@ -11,7 +11,8 @@ public class MySqlConexion {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-			String url = "jdbc:mysql://localhost:3306/bd_control_asistencia_alumnadoprueba?useSSL=false&useTimezone=true&serverTimezone=UTC";
+			String url = "jdbc:mysql://localhost:3306/bd_control_asistencia_alumnadoprueba?useSSL=false&useUnicode=true";//?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=America/Lima
+
 			String user = "root";
 			String pass = "123456789";
 			con = DriverManager.getConnection(url, user, pass);

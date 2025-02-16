@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,7 +39,12 @@ public class MatriculaServlet extends HttpServlet {
         
         switch(tipo) {
         case "list" : listMatricula(request, response); break;
-        case "regist" : registMatricula(request, response); break;
+        case "regist" : try {
+				registMatricula(request, response);
+			} catch (SQLIntegrityConstraintViolationException | ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} break;
         default:
             request.setAttribute("mensaje", "Ocurrio un problema");
             request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);
@@ -54,44 +60,70 @@ public class MatriculaServlet extends HttpServlet {
         request.getRequestDispatcher("matricula/listMatricula.jsp").forward(request, response);
     }
 
-    protected void registMatricula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String codigoMatricula = request.getParameter("txtCodigoMatricula");
-        int idEstudiante = Integer.parseInt(request.getParameter("txtIdEstudiante"));
-        int idHorario = Integer.parseInt(request.getParameter("txtIdHorario"));
+    protected void registMatricula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, java.sql.SQLIntegrityConstraintViolationException {
+        String codigoMatricula = request.getParameter("txtCodigoMatricula");
+        
+        // Manejo seguro de valores enteros
+        int idEstudiante = 0;
+        int idHorario = 0;
+        
+        try {
+            idEstudiante = Integer.parseInt(request.getParameter("txtIdEstudiante"));
+            idHorario = Integer.parseInt(request.getParameter("txtIdHorario"));
+        } catch (NumberFormatException e) {
+            request.setAttribute("mensaje", "Error: ID de estudiante o ID de horario inválido.");
+            request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);
+            return;
+        }
+
         String estadoMatricula = request.getParameter("txtEstadoMatricula");
         String observaciones = request.getParameter("txtObservaciones");
         String modoMatricula = request.getParameter("txtModoMatricula");
         String ciclo = request.getParameter("txtCiclo");
-        
+
+        // Imprimir valores obtenidos
+        System.out.println("Código de Matrícula: " + codigoMatricula);
+        System.out.println("ID Estudiante: " + idEstudiante);
+        System.out.println("ID Horario: " + idHorario);
+        System.out.println("Estado de Matrícula: " + estadoMatricula);
+        System.out.println("Observaciones: " + observaciones);
+        System.out.println("Modo de Matrícula: " + modoMatricula);
+        System.out.println("Ciclo: " + ciclo);
+
         Matricula matricula = new Matricula();
-        
         matricula.setCodigoMatricula(codigoMatricula);
-        
+
         EstudianteModel estudianteModel = new EstudianteModel();
         Estudiante estudiante = estudianteModel.obtenerEstudiante(idEstudiante);
         matricula.setEstudiante(estudiante);
-        
-   //     HorarioModel horarioModel = new HorarioModel();
-     //   Horario horario = horarioModel.obtenerHorarioPorId(idHorario);
+
         Horario horario = new Horario();
         horario.setHorarioID(idHorario);
         matricula.setHorario(horario);
-        
-        matricula.setFechaMatricula( new java.sql.Date(System.currentTimeMillis()));
+
+        matricula.setFechaMatricula(new java.sql.Date(System.currentTimeMillis()));
         matricula.setEstadoMatricula(estadoMatricula);
         matricula.setObservaciones(observaciones);
         matricula.setModoMatricula(modoMatricula);
         matricula.setCiclo(ciclo);
-        
+
         MatriculaModel matriculaModel = new MatriculaModel();
-        int value = matriculaModel.registrarMatricula(matricula);
         
-        if (value == 1) {
-            listMatricula(request, response);
-        } else {
-            request.setAttribute("mensaje", "Ocurrió un problema al registrar la matrícula.");
+        try {
+            int value = matriculaModel.registrarMatricula(matricula);
+            
+            if (value == 1) {
+                listMatricula(request, response);
+            } else {
+                request.setAttribute("mensaje", "Matrícula ya existe");
+                request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
+            request.setAttribute("mensaje", "Error inesperado: " + e.getMessage());
             request.getRequestDispatcher("matricula/regMatricula.jsp").forward(request, response);
         }
     }
+
 
 }

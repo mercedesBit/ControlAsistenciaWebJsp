@@ -24,7 +24,7 @@ public class HorarioModel implements HorarioInterface{
 	    
 	    try {
 	        cn = MySqlConexion.getConexion();
-	        String sql = "SELECT h.HorarioID, c.NombreCurso, p.Nombres AS NombreProfesor, p.Apellidos AS ApellidoProfesor, s.NombreSeccion, h.DiaSemana, h.HoraInicioFin, h.Modalidad, h.Estado \r\n"
+	        String sql = "SELECT h.HorarioID, c.NombreCurso, p.Nombres AS NombreProfesor, p.Apellidos AS ApellidoProfesor, s.NombreSeccion, h.DiaSemana, h.HoraInicioFin,h.FechaInicio,h.FechaFin ,h.Modalidad, h.Estado \r\n"
 	        		+ "FROM Horario h \r\n"
 	        		+ "JOIN Curso c ON h.CursoID = c.CursoID \r\n"
 	        		+ "JOIN Profesor p ON h.ProfesorID = p.ProfesorID \r\n"
@@ -41,6 +41,14 @@ public class HorarioModel implements HorarioInterface{
                 reg.setNombreSeccion(rs.getString("NombreSeccion"));
                 reg.setDiaSemana(rs.getString("DiaSemana"));
                 reg.setHoraInicioFin(rs.getString("HoraInicioFin"));
+                
+                reg.setFechaInicio(rs.getDate("FechaInicio"));
+                reg.setFechaFin(rs.getDate("FechaFin"));
+                
+                
+                
+               
+                
                 reg.setModalidad(rs.getString("Modalidad"));
                 reg.setEstado(rs.getString("Estado"));
                 listHorario.add(reg);

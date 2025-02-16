@@ -2,6 +2,10 @@ package interfaces;
 
 import java.sql.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import entidades.Asistencia;
 import entidades.AsistenciaEstudiante;
 import entidades.Curso;
@@ -28,4 +32,16 @@ public interface AsistenciaEstudianteDAO {
 
 
 	int actualizar(AsistenciaEstudiante asistenciaEstudiante);
+
+
+	int generarAutomatico(int horarioid, int estudianteid);
+
+
+	int aprobar(int asistenciaID);
+
+
+	int rechazar(int asistenciaID);
+
+
+
 }

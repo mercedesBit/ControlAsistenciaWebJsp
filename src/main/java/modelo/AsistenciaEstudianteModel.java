@@ -1,8 +1,19 @@
 package modelo;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import entidades.AsistenciaEstudiante;
 import entidades.Curso;
 import entidades.Estudiante;
@@ -14,7 +25,7 @@ import util.MySqlConexion;
 public class AsistenciaEstudianteModel implements AsistenciaEstudianteDAO {
 
 
-	Connection conexion = null;
+	Connection conexion ;
 	
 
 	
@@ -241,11 +252,14 @@ public class AsistenciaEstudianteModel implements AsistenciaEstudianteDAO {
 	 		return resultado;
 	 	}
 
-
-
+	     
+	     
+	     
+   	  private String mensajeError = "";
 
 	     @Override
 	     public int actualizar(AsistenciaEstudiante asistenciaEstudiante) {
+	    	 
 	         int resultado = 0;
 	         Connection conn = null;
 	         PreparedStatement pst = null;
@@ -266,7 +280,8 @@ public class AsistenciaEstudianteModel implements AsistenciaEstudianteDAO {
 	             resultado = pst.executeUpdate();
 
 	         } catch (SQLException e) {
-	             System.err.println("Error al actualizar la asistencia: " + e.getMessage());
+	        	 mensajeError = " " + e.getMessage();
+	             System.err.println("Falla al actualizar la asistencia: " + e.getMessage());
 	             e.printStackTrace(); // Puedes reemplazarlo por un logger
 	         } finally {
 	             // Cerrar recursos en orden inverso de apertura
@@ -274,10 +289,157 @@ public class AsistenciaEstudianteModel implements AsistenciaEstudianteDAO {
 	                 if (pst != null) pst.close();
 	                 if (conn != null) conn.close();
 	             } catch (SQLException e) {
+	            	 mensajeError = "Error : " + e.getMessage();
 	                 System.err.println("Error al cerrar conexión: " + e.getMessage());
 	             }
 	         }
 	         return resultado;
 	     }
+	     
+	    
+
+
+
+
+
+		public int registrar(AsistenciaEstudiante asistenciaEstudiante) {
+			// TODO Auto-generated method stub
+		     int resultado = 0;
+	        
+	         PreparedStatement pst = null;
+
+	         try {
+	             conexion = MySqlConexion.getConexion();
+	             String sql = "insert into asistencia_estudiante (AsistenciaID,EstudianteID, HorarioID, EstadoAsistencia, Comentario, FECHADECLASE, UsuarioRegistro)"
+	             + "VALUES (null, ?, ?, ?, ?, ?, ?)";
+	             
+	             pst = conexion.prepareStatement(sql);
+
+	             // Asignar valores a los parámetros
+	             pst.setInt(1, asistenciaEstudiante.getEstudianteID());
+	             pst.setInt(2, asistenciaEstudiante.getHorarioID());
+	             pst.setString(3, asistenciaEstudiante.getEstadoAsistencia()); // Asegurar que sea un java.sql.Date
+	             pst.setString(4,asistenciaEstudiante.getComentario()); // Fecha actual
+	             pst.setDate(5, asistenciaEstudiante.getFechaDeClase());
+	             pst.setString(6, asistenciaEstudiante.getUsuarioRegistro());
+	             // Ejecutar la actualización
+	             resultado = pst.executeUpdate();
+
+	         } catch (SQLException e) {
+	        	 
+	        
+	        	 mensajeError = " " + e.getMessage();
+	             System.err.println("Error: " + e.getMessage());
+	             e.printStackTrace(); // Puedes reemplazarlo por un logger
+	         } finally {
+	             // Cerrar recursos en orden inverso de apertura
+	             try {
+	                 if (pst != null) pst.close();
+	                 if (conexion != null) conexion.close();
+	             } catch (SQLException e) {
+	            	 mensajeError = "Error : " + e.getMessage();
+	                 System.err.println("Error al cerrar conexión: " + e.getMessage());
+	             }
+	         }
+	         return resultado;
+	     }
+	     
+	   
+		 public String getMensajeError() {
+	         return mensajeError;
+	     }
+
+		 
+		 
+	     @Override
+		 	public int generarAutomatico(int horarioid,int estudianteid) {
+		 		int resultado = 0;
+		 		 ResultSet rs = null;
+		 		PreparedStatement psm = null;
+		 		 
+		 		try {
+		 			conexion = MySqlConexion.getConexion();
+		 			String sql = " CALL GenerarAsistenciaAutomatica(?, ?)";
+		 			psm = conexion.prepareStatement(sql);
+		 			
+		             psm.setInt(1, horarioid);
+		             psm.setInt(2, estudianteid);
+		             rs = psm.executeQuery();
+
+		             resultado = psm.executeUpdate();
+		 		} catch (SQLException e) {
+		        	 mensajeError = "Error: " + e.getMessage();
+		             System.err.println("Error: " + e.getMessage());
+		             e.printStackTrace(); // Puedes reemplazarlo por un logger
+		         } finally {
+		             // Cerrar recursos en orden inverso de apertura
+		             try {
+		                 if (psm != null) psm.close();
+		                 if (conexion != null) conexion.close();
+		             } catch (SQLException e) {
+		            	 mensajeError = "Error : " + e.getMessage();
+		                 System.err.println("Error al cerrar conexión: " + e.getMessage());
+		             }
+		         }
+		         return resultado;
+		     }
+		 
+	     
+	     
+	        @Override
+		 	public int aprobar(int asistenciaID) {
+		 		int resultado = 0;
+		 		try {
+		 			conexion = MySqlConexion.getConexion();
+		 			String sql = "UPDATE asistencia_estudiante SET EstadoAsistencia = ? WHERE AsistenciaID = ?";
+		 			PreparedStatement pst = conexion.prepareStatement(sql);
+		 			
+		 			pst.setString(1, "Asistencia");
+		 			pst.setInt(2, asistenciaID);
+
+		 			resultado = pst.executeUpdate();
+		 			pst.close();
+		 		} catch (Exception e) {
+		 			e.printStackTrace();
+		 		} finally {
+		 			try {
+		 				conexion.close();
+		 			} catch (SQLException e) {
+		 				e.printStackTrace();
+		 			}
+		 		}
+		 		return resultado;
+		 	}
+
+	     
+	     
+	        
+	        @Override
+		 	public int rechazar(int asistenciaID) {
+		 		int resultado = 0;
+		 		try {
+		 			conexion = MySqlConexion.getConexion();
+		 			String sql = "UPDATE asistencia_estudiante SET EstadoAsistencia = ? WHERE AsistenciaID = ?";
+		 			PreparedStatement pst = conexion.prepareStatement(sql);
+		 			
+		 			pst.setString(1, "Inasistencia");
+		 			pst.setInt(2, asistenciaID);
+
+		 			resultado = pst.executeUpdate();
+		 			pst.close();
+		 		} catch (Exception e) {
+		 			e.printStackTrace();
+		 		} finally {
+		 			try {
+		 				conexion.close();
+		 			} catch (SQLException e) {
+		 				e.printStackTrace();
+		 			}
+		 		}
+		 		return resultado;
+		 	}
+
+		  
+		    
 
 }

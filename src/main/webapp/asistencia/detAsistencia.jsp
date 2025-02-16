@@ -107,12 +107,10 @@
 				</div>
 		
 
-
-				<br> <a class="btn btn-primary"
-					href="AsistenciaEstudianteServlet?tipo=list" role="button">Regresar
-					al Listado</a>
-
-
+   <a class="btn btn-primary"
+       href="AsistenciaEstudianteServlet?tipo=listAsistenciaxAlumno&horarioID=<%=AsistenciaEstudiante.getHorarioID()%>&estudianteID=<%=AsistenciaEstudiante.getEstudianteID()%>">
+       Regresar
+    </a>
 			</form>
 	
 

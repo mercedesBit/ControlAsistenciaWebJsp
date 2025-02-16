@@ -1,11 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
+    
+    
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+    <title>Inicio de SesiÃ³n</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -78,8 +82,8 @@
 <body>
 
     <div class="login-container">
-        <h2>Inicio de Sesión</h2>
-        <!-- Formulario de login que envía datos al servlet LoginServlet -->
+        <h2>Inicio de SesiÃ³n</h2>
+        <!-- Formulario de login que envÃ­a datos al servlet LoginServlet -->
         <form action="LoginServlet" method="post">
             <div class="form-group">
                 <label for="nombreUsuario">Nombre de usuario:</label>
@@ -87,11 +91,11 @@
             </div>
 
             <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
+                <label for="contrasena">ContraseÃ±a:</label>
                 <input type="password" id="contrasena" name="contrasena" required />
             </div>
 
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            <button type="submit" class="btn btn-primary">Iniciar sesiÃ³n</button>
         </form>
 
        
