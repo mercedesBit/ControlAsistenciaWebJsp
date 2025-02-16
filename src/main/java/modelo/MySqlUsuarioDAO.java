@@ -166,7 +166,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 		PreparedStatement psm = null;
 		try {
 			cn=MySqlConexion.getConexion();
-			String sql="delete from usuarios where RoleID=?"; 
+			String sql="delete from usuarios where UsuarioID=?"; 
 			psm = cn.prepareStatement(sql);
 			psm.setInt(1, usuarioID);
 			value = psm.executeUpdate();
